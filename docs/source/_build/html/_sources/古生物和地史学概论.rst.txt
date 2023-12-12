@@ -210,5 +210,5 @@ aff. 表示亲近种
 References
 ***********
 
-.. _常见化石门类.pdf: https://github.com/sicheng1806/essentials/blob/main/docs/reference/cjhsml.pdf
+.. _常见化石门类.pdf: https://github.com/sicheng1806/essentials/blob/main/docs/source/cjhsml.pdf
 
