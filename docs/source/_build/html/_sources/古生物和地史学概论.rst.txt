@@ -332,7 +332,7 @@ aff. 表示亲近种
 .. image:: ./海绵动物门.png
   :alt: 海绵动物门结构图
   :align: right
-  :width: 200px
+  :width: 20em
 
 亦称多孔动物门(Porifera)
 
@@ -353,7 +353,7 @@ aff. 表示亲近种
 .. image:: ./古杯动物门.png
   :alt: 古杯动物门结构图
   :align: right
-  :width: 200px
+  :width: 20em
 
 古杯是绝灭了的低等多细胞后
 生浅海底栖动物。古杯为单体,
@@ -377,7 +377,7 @@ aff. 表示亲近种
 .. image:: ./腔肠动物.png
   :align: right
   :alt: 腔肠动物结构图
-  :width: 200px
+  :width: 20em
 
 腔肠动物门(Coelenterata)
 
