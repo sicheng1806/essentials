@@ -13,7 +13,7 @@ Contents
 ========
 
 .. toctree:: 
-   :maxdepth: 3
+   :maxdepth: 2
    :numbered:
 
    地貌学及第四纪地质学
