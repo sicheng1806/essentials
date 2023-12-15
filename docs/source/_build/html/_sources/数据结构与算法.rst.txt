@@ -103,9 +103,9 @@
 
 链接是 ``*.o`` 输出为可执行文件 ``*`` 或 ``*.exe`` ,此时文件已经解决了依赖关系，包括与系统的依赖关系和标准库和自定义库的依赖关系。
 
-采用``gcc -c file1.c -o file2.o`` 编译文件，其中-o 默认为file1.o。
+采用 ``gcc -c file1.c -o file2.o`` 编译文件，其中-o 默认为file1.o。
 
-采用``gcc -o file [file1.o file2.o ...]``来链接程序。
+采用 ``gcc -o file [file1.o file2.o ...]`` 来链接程序。
 
 已经完成使用make 自动编译和链接程序——学习Makefile的语法。
 

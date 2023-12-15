@@ -125,8 +125,8 @@
 <h3><span class="section-number">4.1.2. </span>编译和链接<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <p class="linemarker linemarker-102">编译是 <code class="docutils literal notranslate"><span class="pre">*.c</span></code> 输出为二进制文件 <code class="docutils literal notranslate"><span class="pre">*.o</span></code> ，此时的文件通过了语法检测并转换为了二进制，但依赖关系并没有解决</p>
 <p class="linemarker linemarker-104">链接是 <code class="docutils literal notranslate"><span class="pre">*.o</span></code> 输出为可执行文件 <code class="docutils literal notranslate"><span class="pre">*</span></code> 或 <code class="docutils literal notranslate"><span class="pre">*.exe</span></code> ,此时文件已经解决了依赖关系，包括与系统的依赖关系和标准库和自定义库的依赖关系。</p>
-<p class="linemarker linemarker-106">采用``gcc -c file1.c -o file2.o`` 编译文件，其中-o 默认为file1.o。</p>
-<p class="linemarker linemarker-108">采用``gcc -o file [file1.o file2.o …]``来链接程序。</p>
+<p class="linemarker linemarker-106">采用 <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-c</span> <span class="pre">file1.c</span> <span class="pre">-o</span> <span class="pre">file2.o</span></code> 编译文件，其中-o 默认为file1.o。</p>
+<p class="linemarker linemarker-108">采用 <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-o</span> <span class="pre">file</span> <span class="pre">[file1.o</span> <span class="pre">file2.o</span> <span class="pre">...]</span></code> 来链接程序。</p>
 <p class="linemarker linemarker-110">已经完成使用make 自动编译和链接程序——学习Makefile的语法。</p>
 </section>
 <section id="id4">
