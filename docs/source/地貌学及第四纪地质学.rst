@@ -39,7 +39,7 @@
 
 1. 按高度分类
 
-.. figure:: 山地高度分类.jpg
+.. figure:: ./image/山地高度分类.jpg
     :scale: 50 %    
     :alt: 山地高度分类
 
