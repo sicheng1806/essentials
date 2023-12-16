@@ -130,26 +130,259 @@
 <p class="linemarker linemarker-110">已经完成使用make 自动编译和链接程序——学习Makefile的语法。</p>
 </section>
 <section id="id4">
-<h3><span class="section-number">4.1.3. </span>数据结构<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
-</section>
+<h3><span class="section-number">4.1.3. </span>c数据结构<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <section id="id5">
-<h3><span class="section-number">4.1.4. </span>控制流工具<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<h4><span class="section-number">4.1.3.1. </span>基本数据类型占用内存量<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<p class="linemarker linemarker-118"><code class="docutils literal notranslate"><span class="pre">sizeof</span></code> 用于获取类型的储存字节，值得注意的是 <code class="docutils literal notranslate"><span class="pre">sizeof(void)</span></code> 返回 1 。</p>
+<p class="linemarker linemarker-120">整型、字符型和浮点型有:
+1. int uint(表示 unsigned int) luint(表示long unsigned int) 分别占4 4 8 字节。
+2. char uchar 占 1 1 字节。1 字节有8位比特
+3. float double 占 4 8 字节
+4. void 占 1 字节</p>
 </section>
 <section id="id6">
-<h3><span class="section-number">4.1.5. </span>输入与输出<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<h4><span class="section-number">4.1.3.2. </span>分配内存和管理内存<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-129"><code class="docutils literal notranslate"><span class="pre">void*</span></code> 指针表示未被赋予具体类型的地址，可以通过强制类型转换为希望的类型如：</p></li>
+</ol>
+<p class="linemarker linemarker-131">`` int* p_a = (int*) malloc(8 * sizeof(int))``</p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-133">malloc用于分配内存，free用于释放内存。free释放后的内存内的数据已经不再可信。</p></li>
+<li><p class="linemarker linemarker-134">指针可以使用索引取值 <code class="docutils literal notranslate"><span class="pre">p_a[i]</span></code> 等价于 <code class="docutils literal notranslate"><span class="pre">(*(p_a</span> <span class="pre">+</span> <span class="pre">i))</span></code>。</p></li>
+<li><p class="linemarker linemarker-135">realloc用于重新分配之前用malloc或alloc分配的内存，返回形式和malloc一样。对于数据结构扩容很有效。</p></li>
+</ol>
+</section>
 </section>
 <section id="id7">
-<h3><span class="section-number">4.1.6. </span>错误和异常<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
-</section>
+<h3><span class="section-number">4.1.4. </span>控制流工具<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-142">PASS</p>
 </section>
 <section id="id8">
-<h2><span class="section-number">4.2. </span>第一章——线性结构<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
-<p class="linemarker linemarker-130">线性结构指结点以顺序结构储存。</p>
+<h3><span class="section-number">4.1.5. </span>输入与输出<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-147">PASS</p>
+</section>
 <section id="id9">
-<h3><span class="section-number">4.2.1. </span>线性表<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">4.1.6. </span>错误和异常<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-152">PASS</p>
+</section>
+</section>
+<section id="id10">
+<h2><span class="section-number">4.2. </span>第一章——线性结构<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-158">线性结构指结点以顺序结构储存。</p>
+<section id="id11">
+<h3><span class="section-number">4.2.1. </span>线性表<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-163">线性表根据储存类型的不同分为顺序表和链表。链表分为单链表，循环单链表，双链表和循环双链表。</p>
+<p class="linemarker linemarker-165">线性表模型：</p>
+<p class="linemarker linemarker-167">使用a_i,表示第i个元素。a_0为第一个元素。a_i 等价与 a[i]</p>
+<section id="id12">
+<h4><span class="section-number">4.2.1.1. </span>顺序表<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
 <ol class="arabic simple">
-<li><p class="linemarker linemarker-135">抽象结构</p></li>
+<li><p class="linemarker linemarker-172">结点结构</p></li>
 </ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ElemType</span><span class="o">*</span><span class="w"> </span><span class="n">elem</span><span class="p">;</span><span class="w">     </span><span class="c1">// 顺序表存储空间的基址（指向顺序表所占内存的起始位置）</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="p">;</span><span class="w">   </span><span class="c1">// 当前顺序表长度（包含多少元素）</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">listsize</span><span class="p">;</span><span class="w"> </span><span class="c1">// 当前分配的存储容量（可以存储多少元素）</span>
+<span class="p">}</span><span class="w"> </span><span class="n">SqList</span><span class="p">;</span>
+</pre></div>
+</div>
+<p class="linemarker linemarker-182">elem为链表头地址</p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-184">初始化</p></li>
+</ol>
+<p class="linemarker linemarker-186">使用malloc分配内存，length=0</p>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-188">插入元素</p></li>
+</ol>
+<p class="linemarker linemarker-190">令索引大于i的元素向后移动一位，对a_i赋值。代价o(n)</p>
+<ol class="arabic simple" start="4">
+<li><p class="linemarker linemarker-192">删除元素</p></li>
+</ol>
+<p class="linemarker linemarker-194">令索引大于i的元素向前移动一位，代价o(n)</p>
+<ol class="arabic simple" start="5">
+<li><p class="linemarker linemarker-196">删除</p></li>
+</ol>
+<p class="linemarker linemarker-198">释放elem指向的内存</p>
+</section>
+<section id="id13">
+<h4><span class="section-number">4.2.1.2. </span>单链表<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-203">结点结构</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">LNode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ElemType</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w">      </span><span class="c1">// 数据结点</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">LNode</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"> </span><span class="c1">// 指向下一个结点的指针</span>
+<span class="p">}</span><span class="w"> </span><span class="n">LNode</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-212">初始化</p></li>
+</ol>
+<p class="linemarker linemarker-214">分配内存，next指向空</p>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-216">插入元素</p></li>
+</ol>
+<p class="linemarker linemarker-218">令索引i-1的next指向新结点，新结点的next指向索引i结点。</p>
+<ol class="arabic simple" start="4">
+<li><p class="linemarker linemarker-220">删除元素</p></li>
+</ol>
+<p class="linemarker linemarker-222">令索引i-1的next指向i+1，释放i的内存。</p>
+<ol class="arabic simple" start="5">
+<li><p class="linemarker linemarker-224">删除</p></li>
+</ol>
+<p class="linemarker linemarker-226">释放所有结点next指向的内存</p>
+</section>
+<section id="id14">
+<h4><span class="section-number">4.2.1.3. </span>循环单链表<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<p class="linemarker linemarker-231">将最后一个元素指向第一个元素就形成循环单链表</p>
+</section>
+<section id="id15">
+<h4><span class="section-number">4.2.1.4. </span>双链表<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<p class="linemarker linemarker-236">单链表基础上增加一个指向前继的指针</p>
+</section>
+</section>
+<section id="id16">
+<h3><span class="section-number">4.2.2. </span>字符串<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-241">与线性表相比，字符串更加注重整体的运算，而线性表更加注重元素的操作。其储存逻辑基本通用</p>
+<section id="id17">
+<h4><span class="section-number">4.2.2.1. </span>字符串的模式匹配<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<p class="linemarker linemarker-246">问题描述：对于字符串s和p，求p是否在s中，如果在则返回第一次匹配成功的索引</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-248">朴素的模式匹配算法</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">p</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)]:</span>
+            <span class="k">return</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-259">无回溯的模式匹配算法</p></li>
+</ol>
+<p class="linemarker linemarker-261">问题进一步描述：朴素的模式匹配算法的低效在于每次匹配失败都只右移1位，并且没有利用字符串s或p的性质，
+Knuth 等人发现下次匹配失败后存在k值，可以直接向右移动k位并用p_k进行下一次比较，由k组成的数组next存在且
+只与p有关。</p>
+<blockquote>
+<div><dl>
+<dt>t0 … tm p0 p1 p2 p3 p4 … pi-1 tn … tN</dt><dd><dl>
+<dt>p0 p1 p2 p3 … pi-2 pi           必定失败 =: p[1:i] != p[0:i-1]</dt><dd><blockquote>
+<div><p class="linemarker linemarker-267">pk pk+1 …   若从pk开始下一次比较</p>
+</div></blockquote>
+<p class="linemarker linemarker-269">p0 p1 … pk-1            说明p[0:k] == p[i-k:i],前缀等于后缀</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="linemarker linemarker-271">k 最大等于在p[0:i]字符串中，最长的前缀匹配后缀问题。</p>
+<p class="linemarker linemarker-273">即：
+pk = p[next[i]]
+next[i] = max(符合(p[0:k] == p[i-k:i]))</p>
+</div></blockquote>
+<p class="linemarker linemarker-277">假设next数组已经求出</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">p</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    <span class="n">p_next</span> <span class="o">=</span> <span class="n">makeNext</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">j</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="c1">#退出条件</span>
+        <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">p_next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">continue</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="c1"># 表示s与p在最末尾匹配成功</span>
+</pre></div>
+</div>
+<p class="linemarker linemarker-295">求_next数组:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">makeNext</span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="sd">&#39;&#39;&#39;返回字符创p的next数组&#39;&#39;&#39;</span>
+<span class="n">_next</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># i = 0时必定为0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)):</span>
+    <span class="c1"># p[0:k] == p[i-k:i]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">k</span><span class="p">:</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">_next</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">_next</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">_next</span>
+</pre></div>
+</div>
+<p class="linemarker linemarker-310">_next数组的优化：</p>
+<p class="linemarker linemarker-312">尚可优化。</p>
+</section>
+</section>
+<section id="id18">
+<h3><span class="section-number">4.2.3. </span>栈<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-317">栈(stack)：一种特殊的线性表，插入和删除都只能在表的同一端进行；</p>
+<p class="linemarker linemarker-319">也分为顺序栈和链栈</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-321">顺序栈</p></li>
+</ol>
+<p class="linemarker linemarker-323">结点表示</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">SeqStack</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">MaxNum</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">top</span><span class="p">;</span>
+<span class="w">    </span><span class="n">DataType</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p class="linemarker linemarker-334">其他：</p>
+<p class="linemarker linemarker-336">略</p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-338">顺序栈的共享技术</p></li>
+</ol>
+<p class="linemarker linemarker-340">两个栈共享一个数组，栈顶分别在数组的两端</p>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-342">链栈</p></li>
+</ol>
+<p class="linemarker linemarker-344">结点表示：</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Node</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">DataType</span><span class="w"> </span><span class="n">info</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PNode</span><span class="w"> </span><span class="n">link</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<section id="id19">
+<h4><span class="section-number">4.2.3.1. </span>栈的应用<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-357">栈与数制转换</p></li>
+</ol>
+<p class="linemarker linemarker-359">问题描述： 将十进制数N转换为m进制数M</p>
+<dl class="simple">
+<dt>问题分析::</dt><dd><p class="linemarker linemarker-362">用m_n,m_n-1,…,m_0表示M,
+通过求余和整除可以依次求得m_0,m_1,…,m_n
+数据要求高位输出因而满足先进后出的栈要求，使用栈来承接结果。</p>
+</dd>
+</dl>
+<p class="linemarker linemarker-366">算法 <a class="reference external" href="https://github.com/sicheng1806/essentials/scr_test/py/m进制整数求法.py">m进制整数求法</a></p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-369">栈与括号匹配</p></li>
+</ol>
+<p class="linemarker linemarker-371">问题描述： 对文字的括号用法进行判别正误</p>
+<p class="linemarker linemarker-373">问题分析： 将读到左括号入栈，读到右括号出栈，出栈与入栈类型不匹配或读完栈未空视为错误。</p>
+</section>
+</section>
+<section id="id20">
+<h3><span class="section-number">4.2.4. </span>队列<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-379">队列是满足先进先出的线性结构</p>
+<p class="linemarker linemarker-381">在python中collection.deque便是队列。</p>
+<p class="linemarker linemarker-383">队列的先进先出适用于生产者-消费者模型的数据传输，因而在多进程管理中python提供了queue模块用于在多线程数据的传输</p>
+</section>
+</section>
+<section id="id21">
+<h2><span class="section-number">4.3. </span>树形结构<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-388">树型结构：唯一前驱，后继可以不唯一</p>
+<p class="linemarker linemarker-390">深度或高度(depth)</p>
+<p class="linemarker linemarker-392">度数：结点的度数等于结点的子结点树</p>
+<p class="linemarker linemarker-394">二叉树：度数小于2</p>
+<p class="linemarker linemarker-396">满二叉树：任意结点，要么度为0，要么度为2。</p>
+<p class="linemarker linemarker-398">完全二叉树：1 只允许最后两层结点的度数小于2;2 最后一层结点都集中在该层最左边的若干位置。</p>
+<section id="id22">
+<h3><span class="section-number">4.3.1. </span>二叉树与二叉树的遍历<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
 </section>
 </section>
 </section>
@@ -177,7 +410,8 @@
 <li class="toctree-l1"><a class="reference internal" href="%E5%8F%A4%E7%94%9F%E7%89%A9%E5%92%8C%E5%9C%B0%E5%8F%B2%E5%AD%A6%E6%A6%82%E8%AE%BA.html">3. 古生物和地史学概论</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. 数据结构与算法</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#c">4.1. 第0章——C的回顾</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">4.2. 第一章——线性结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">4.2. 第一章——线性结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">4.3. 树形结构</a></li>
 </ul>
 </li>
 </ul>
