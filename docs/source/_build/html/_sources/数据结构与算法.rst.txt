@@ -364,7 +364,7 @@ _next数组的优化：
     数据要求高位输出因而满足先进后出的栈要求，使用栈来承接结果。
 
 算法 `m进制整数求法
-<https://github.com/sicheng1806/essentials/scr_test/py/m进制整数求法.py>`_
+<https://github.com/sicheng1806/essentials/blob/main/src_test/py/m%E8%BF%9B%E5%88%B6%E6%95%B4%E6%95%B0%E6%B1%82%E6%B3%95.py>`_
 
 2. 栈与括号匹配
 
