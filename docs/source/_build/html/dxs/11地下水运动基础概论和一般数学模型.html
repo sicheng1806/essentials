@@ -34,47 +34,221 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1><a class="toc-backref" href="#id6" role="doc-backlink"><span class="section-number">6.1 </span>地下水运动基础概论和一般数学模型</a><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<h1><a class="toc-backref" href="#id13" role="doc-backlink"><span class="section-number">6.1 </span>地下水运动基础概论和一般数学模型</a><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <nav class="contents" id="id2">
 <p class="topic-title">目录</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#id1" id="id6">地下水运动基础概论和一般数学模型</a></p>
+<li><p><a class="reference internal" href="#id1" id="id13">地下水运动基础概论和一般数学模型</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id3" id="id7">地下水运动的介质——多孔介质</a></p>
+<li><p><a class="reference internal" href="#id3" id="id14">欧拉法</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id15">典型单元体和渗流模型</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id4" id="id8">地下水在多孔介质内的流态</a></p></li>
-<li><p><a class="reference internal" href="#id5" id="id9">典型单元体</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id16">多孔介质和地下水在多孔介质的实际运动</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id17">典型单元体</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id18">渗流模型</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id19">渗流基本定律——达西定律</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#id9" id="id20">渗流定律下的数学模型</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id10" id="id21">饱和地下水水体的数学模型</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id22">承压水体的数学模型</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id12" id="id23">多孔介质、地下水物理性质和概念索引</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
+<p class="linemarker linemarker-6">这章介绍地下水动力学的一般数学模型。</p>
 <section id="id3">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink"><span class="section-number">6.1.1 </span>地下水运动的介质——多孔介质</a><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<p class="linemarker linemarker-9">多孔介质：在地下水动力学中，把具有空隙的岩体称为多孔介质。根据岩体中空隙的类型，多孔介质可分为 <em>孔隙介质</em> 、 <em>裂隙介质</em> 和 <em>溶穴介质</em> 。</p>
-<p class="linemarker linemarker-11">多孔介质中的地下水可能以吸着水、薄膜水、毛管水和重力水等多种形式存在。本书主要研究重力水的运动。</p>
-<section id="id4">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink"><span class="section-number">6.1.1.1 </span>地下水在多孔介质内的流态</a><a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink"><span class="section-number">6.1.1 </span>欧拉法</a><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-11">欧拉法采用场论的观点描述空间中的物理量。</p>
+<p class="linemarker linemarker-13">物理量：考察物质点的物理量 <span class="math notranslate nohighlight">\(\psi\)</span></p>
+<p class="linemarker linemarker-15">控制体：研究的空间区域</p>
 <ol class="arabic simple">
-<li><p class="linemarker linemarker-16">流态类型</p></li>
+<li><p class="linemarker linemarker-17">物理量 <span class="math notranslate nohighlight">\(\psi\)</span> 在空间中的描述：</p></li>
 </ol>
-<p class="linemarker linemarker-18">层流：液体质点作有规律的线状运动。</p>
-<p class="linemarker linemarker-20">紊流：液体质点作杂乱无章的运动。</p>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(1)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[\psi(x,y,z,t)\]</div>
 <ol class="arabic simple" start="2">
-<li><p class="linemarker linemarker-22">流态判别系数</p></li>
+<li><p class="linemarker linemarker-22">控制体中物理量时间导数：</p></li>
 </ol>
-<p class="linemarker linemarker-24">层流和紊流是用Reynolds数来判别的：</p>
-<div class="math notranslate nohighlight" id="equation-re-eq">
-<span class="eqno">(1)<a class="headerlink" href="#equation-re-eq" title="Link to this equation">¶</a></span>\[Re = \frac{vd}{v}\]</div>
-<p class="linemarker linemarker-29">地下水由层流转变为紊流时的Reynolds数称为临界Reynolds数。一般情况下，临界Reynolds数为150～300。
-天然情况下，含水层中地下水的Reynolds数远小于临界Reynolds数，因此天然状态下地下水流多处于层流状态。</p>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(2)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[系统导数 = 瞬变项 + 流项 = 源项\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-27">系统导数</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(3)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[\frac{D}{Dt}\iiint\psi\mathrm{d}\tau\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-32">瞬变项</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(4)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[\iiint\frac{\partial\psi}{\partial t}\mathrm{d}\tau\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-37">流项</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(5)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[\iint \psi \mathbf{V n}\mathrm{d}A\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-43">源项   任意可以增加 <span class="math notranslate nohighlight">\(\psi\)</span> 的项，一般表示为 W</p></li>
+</ul>
+<p class="linemarker linemarker-45">表示为数学式如下:</p>
+<div class="math notranslate nohighlight" id="equation-eq">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq" title="Link to this equation">¶</a></span>\[\frac{D}{Dt}\iiint\psi\mathrm{d}\tau
+= \iiint\frac{\partial\psi}{\partial t}\mathrm{d}\tau
++ \iint \psi \mathbf{V n}\mathrm{d}A
++ = \iiint W \mathrm{d}\tau\]</div>
+<p class="linemarker linemarker-55">微分：</p>
+<div class="math notranslate nohighlight" id="equation-2-eq">
+<span class="eqno">(7)<a class="headerlink" href="#equation-2-eq" title="Link to this equation">¶</a></span>\[\frac{\partial\psi}{\partial t} + \nabla(\psi\mathbf{V}) = W\]</div>
 </section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink"><span class="section-number">6.1.2 </span>典型单元体和渗流模型</a><a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-66">典型单元体和渗流模型是地下水运动的基础模型</p>
 <section id="id5">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink"><span class="section-number">6.1.1.2 </span>典型单元体</a><a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
-<p class="linemarker linemarker-37">典型单元体（Representative Elementary Volume，简称REV），亦称表征单元体。对于均质多孔介质，各物理量（如空隙度、水头、压力等）在一定体积范围内不随体积的变化而变化，此时，称这一范围的体积为典型单元体。记为      。</p>
-<p class="linemarker linemarker-39">定义p点的各物理量时，用以p为中心的典型单元体内该物理量的平均值来定义 。</p>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink"><span class="section-number">6.1.2.1 </span>多孔介质和地下水在多孔介质的实际运动</a><a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-71">地下水运动的介质——多孔介质</p></li>
+</ol>
+<p class="linemarker linemarker-73">多孔介质：在地下水动力学中，把具有空隙的岩体称为多孔介质。根据岩体中空隙的类型，多孔介质可分为 <em>孔隙介质</em> 、 <em>裂隙介质</em> 和 <em>溶穴介质</em> 。</p>
+<p class="linemarker linemarker-75">多孔介质中的地下水可能以吸着水、薄膜水、毛管水和重力水等多种形式存在。本书主要研究重力水的运动。</p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-77">地下水运动的流态类型</p></li>
+</ol>
+<p class="linemarker linemarker-79">层流：液体质点作有规律的线状运动。</p>
+<p class="linemarker linemarker-81">紊流：液体质点作杂乱无章的运动。</p>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-83">流态判别系数</p></li>
+</ol>
+<p class="linemarker linemarker-85">层流和紊流是用Reynolds数来判别的：</p>
+<div class="math notranslate nohighlight" id="equation-re-eq">
+<span class="eqno">(8)<a class="headerlink" href="#equation-re-eq" title="Link to this equation">¶</a></span>\[Re = \frac{\upsilon d}{\nu}\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-90"><span class="math notranslate nohighlight">\(\upsilon\)</span>        为液体流速</p></li>
+<li><p class="linemarker linemarker-91"><span class="math notranslate nohighlight">\(\nu\)</span>             为液体运动黏度</p></li>
+<li><p class="linemarker linemarker-92"><span class="math notranslate nohighlight">\(d\)</span>                       为含水层颗粒平均粒径</p></li>
+</ul>
+<p class="linemarker linemarker-94">地下水由层流转变为紊流时的Reynolds数称为临界Reynolds数。一般情况下，临界Reynolds数为150～300。
+天然情况下，含水层中地下水的Reynolds数远小于临界Reynolds数，因此天然状态下地下水流多处于层流状态。</p>
+<ol class="arabic simple" start="4">
+<li><p class="linemarker linemarker-97">地下水在多孔介质的运动——渗透</p></li>
+</ol>
+<p class="linemarker linemarker-99">地下水沿着形状不一、大小各异、弯弯曲曲的多孔介质空隙通道流动的现象称为渗透。渗透描述的是真实地下水的运动特征。</p>
 </section>
+<section id="id6">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink"><span class="section-number">6.1.2.2 </span>典型单元体</a><a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-104">典型单元体（Representative Elementary Volume，简称REV），亦称表征单元体。对于均质多孔介质，各物理量（如空隙度、水头、压力等）在一定体积范围内不随体积的变化而变化，此时，称这一范围的体积为典型单元体。记为      。</p>
+<p class="linemarker linemarker-106">定义p点的各物理量时，用以p为中心的典型单元体内该物理量的平均值来定义 。</p>
+<p class="linemarker linemarker-108">REV 只是保证了参数在空间上的连续性，其他各项性质与真实的多孔介质无差异。下面列出与多孔介质的物理性质和力学性质</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-110">弹性释水现象</p></li>
+<li><p class="linemarker linemarker-113">重力排水现象</p></li>
+</ol>
+</section>
+<section id="id7">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink"><span class="section-number">6.1.2.3 </span>渗流模型</a><a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-118">渗流：一种假想的水流，这种假想的水流满足下列条件：</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-120">它充满了整个含水层空间（包括空隙空间和岩石颗粒所占据的空间）；</p></li>
+<li><p class="linemarker linemarker-121">水流的性质（如密度、粘滞性等）和真实地下水相同</p></li>
+<li><p class="linemarker linemarker-122">通过任一断面的流量和实际水流相同；</p></li>
+<li><p class="linemarker linemarker-123">任一点的压力或水头均和实际水流相同；</p></li>
+<li><p class="linemarker linemarker-124">水流运动时，在任意岩石体积内所受的阻力等于真实水流所受的阻力。</p></li>
+</ol>
+<p class="linemarker linemarker-126">满足上述条件的假想水流，称为渗流。</p>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink"><span class="section-number">6.1.2.4 </span>渗流基本定律——达西定律</a><a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-131">Darcy定律的适用范围</p></li>
+</ol>
+<p class="linemarker linemarker-133">只有当 水流流速 和 水力梯度呈线性关系时才能适用Darcy定律，具体情况如下：</p>
+<img alt="Darcy 定律的适用范围" class="align-center" src="../_images/Darcy%E7%9A%84%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4.png" />
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-139">Darcy定律含义</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-darcy-law">
+<span class="eqno">(9)<a class="headerlink" href="#equation-darcy-law" title="Link to this equation">¶</a></span>\[\upsilon = KJ = =K\nabla H\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-144">J 为水力梯度</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-j-eq">
+<span class="eqno">(10)<a class="headerlink" href="#equation-j-eq" title="Link to this equation">¶</a></span>\[J = = \nabla H\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-149">H 为水头</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-h-eq">
+<span class="eqno">(11)<a class="headerlink" href="#equation-h-eq" title="Link to this equation">¶</a></span>\[H = h + \frac{v^2}{2g} + \frac{p}{\gamma_w}\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-154">K 为渗透系数</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-k-eq">
+<span class="eqno">(12)<a class="headerlink" href="#equation-k-eq" title="Link to this equation">¶</a></span>\[K = \frac{gk}{\nu}\]</div>
+<p class="linemarker linemarker-159">k 为渗透率，只与介质有关。</p>
+</section>
+</section>
+<section id="id9">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink"><span class="section-number">6.1.3 </span>渗流定律下的数学模型</a><a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-164">数学模型的选取应当灵活取用，不能硬套公式。</p>
+<section id="id10">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink"><span class="section-number">6.1.3.1 </span>饱和地下水水体的数学模型</a><a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-169">模型条件：</p></li>
+</ol>
+<p class="linemarker linemarker-171">指向饱和地下水水体，满足：</p>
+<p class="linemarker linemarker-173">= 水体质量 <span class="math notranslate nohighlight">\(m_w =\iiint\rho n\mathrm{d}\tau\)</span></p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-175">模型公式</p></li>
+</ol>
+<p class="linemarker linemarker-177">在多孔介质中，考虑水体质量守恒，即考察物理量 <span class="math notranslate nohighlight">\(\rho\)</span> 的欧拉输运公式 <a class="reference internal" href="#equation">(2)</a> <a class="reference internal" href="#equation-eq">(6)</a></p>
+<ul class="simple">
+<li><p class="linemarker linemarker-179">源项：W</p></li>
+<li><p class="linemarker linemarker-180">瞬变项： <span class="math notranslate nohighlight">\(\frac{\partial \rho n}{\partial t}\)</span></p></li>
+<li><p class="linemarker linemarker-181">流项:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\nabla(\rho v) = = \nabla(\rho \nabla (KH))\]</div>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-187">微分方程:</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-model-eq">
+<span class="eqno">(13)<a class="headerlink" href="#equation-model-eq" title="Link to this equation">¶</a></span>\[\frac{\partial \rho n}{\partial t} = \nabla(\rho \nabla (KH)) = W\]</div>
+<p class="linemarker linemarker-194">该模型的未知量为 <span class="math notranslate nohighlight">\(H(x,y,z,t)\)</span>。类型为：<cite>待续</cite></p>
+<ol class="arabic" start="4">
+<li><p class="linemarker linemarker-196">模型简化</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-198">简化条件：</p></li>
+</ol>
+<ul class="simple">
+<li><p class="linemarker linemarker-200">密度恒定流 <span class="math notranslate nohighlight">\(\rho = \rho_0\)</span></p></li>
+<li><p class="linemarker linemarker-201">空隙度n不随着时间变化 <span class="math notranslate nohighlight">\(n = n_0\)</span></p></li>
+<li><p class="linemarker linemarker-202">K不随着时间改变: :math:</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-204">简化后公式</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\nabla^2 H = W\]</div>
+<p class="linemarker linemarker-208">类型为 <cite>泊松方程</cite> 。</p>
+<p class="linemarker linemarker-210">当 <span class="math notranslate nohighlight">\(W = 0\)</span> 时 ，类型为 <cite>拉普拉斯方程</cite> 。</p>
+</li>
+</ol>
+</section>
+<section id="id11">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink"><span class="section-number">6.1.3.2 </span>承压水体的数学模型</a><a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-215">模型条件</p></li>
+</ol>
+<ul class="simple">
+<li><p class="linemarker linemarker-217">满足饱和水体模型条件 <a class="reference internal" href="#equation-model-eq">(13)</a></p></li>
+<li><p class="linemarker linemarker-218">源汇项为弹性释水 <span class="math notranslate nohighlight">\(W =\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="id12">
+<h2><a class="toc-backref" href="#id23" role="doc-backlink"><span class="section-number">6.1.4 </span>多孔介质、地下水物理性质和概念索引</a><a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 

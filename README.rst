@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to sicheng_essentials's documentation!
-==============================================
+司丞的摘要
+==============
 
 `sicheng_essentials` 记录了本人学习地质工程及相关知识的精要，仅作为自身课程的检验
 和回顾要点的工具。
@@ -16,9 +16,11 @@ Contents
    :maxdepth: 2
    :numbered:
 
+   数学符号一览
    地貌学及第四纪地质学
    英语六级练习
    ./gsw/gsw
    数据结构与算法
    Rust摘要
    ./dxs/dxs
+   
