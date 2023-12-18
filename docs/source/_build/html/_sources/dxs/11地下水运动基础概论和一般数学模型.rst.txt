@@ -27,7 +27,7 @@
 地下水由层流转变为紊流时的Reynolds数称为临界Reynolds数。一般情况下，临界Reynolds数为150～300。
 天然情况下，含水层中地下水的Reynolds数远小于临界Reynolds数，因此天然状态下地下水流多处于层流状态。
 
-等式 :math:numref: `Re_eq`
+等式 :math:numref:`Re_eq`
 
 
 典型单元体
