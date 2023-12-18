@@ -45,6 +45,6 @@
 
 3. 动物界各门类的演化谱系
 
-.. image:: image/动物界各门类的演化谱系.jpg
+.. image:: ./image/动物界各门类的演化谱系.jpg
   :alt: 动物界各门类的演化谱系图
   :align: center

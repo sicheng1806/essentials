@@ -179,11 +179,11 @@ aff. 表示亲近种
 古生物的分类系统
 ======================
 
-.. image:: image/五界分类系统.png
+.. image:: ./image/五界分类系统.png
   :alt: 五界分类系统
   :align: center
   
-.. image:: image/常见化石一览.png
+.. image:: ./image/常见化石一览.png
   :alt: 常见化石一览
   :align: center
 

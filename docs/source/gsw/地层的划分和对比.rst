@@ -43,7 +43,7 @@
 
 5. 化石层序率（ Principle of faunal succession ）
 
-.. image:: image/化石层序律.png
+.. image:: ./image/化石层序律.png
   :align: right
   :alt: 化石层序律
   :width: 25em
