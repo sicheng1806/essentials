@@ -187,7 +187,7 @@ k 为渗透率，只与介质有关。
 
 指向饱和地下水水体，满足：
 
-= 水体质量 :math:`m_w =\iiint\rho n\mathrm{d}\tau`
+- 水体质量 :math:`m_w =\iiint\rho n\mathrm{d}\tau`
 
 2. 模型公式
 
@@ -206,7 +206,7 @@ k 为渗透率，只与介质有关。
 .. math:: 
     :label: model_eq_饱和水体
 
-    \frac{\partial \rho n}{\partial t} = \nabla(\rho \nabla (KH)) = W
+    \frac{\partial \rho n}{\partial t} + \nabla(\rho \nabla (KH)) = W
 
 该模型的未知量为 :math:`H(x,y,z,t)`。类型为：`待续`
 
@@ -220,7 +220,7 @@ k 为渗透率，只与介质有关。
 
    2. 简化后公式
 
-   .. math:: \nabla^2 H = W
+   .. math:: \nabla^2 H = W / (\rho K)
 
    类型为 `泊松方程` 。
 
@@ -232,7 +232,27 @@ k 为渗透率，只与介质有关。
 1. 模型条件
 
 * 满足饱和水体模型条件 :eq:`model_eq_饱和水体`
-* 源汇项为弹性释水 :math:`W =` `系统导数`_
+* 源汇项为弹性释水 :math:`W = \mu_s\frac{\partial H}{\partial t}`
+
+2. 得到方程:
+
+.. math:: 
+    :label: model_eq_承压水体
+
+    \frac{\partial \rho n}{\partial t} + \nabla(\rho \nabla (KH)) = \mu_s\frac{\partial H}{\partial t}
+
+3. 模型简化
+
+* 恒密度流
+* n恒定
+* 各向同性
+
+简化后方程:
+
+.. math:: 
+
+    \nabla^2 H = \frac{\mu_s}{\rho K}\frac{\partial H}{\partial t}
+
 
 
 概念参考
