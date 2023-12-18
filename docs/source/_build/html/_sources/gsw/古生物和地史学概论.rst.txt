@@ -184,11 +184,11 @@ aff. 表示亲近种
 古生物的分类系统
 ======================
 
-.. image:: gsw/image/五界分类系统.png
+.. image:: image/五界分类系统.png
   :alt: 五界分类系统
   :align: center
   
-.. image:: gsw/image/常见化石一览.png
+.. image:: image/常见化石一览.png
   :alt: 常见化石一览
   :align: center
 
@@ -243,7 +243,7 @@ aff. 表示亲近种
 
 3. 动物界各门类的演化谱系
 
-.. image:: gsw/image/动物界各门类的演化谱系.jpg
+.. image:: image/动物界各门类的演化谱系.jpg
   :alt: 动物界各门类的演化谱系图
   :align: center
 
@@ -317,7 +317,7 @@ aff. 表示亲近种
 
 指动物界内的古动物，即不包括原生动物。
 
-.. image:: gsw/image/动物界各门类的演化谱系.jpg
+.. image:: image/动物界各门类的演化谱系.jpg
   :alt: 动物界各门类的演化谱系图
   :align: center
 
@@ -329,7 +329,7 @@ aff. 表示亲近种
 
 1. 海绵动物门
 
-.. image:: gsw/image/海绵动物门.png
+.. image:: image/海绵动物门.png
   :alt: 海绵动物门结构图
   :align: right
   :width: 10em
@@ -350,7 +350,7 @@ aff. 表示亲近种
 
 2. 古杯动物门
 
-.. image:: gsw/image/古杯动物门.png
+.. image:: image/古杯动物门.png
   :alt: 古杯动物门结构图
   :align: right
   :width: 10em
@@ -374,7 +374,7 @@ aff. 表示亲近种
 从腔肠动物开始可以看到明显的组织和组织间的协同工作，因而被称为最原始的真后生动物。
 
 
-.. image:: gsw/image/腔肠动物.png
+.. image:: image/腔肠动物.png
   :align: right
   :alt: 腔肠动物结构图
   :width: 10em
@@ -395,7 +395,7 @@ aff. 表示亲近种
 
 圆盘状、伞状,口朝下, 漂游。单体。
 
-.. image:: gsw/image/腔肠动物门划分.png
+.. image:: image/腔肠动物门划分.png
   :align: center
   :alt: 腔肠动物门划分
 
@@ -419,7 +419,7 @@ aff. 表示亲近种
 
 珊瑚的生长顺序由下至上，发育有横向的年轮，可以用来指示时间。
 
-.. image:: gsw/image/珊瑚的年轮.png
+.. image:: image/珊瑚的年轮.png
   :align: center
   :alt: 珊瑚的年轮
 
@@ -437,11 +437,11 @@ aff. 表示亲近种
 
 四射珊瑚的组合类型：
 
-.. image:: gsw/image/四射珊瑚构造的组合类型.jpg
+.. image:: image/四射珊瑚构造的组合类型.jpg
   :align: center
   :alt: 四射珊瑚构造组合类型
 
-.. image:: gsw/image/四射珊瑚构造组合示意图.png
+.. image:: image/四射珊瑚构造组合示意图.png
   :align: center
   :alt: 四射珊瑚构造组合示意图
 
@@ -457,7 +457,7 @@ aff. 表示亲近种
 
 多角状或从状复体，隔壁较长，具有明显的中轴。
 
-.. image:: gsw/image/石柱珊瑚.png
+.. image:: image/石柱珊瑚.png
   :align: center
   :alt: *Litostrotion irregular var.asiatica*
 
@@ -475,13 +475,13 @@ aff. 表示亲近种
 
 1. Michelinia
 
-.. image:: gsw/image/Michelinia.png
+.. image:: image/Michelinia.png
   :align: center
   :alt: Michelinia
 
 2. Hayasakaia 早坂珊瑚
 
-.. image:: gsw/image/早坂珊瑚.png
+.. image:: image/早坂珊瑚.png
   :align: center
   :alt: Hayasakaia
 
@@ -497,24 +497,24 @@ aff. 表示亲近种
 
 依据软体和硬壳形态等特征可分为十个纲：
 
-.. image:: gsw/image/软体动物分纲.png
+.. image:: image/软体动物分纲.png
   :align: center
 
 软体动物分纲代表
 
 .. container:: custom
 
-  .. image:: gsw/image/软体动物分纲代表1.png
+  .. image:: image/软体动物分纲代表1.png
     :align: center
-  .. image:: gsw/image/软体动物分纲代表2.png
+  .. image:: image/软体动物分纲代表2.png
     :align: center
-  .. image:: gsw/image/软体动物分纲代表3.png
+  .. image:: image/软体动物分纲代表3.png
     :align: center
-  .. image:: gsw/image/软体动物分纲代表4.png
+  .. image:: image/软体动物分纲代表4.png
     :align: center
-  .. image:: gsw/image/软体动物分纲代表5.png
+  .. image:: image/软体动物分纲代表5.png
     :align: center
-  .. image:: gsw/image/软体动物分纲代表6.png
+  .. image:: image/软体动物分纲代表6.png
     :align: center
 
 软体动物门双壳纲（Bivalvia）
@@ -528,7 +528,7 @@ aff. 表示亲近种
 
 双壳纲身体结构：
 
-.. image:: gsw/image/双壳纲身体结构.png
+.. image:: image/双壳纲身体结构.png
   :align: center
   :alt: 双壳纲身体结构
 
@@ -537,7 +537,7 @@ aff. 表示亲近种
 
 壳体结构如图：
 
-.. image:: gsw/image/双壳纲壳体结构.png
+.. image:: image/双壳纲壳体结构.png
   :align: center
   :alt: 双壳纲壳体结构
 
@@ -565,7 +565,7 @@ aff. 表示亲近种
 
 刺、瘤、节等
 
-.. image:: gsw/image/双壳纲壳的定向.png
+.. image:: image/双壳纲壳的定向.png
   :align: center
   :alt: 壳的定向
 
@@ -603,59 +603,59 @@ Rec.达全盛
 二鳃：
 具内壳或无壳
 
-.. image:: gsw/image/头足纲生态图.png
+.. image:: image/头足纲生态图.png
   :alt: 头足纲生态图
   :align: center
 
 头足纲身体结构
 ^^^^^^^^^^^^^^^^^^^
 
-.. image:: gsw/image/头足纲身体结构.png
+.. image:: image/头足纲身体结构.png
   :alt: 头足纲身体结构
   :align: center
 
 头足纲外壳类化石特征
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: gsw/image/头足纲化石代表.png
+.. image:: image/头足纲化石代表.png
   :alt: 头足纲化石代表
   :align: center
 
 1. 头足纲壳的基本构造
 
-.. image:: gsw/image/头足纲壳的基本构造1.png
+.. image:: image/头足纲壳的基本构造1.png
   :align: center
   :alt: 头足纲壳的基本构造
 
-.. image:: gsw/image/头足纲壳的基本构造2.png
+.. image:: image/头足纲壳的基本构造2.png
   :align: center
   :alt: 头足纲壳的基本构造
 
-.. image:: gsw/image/头足纲壳的基本构造3.png
+.. image:: image/头足纲壳的基本构造3.png
   :align: center
   :alt: 头足纲壳的基本构造
 
 2. 头足纲外壳类体管类型
 
-.. image:: gsw/image/头足纲外壳类体管类型.png
+.. image:: image/头足纲外壳类体管类型.png
   :align: center
   :alt: 头足纲壳外壳类体管类型
 
 3. 头足纲外壳类缝合线类型
 
-.. image:: gsw/image/头足纲外壳类缝合线类型.png
+.. image:: image/头足纲外壳类缝合线类型.png
   :align: center
   :alt: 头足纲外壳类缝合线类型
 
 4. 头足纲外壳类壳饰
 
-.. image:: gsw/image/头足纲外壳类壳饰.png
+.. image:: image/头足纲外壳类壳饰.png
   :align: center
   :alt: 头足纲外壳类壳饰
 
 5. 头足纲外壳类定向
 
-.. image:: gsw/image/头足纲外壳类定向.png
+.. image:: image/头足纲外壳类定向.png
   :align: center
   :alt: 头足纲外壳类定向
 
@@ -670,7 +670,7 @@ Rec.达全盛
 
 2. 头足纲地史分布
 
-.. image:: gsw/image/头足纲地史分布.png
+.. image:: image/头足纲地史分布.png
   :align: center
   :alt: 头足纲地史分布
 
@@ -688,7 +688,7 @@ Rec.达全盛
 腹 足 类 构 造
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: gsw/image/腹足类构造.png
+.. image:: image/腹足类构造.png
   :align: center
   :alt: 腹足类构造
 
@@ -705,23 +705,23 @@ Rec.达全盛
 
 1. 节肢动物门传统分类
 
-.. image:: gsw/image/节肢动物门传统分类.png
+.. image:: image/节肢动物门传统分类.png
   :align: center
   :alt: 节肢动物门传统分类
 
 2. 节肢动物门代表
 
-.. image:: gsw/image/节肢动物门代表1.png
+.. image:: image/节肢动物门代表1.png
   :align: center
   :alt: 节肢动物门代表
 
-.. image:: gsw/image/节肢动物门代表2.png
+.. image:: image/节肢动物门代表2.png
   :align: center
   :alt: 节肢动物门代表
 
 3. 节肢动物门现代分纲
 
-.. image:: gsw/image/节肢动物门现代分纲.png
+.. image:: image/节肢动物门现代分纲.png
   :align: center
   :alt: 节肢动物门现代分纲
 
@@ -738,23 +738,23 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 
 背甲为两条纵向背沟，划分出一个轴叶和两个肋叶，故称三叶虫。
 
-.. image:: gsw/image/三叶虫身体结构1.png
+.. image:: image/三叶虫身体结构1.png
   :align: center
   :alt: 三叶虫身体结构
 
-.. image:: gsw/image/三叶虫身体结构2.png
+.. image:: image/三叶虫身体结构2.png
   :align: center
   :alt: 三叶虫身体结构
 
 三叶虫纲背甲化石特征
 ^^^^^^^^^^^^^^^^^^^^^
-.. image:: gsw/image/三叶虫背甲构造模式图.jpg
+.. image:: image/三叶虫背甲构造模式图.jpg
   :align: center
   :alt: 三叶虫背甲构造模式图
 
 1. 头甲
 
-.. image:: gsw/image/三叶虫头甲结构.png
+.. image:: image/三叶虫头甲结构.png
   :align: center
   :alt: 三叶虫头甲结构
 
@@ -774,7 +774,7 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 
 面线：大多数三叶虫的头甲背面被一对面线穿过，因此推测三叶虫蜕壳时，虫体由面线裂开得出
 
-.. image:: gsw/image/三叶虫面线类型.png
+.. image:: image/三叶虫面线类型.png
   :align: center
   :alt: 三叶虫面线类型
 
@@ -782,7 +782,7 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 
 2. 胸甲
 
-.. image:: gsw/image/三叶虫胸甲结构.png
+.. image:: image/三叶虫胸甲结构.png
   :align: center
   :alt: 三叶虫胸甲结构
 
@@ -794,7 +794,7 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 
 3. 尾甲
 
-.. image:: gsw/image/三叶虫尾甲结构.png
+.. image:: image/三叶虫尾甲结构.png
   :align: center
   :alt: 三叶虫尾甲结构
 
@@ -806,21 +806,21 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 
 尾甲类型：
 
-.. image:: gsw/image/三叶虫尾甲分类.png
+.. image:: image/三叶虫尾甲分类.png
   :align: center
   :alt: 三叶虫尾甲分类
 
 三叶虫代表化石简述
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: gsw/image/三叶虫纲亲缘关系和生存年代.png
+.. image:: image/三叶虫纲亲缘关系和生存年代.png
   :align: center
   :alt: 三叶虫纲亲缘关系和生存年代
 
 
 1. 球接子目(Agnostina)
 
-.. image:: gsw/image/三叶虫球接子目.png
+.. image:: image/三叶虫球接子目.png
   :align: center
   :alt: 三叶虫球接子目
 
@@ -861,7 +861,7 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 * Coronocephalus 王冠虫 S2
 * Nankinolithus 南京三瘤虫O3
 
-.. image:: gsw/image/王冠虫.png
+.. image:: image/王冠虫.png
   :align: center
   :alt: 王冠虫
 
@@ -883,7 +883,7 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 水），窄唇纲（Stenolaemata, 海生），以及裸唇纲
 （Gymnolaemata, 多为海生）。
 
-.. image:: gsw/image/苔藓动物门化石.png
+.. image:: image/苔藓动物门化石.png
   :align: center
   :alt: 苔藓动物门化石
 
@@ -896,7 +896,7 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 腕足动物门身体结构
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: gsw/image/腕足动物门.jpg
+.. image:: image/腕足动物门.jpg
   :align: center
   :alt: 腕足动物门
 
@@ -904,17 +904,17 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 ^^^^^^^^^^^^^^^^^^^^^^^
 1. 化石代表
 
-.. image:: gsw/image/腕足动物门化石代表.png
+.. image:: image/腕足动物门化石代表.png
   :align: center
   :alt: 腕足动物门化石代表
 
 2. 壳体定向
 
-.. image:: gsw/image/腕足动物门壳体定向1.png
+.. image:: image/腕足动物门壳体定向1.png
   :align: center
   :alt: 腕足动物门化石代表
 
-.. image:: gsw/image/腕足动物门壳体定向2.png
+.. image:: image/腕足动物门壳体定向2.png
   :align: center
   :alt: 腕足动物门化石代表
 
@@ -949,11 +949,11 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 *  Cyrtospirifer 弓石燕 D3
 *  Stringocephalus 鹗头贝D2
 
-.. image:: gsw/image/腕足动物门-舌形贝.png
+.. image:: image/腕足动物门-舌形贝.png
   :align: center
   :alt: 腕足动物门-舌形贝
 
-.. image:: gsw/image/腕足动物门-金陵穹房贝.png
+.. image:: image/腕足动物门-金陵穹房贝.png
   :align: center
   :alt: 腕足动物门-金陵穹房贝
 
@@ -1013,7 +1013,7 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 
 5. 化石层序率（ Principle of faunal succession ）
 
-.. image:: gsw/image/化石层序律.png
+.. image:: image/化石层序律.png
   :align: right
   :alt: 化石层序律
   :width: 25em

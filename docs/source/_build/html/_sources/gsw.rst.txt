@@ -1,0 +1,29 @@
+古生物和地史学概论
+##########################
+
+古生物认识和化石鉴别
+***************************
+
+.. toctree:: 
+    :maxdepth: 2
+
+    gsw/化石与古生物学
+    gsw/生命起源与生物进化
+    gsw/古生物与环境
+    gsw/古动物
+    gsw/古植物
+    gsw/微体化石
+
+地史学部分
+*********************
+
+.. toctree:: 
+    :maxdepth: 2
+
+    gsw/地层的划分和对比
+    gsw/中国历史大地构造
+
+References
+***********
+
+.. _常见化石门类.pdf: https://github.com/sicheng1806/essentials/blob/main/docs/source/cjhsml.pdf
