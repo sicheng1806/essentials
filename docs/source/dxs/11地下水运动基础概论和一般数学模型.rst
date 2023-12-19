@@ -179,7 +179,7 @@ REV 只是保证了参数在空间上的连续性，其他各项性质与真实�
 
 * J 为水力梯度
 
-.. math:: J = = \nabla H 
+.. math:: J = - \nabla H 
     :label: J_eq
 
 * H 为水头
