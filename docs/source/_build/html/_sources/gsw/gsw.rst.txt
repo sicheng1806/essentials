@@ -5,6 +5,7 @@
 .. toctree:: 
     :maxdepth: 2
     :caption: 古生物部分
+    :numbered:
 
     01化石与古生物学
     02生命起源与生物进化
@@ -16,6 +17,7 @@
 .. toctree:: 
     :maxdepth: 2
     :caption: 地史学部分
+    :numbered:
 
     07地层的划分和对比
     08中国历史大地构造
