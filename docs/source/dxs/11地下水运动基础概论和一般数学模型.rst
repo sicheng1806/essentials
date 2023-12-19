@@ -298,8 +298,8 @@ k 为渗透率，只与介质有关。
 
 .. math:: 
 
-    &\ 瞬变项 = \frac{\partial\rho}{\partial t}M = 0 \\
-    &\ 流项 = \rho\nabla v = - \rho\nabla (K\nabla H)M = -\rho \nabla(T\nabla H)\\
+    &\ 瞬变项 = \frac{\partial\rho n}{\partial t}M = 0 \\
+    &\ 流项 = \rho\nabla (v M) = - \rho\nabla (KM\nabla H) = -\rho \nabla(T\nabla H)\\
     &\ 源项 = 弹性释水 + 越流补给 = - \rho\mu_s\frac{\partial H}{\partial t}M + 
     \rho K_1(H - H_1)/m_1 + \rho K_2(H_2 - H)/m_2 \\
 
