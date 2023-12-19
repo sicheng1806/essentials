@@ -11,6 +11,7 @@
 .. toctree:: 
     :maxdepth: 2
     :caption: 地下水动力学数学模型和解法
+    :numbered:
 
     11地下水运动基础概论和一般数学模型
     12河渠附近的地下水运动
@@ -23,6 +24,7 @@
 .. toctree:: 
     :maxdepth: 3
     :caption: 微分方程理论简述
+    :numbered:
 
     21一阶微分方程解法
     22高阶微分方程解法
@@ -32,10 +34,12 @@
 .. toctree:: 
     :maxdepth: 2
     :caption: 地下水动力学数值模拟示例
+    :numbered:
 
 
 .. toctree:: 
     :maxdepth: 2
     :caption: 微分方程数值解法
+    :numbered:
 
 

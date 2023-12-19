@@ -26,5 +26,3 @@ language = 'zh_CN'
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
-
-html_secnumber_suffix = " "
