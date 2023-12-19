@@ -14,7 +14,6 @@ Contents
 
 .. toctree:: 
    :maxdepth: 2
-   :numbered:
 
    数学符号一览
    地貌学及第四纪地质学
@@ -23,4 +22,7 @@ Contents
    数据结构与算法
    Rust摘要
    ./dxs/dxs
+   赤平投影密度统计
+   ./translation/翻译或提取的文章
+
    

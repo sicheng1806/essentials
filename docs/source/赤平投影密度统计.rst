@@ -1,0 +1,18 @@
+*************************
+赤平投影密度统计
+*************************
+
+
+
+
+
+
+
+参考文献
+======================
+
+[1]_, [2]_ , [3]_
+
+.. [1] Kington,Joe."mplstereonet Documentation“.“mplstereonet".https://mplstereonet.readthedocs.io/en/latest/mplstereonet.html
+.. [2] Vollmer, 1995. C Program for Automatic Contouring of Spherical Orientation Data Using a Modified Kamb Method. Computers & Geosciences, Vol. 21, No. 1, pp. 31–49.
+.. [3] Kamb, 1959. Ice Petrofabric Observations from Blue Glacier, Washington, in Relation to Theory and Experiment. Journal of Geophysical Research, Vol. 64, No. 11, pp. 1891–1909.

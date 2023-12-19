@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6 Rust摘要 &#8212; sicheng_essentials 0.1 文档</title>
+    <title>Rust摘要 &#8212; sicheng_essentials 0.1 文档</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
     <script src="_static/documentation_options.js?v=7c91f8fd"></script>
@@ -14,8 +14,8 @@
     <script src="_static/translations.js?v=beaddf03"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="next" title="7 地下水动力学" href="dxs/dxs.html" />
-    <link rel="prev" title="5 数据结构与算法" href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html" />
+    <link rel="next" title="地下水动力学" href="dxs/dxs.html" />
+    <link rel="prev" title="数据结构与算法" href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -33,17 +33,17 @@
           <div class="body" role="main">
             
   <section id="rust">
-<h1><span class="section-number">6 </span>Rust摘要<a class="headerlink" href="#rust" title="Link to this heading">¶</a></h1>
+<h1>Rust摘要<a class="headerlink" href="#rust" title="Link to this heading">¶</a></h1>
 <p class="linemarker linemarker-4">本文档按照个人主观记录一些rust相关的内容。学习Rust请转到 <a class="reference external" href="https://kaisery.github.io/trpl-zh-cn/">Rust程序设计语言</a></p>
 <p class="linemarker linemarker-7">这次学习Rust，主要是用Rust实现一个小的操作系统作为Rust和操作系统的练习。</p>
 <p class="linemarker linemarker-9">由于网络问题，Rust并没有使用官网方法安装，使用aptitude 安装了 cargo</p>
 <section id="id2">
-<h2><span class="section-number">6.1 </span>笔记1——Rust的基本语法<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<h2>笔记1——Rust的基本语法<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <p class="linemarker linemarker-14">Rust 为静态强类型语言，Python是动态弱类型语言。Rust以安全和快速著称，Python以
 快速开发，且优雅闻名，但速度不佳。两者刚好互补。</p>
 <p class="linemarker linemarker-17">Rust 的语言类型意味着 需要进行类型标注 以及 编译</p>
 <section id="id3">
-<h3><span class="section-number">6.1.1 </span>Rust的工作流程<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<h3>Rust的工作流程<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <p class="linemarker linemarker-22">编辑-编译-运行：编写.rs代码，使用rustc编译生成二进制文件，运行即可。</p>
 <p class="linemarker linemarker-24">或者使用cargo，按工程的视角管理项目，如下：</p>
 <ol class="arabic simple">
@@ -54,7 +54,7 @@
 </ol>
 </section>
 <section id="id4">
-<h3><span class="section-number">6.1.2 </span>Rust的数据类型<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<h3>Rust的数据类型<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <p class="linemarker linemarker-34">以下是基本数据类型：</p>
 <ol class="arabic simple">
 <li><p class="linemarker linemarker-36">整型</p></li>
@@ -78,7 +78,7 @@
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">6.1.3 </span>Rust的函数定义和使用<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<h3>Rust的函数定义和使用<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">func_name</span><span class="p">(</span><span class="n">x</span>:<span class="kt">i32</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="kt">i32</span> <span class="p">{</span>
 <span class="w">    </span><span class="c1">// pass</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -91,11 +91,11 @@
 </ol>
 </section>
 <section id="id6">
-<h3><span class="section-number">6.1.4 </span>Rust的注释<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<h3>Rust的注释<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <p class="linemarker linemarker-73">同C语言</p>
 </section>
 <section id="id7">
-<h3><span class="section-number">6.1.5 </span>Rust的控制流<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<h3>Rust的控制流<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p class="linemarker linemarker-78">if 语句</p></li>
 </ol>
@@ -131,11 +131,11 @@
 </section>
 </section>
 <section id="id8">
-<h2><span class="section-number">6.2 </span>笔记2——Rust的内存管理机制——所有权系统<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<h2>笔记2——Rust的内存管理机制——所有权系统<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
 <p class="linemarker linemarker-119"><code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">1</span></code> 表示不可变变量，存在栈中</p>
 <p class="linemarker linemarker-121"><code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">mut</span> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">1</span></code> 则是可变变量，存在堆中</p>
 <section id="id9">
-<h3><span class="section-number">6.2.1 </span>基于所有权系统的内存管理<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<h3>基于所有权系统的内存管理<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <p class="linemarker linemarker-126">所有权规则：</p>
 <ol class="arabic simple">
 <li><p class="linemarker linemarker-128">Rust的每一个值都有一个所有者，且任意时刻一个值只能有一个所有者。</p></li>
@@ -156,10 +156,10 @@
 </div>
 </section>
 <section id="id10">
-<h3><span class="section-number">6.2.2 </span>所有权在函数中的传递——引用与借用<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<h3>所有权在函数中的传递——引用与借用<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <p class="linemarker linemarker-150">函数调用中使用 <code class="docutils literal notranslate"><span class="pre">&amp;s1</span></code> 来引用变量的值,在函数定义中使用 <code class="docutils literal notranslate"><span class="pre">&amp;type</span></code> 来声明参数是对函数的引用</p>
 <section id="id11">
-<h4><span class="section-number">6.2.2.1 </span>使用引用来保留所有权<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<h4>使用引用来保留所有权<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
 
 <span class="kd">let</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculate_length</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s1</span><span class="p">);</span><span class="c1">//calculate_length 不改变s1的值。</span>
@@ -167,7 +167,7 @@
 </div>
 </section>
 <section id="id12">
-<h4><span class="section-number">6.2.2.2 </span>使用可变引用保留所有权的同时来修改变量的值<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<h4>使用可变引用保留所有权的同时来修改变量的值<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
 
@@ -204,25 +204,27 @@
 
 <h3>导航</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7%E4%B8%80%E8%A7%88.html">1 数学符号一览</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E5%9C%B0%E8%B2%8C%E5%AD%A6%E5%8F%8A%E7%AC%AC%E5%9B%9B%E7%BA%AA%E5%9C%B0%E8%B4%A8%E5%AD%A6.html">2 地貌学及第四纪地质学</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E8%8B%B1%E8%AF%AD%E5%85%AD%E7%BA%A7%E7%BB%83%E4%B9%A0.html">3 英语六级练习</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gsw/gsw.html">4 古生物和地史学概论</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">5 数据结构与算法</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6 Rust摘要</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">6.1 笔记1——Rust的基本语法</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">6.2 笔记2——Rust的内存管理机制——所有权系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7%E4%B8%80%E8%A7%88.html">数学符号一览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E5%9C%B0%E8%B2%8C%E5%AD%A6%E5%8F%8A%E7%AC%AC%E5%9B%9B%E7%BA%AA%E5%9C%B0%E8%B4%A8%E5%AD%A6.html">地貌学及第四纪地质学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%8B%B1%E8%AF%AD%E5%85%AD%E7%BA%A7%E7%BB%83%E4%B9%A0.html">英语六级练习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsw/gsw.html">古生物和地史学概论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Rust摘要</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">笔记1——Rust的基本语法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">笔记2——Rust的内存管理机制——所有权系统</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dxs/dxs.html">7 地下水动力学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dxs/dxs.html">地下水动力学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E8%B5%A4%E5%B9%B3%E6%8A%95%E5%BD%B1%E5%AF%86%E5%BA%A6%E7%BB%9F%E8%AE%A1.html">赤平投影密度统计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation/%E7%BF%BB%E8%AF%91%E6%88%96%E6%8F%90%E5%8F%96%E7%9A%84%E6%96%87%E7%AB%A0.html">翻译或提取的文章</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html" title="上一章"><span class="section-number">5 </span>数据结构与算法</a></li>
-      <li>Next: <a href="dxs/dxs.html" title="下一章"><span class="section-number">7 </span>地下水动力学</a></li>
+      <li>Previous: <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html" title="上一章">数据结构与算法</a></li>
+      <li>Next: <a href="dxs/dxs.html" title="下一章">地下水动力学</a></li>
   </ul></li>
 </ul>
 </div>
