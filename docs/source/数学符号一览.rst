@@ -228,5 +228,10 @@
       - 中文名
     * - fracation
       - :math:`\frac{x}{y}`
-      - ``\int``
+      - ``\frac{}{}``
       - 分式
+    * - approx
+      - :math:`\approx`
+      - ``\approx``
+      - 约等于
+    
