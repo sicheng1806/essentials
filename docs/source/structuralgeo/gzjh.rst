@@ -36,4 +36,8 @@
 -------------------------
 
 .. [Ragan1985] Ragan,D.M.,1985,Structural geology, an introduction to geometrical techniques(4rd ed.)
+.. [Stauffer1966] Stauffer, M.R., 1966, An empirical-statistical study of three dimensional fabric diagrams as used in structural analysis: Canadian Journal of Earth Science, v. 3
+.. [Denness1970] Denness, B., 1970, A method of contouring polar diagrams using curvilinear counting cells: Geological Magazine, v. 107,
+.. [Turner1963] Turner, F.J., & L.E. Weiss, 1963, Structural Analysis of Metamorphic Tectonites: McGraw-Hill, New York.
+.. [Kalsbeek1963] Kalsbeek, F., 1963, A hexagonal net for the counting out and testing of fabric diagrams: Neues Jahrbuch für Mineralogie, Monatshefte
 

@@ -6,13 +6,18 @@
 
 
 
-
+(Stauffer, 1966; Denness, 1970, 1972; see also
+Turner & Weiss, 1963, p. 58f).
 
 参考文献
 ======================
 
-[1]_, [2]_ , [3]_
+[1]_, [2]_ , [3]_ , [4]_ , [5]_ , [6]_ , [7]_ , 
 
 .. [1] Kington,Joe."mplstereonet Documentation“.“mplstereonet".https://mplstereonet.readthedocs.io/en/latest/mplstereonet.html
 .. [2] Vollmer, 1995. C Program for Automatic Contouring of Spherical Orientation Data Using a Modified Kamb Method. Computers & Geosciences, Vol. 21, No. 1, pp. 31–49.
 .. [3] Kamb, 1959. Ice Petrofabric Observations from Blue Glacier, Washington, in Relation to Theory and Experiment. Journal of Geophysical Research, Vol. 64, No. 11, pp. 1891–1909.
+.. [4] Ragan, D. M., 1918. Structural geology, an introduction to geometrical techniques(4rd ed.)
+.. [5] Stauffer, M.R., 1966, An empirical-statistical study of three dimensional fabric diagrams as used in structural analysis: Canadian Journal of Earth Science, v. 3
+.. [6] Denness, B., 1970, A method of contouring polar diagrams using curvilinear counting cells: Geological Magazine, v. 107,
+.. [7] Turner, F.J., & L.E. Weiss, 1963, Structural Analysis of Metamorphic Tectonites: McGraw-Hill, New York.
