@@ -23,6 +23,7 @@ Contents
    Rust摘要
    ./dxs/dxs
    赤平投影密度统计
+   ./structuralgeo/gzjh 
    ./translation/翻译或提取的文章
 
    
