@@ -40,4 +40,8 @@
 .. [Denness1970] Denness, B., 1970, A method of contouring polar diagrams using curvilinear counting cells: Geological Magazine, v. 107,
 .. [Turner1963] Turner, F.J., & L.E. Weiss, 1963, Structural Analysis of Metamorphic Tectonites: McGraw-Hill, New York.
 .. [Kalsbeek1963] Kalsbeek, F., 1963, A hexagonal net for the counting out and testing of fabric diagrams: Neues Jahrbuch für Mineralogie, Monatshefte
-
+.. [Mardia1972] Mardia, K.V., 1972, Statistics of Orientation Data: Academic Press, London.
+.. [Watson1983] Watson, G.S., 1983, Statistics on Spheres: John Wiley, New York.
+.. [Fisher1987] Fisher, N.I., T. Lewis & B.J.J. Embleton, 1987, Statistical Analysis of Spherical Data: Cambridge University Press, Cambridge.
+.. [Vollmer1995] Vollmer, F.W., 1995, C program for automatic contouring of spherical orientation data using a modified Kamb method: Computers & Geosciences, v. 21
+.. [Walpole1993]  a
