@@ -134,27 +134,27 @@
 </section>
 <section id="id10">
 <h2><a class="toc-backref" href="#id42" role="doc-backlink">示例</a><a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
-<img alt="FIG4" class="align-center" src="../_images/FIG4.png" />
-<img alt="FIG5" class="align-center" src="../_images/FIG5.png" />
-<img alt="FIG6" class="align-center" src="../_images/FIG6.png" />
-<a class="reference internal image-reference" href="../_images/FIG7.png"><img alt="FIG7" class="align-right" src="../_images/FIG7.png" style="width: 10em;" /></a>
-<p class="linemarker linemarker-136">图4，5，6展示了三个用于不同地质分布数据集。这三个数据集的构造类型见图7的三角构造图，所有图表，除了A，B，J，都是
+<a class="reference internal image-reference" href="../_images/FIG7.png"><img alt="FIG7" class="align-right" src="../_images/FIG7.png" style="width: 15em;" /></a>
+<p class="linemarker linemarker-124">图4，5，6展示了三个用于不同地质分布数据集。这三个数据集的构造类型见图7的三角构造图，所有图表，除了A，B，J，都是
 使用 <span class="math notranslate nohighlight">\(30 \times 30\)</span> 的网格。</p>
-<p class="linemarker linemarker-139">图表A-H使用不同的Kamb方法绘制。A 和 B使用双计数圆算法，通过网格面积等于计数圆面积在投影面计数。这等同与手绘图。</p>
-<p class="linemarker linemarker-141">C,D 和 E 分别使用 :math:` E = 3sigma , E = 2sigma , E = 1sigma` 完成，并使用平方权重。</p>
-<p class="linemarker linemarker-143">F, G 和 H 是类似的，但是使用 指数权重。注意到平方权重的分辨率更高但平滑性较差，指数权重的更平滑，图更平均。</p>
-<p class="linemarker linemarker-145">I 使用 Diggle and Fisher(1985)的可能性密度函数生成。J使用Schmidt方法生成，与A和B 算法类似。</p>
-<p class="linemarker linemarker-147">C-H 和 K (还有图8中的A和B)使用球面等密度程序。图A，B和J使用程序的早期版本。图I（还有图8中的C）使用一个Diggle和Fisher一个未发表的程序。
+<p class="linemarker linemarker-127">图表A-H使用不同的Kamb方法绘制。A 和 B使用双计数圆算法，通过网格面积等于计数圆面积在投影面计数。这等同与手绘图。</p>
+<p class="linemarker linemarker-129">C,D 和 E 分别使用 :math:` E = 3sigma , E = 2sigma , E = 1sigma` 完成，并使用平方权重。</p>
+<p class="linemarker linemarker-131">F, G 和 H 是类似的，但是使用 指数权重。注意到平方权重的分辨率更高但平滑性较差，指数权重的更平滑，图更平均。</p>
+<p class="linemarker linemarker-133">I 使用 Diggle and Fisher(1985)的可能性密度函数生成。J使用Schmidt方法生成，与A和B 算法类似。</p>
+<p class="linemarker linemarker-135">C-H 和 K (还有图8中的A和B)使用球面等密度程序。图A，B和J使用程序的早期版本。图I（还有图8中的C）使用一个Diggle和Fisher一个未发表的程序。
 最终的布局由AutoCAD完成。</p>
-<p class="linemarker linemarker-150"><strong>Example 1——weak maxima</strong></p>
-<p class="linemarker linemarker-152">FIG4的数据（来自于Kamb，1959）有大量的散点，较广的弱高峰。通过使用 <span class="math notranslate nohighlight">\(E = 3\sigma\)</span> ，性质较好的表示出来。Kamb的作图如A所示。他有两个较明显的双峰。</p>
-<p class="linemarker linemarker-154"><strong>Example 2——bimodal</strong></p>
-<p class="linemarker linemarker-156">Fig5展示了一组由38个断层阶梯（来自Angelier，1979）的数据集。没有经过优化的Kamb方法，如图A所示，没有成功的返回明显的双峰，由于样本数量小但是计数圆却过大。
+<p class="linemarker linemarker-138"><strong>Example 1——weak maxima</strong></p>
+<p class="linemarker linemarker-140">FIG4的数据（来自于Kamb，1959）有大量的散点，较广的弱高峰。通过使用 <span class="math notranslate nohighlight">\(E = 3\sigma\)</span> ，性质较好的表示出来。Kamb的作图如A所示。他有两个较明显的双峰。</p>
+<img alt="FIG4" class="align-center" src="../_images/FIG4.png" />
+<p class="linemarker linemarker-146"><strong>Example 2——bimodal</strong></p>
+<p class="linemarker linemarker-148">Fig5展示了一组由38个断层阶梯（来自Angelier，1979）的数据集。没有经过优化的Kamb方法，如图A所示，没有成功的返回明显的双峰，由于样本数量小但是计数圆却过大。
 提供了一个很低的分辨率。</p>
-<p class="linemarker linemarker-159">对于明显的双峰构造。减小 k 值（期望数）可以得到更高的分辨率和更正确的数据分布。</p>
-<p class="linemarker linemarker-161"><strong>Example 3——girdle</strong></p>
-<p class="linemarker linemarker-163">来自奥陶纪杂砂岩的不对称褶皱的56个常规层理的密度图展示在FIG6。这个数据集有一个典型的网格模式并又一个点峰值。
+<p class="linemarker linemarker-151">对于明显的双峰构造。减小 k 值（期望数）可以得到更高的分辨率和更正确的数据分布。</p>
+<img alt="FIG5" class="align-center" src="../_images/FIG5.png" />
+<p class="linemarker linemarker-157"><strong>Example 3——girdle</strong></p>
+<p class="linemarker linemarker-159">来自奥陶纪杂砂岩的不对称褶皱的56个常规层理的密度图展示在FIG6。这个数据集有一个典型的网格模式并又一个点峰值。
 同先前的例子一样，期望数减少强和了细节，给出一个更精细的网格模式。</p>
+<img alt="FIG6" class="align-center" src="../_images/FIG6.png" />
 <p class="linemarker linemarker-166"><strong>Example 4——directed data</strong></p>
 <img alt="FIG8" class="align-center" src="../_images/FIG8.png" />
 <p class="linemarker linemarker-172">Fig8

@@ -115,21 +115,9 @@ Kamb方法的一个最显著的好处就是通过计算元素大小（这里指�
 示例
 ===========
 
-.. image:: ./images/FIG4.png
-    :align: center
-    :alt: FIG4
-
-.. image:: ./images/FIG5.png
-    :align: center
-    :alt: FIG5
-
-.. image:: ./images/FIG6.png
-    :align: center
-    :alt: FIG6
-
 .. image:: ./images/FIG7.png
     :align: right
-    :width: 10em
+    :width: 15em
     :alt: FIG7
 
 
@@ -151,6 +139,10 @@ C-H 和 K (还有图8中的A和B)使用球面等密度程序。图A，B和J使�
 
 FIG4的数据（来自于Kamb，1959）有大量的散点，较广的弱高峰。通过使用 :math:`E = 3\sigma` ，性质较好的表示出来。Kamb的作图如A所示。他有两个较明显的双峰。
 
+.. image:: ./images/FIG4.png
+    :align: center
+    :alt: FIG4
+
 **Example 2——bimodal**
 
 Fig5展示了一组由38个断层阶梯（来自Angelier，1979）的数据集。没有经过优化的Kamb方法，如图A所示，没有成功的返回明显的双峰，由于样本数量小但是计数圆却过大。
@@ -158,10 +150,18 @@ Fig5展示了一组由38个断层阶梯（来自Angelier，1979）的数据集�
 
 对于明显的双峰构造。减小 k 值（期望数）可以得到更高的分辨率和更正确的数据分布。
 
+.. image:: ./images/FIG5.png
+    :align: center
+    :alt: FIG5
+
 **Example 3——girdle**
 
 来自奥陶纪杂砂岩的不对称褶皱的56个常规层理的密度图展示在FIG6。这个数据集有一个典型的网格模式并又一个点峰值。
 同先前的例子一样，期望数减少强和了细节，给出一个更精细的网格模式。
+
+.. image:: ./images/FIG6.png
+    :align: center
+    :alt: FIG6
 
 **Example 4——directed data**
 
