@@ -112,21 +112,65 @@ Kamb方法的一个最显著的好处就是通过计算元素大小（这里指�
 托切尔，1979年；柴奥，1985年；狄格尔和费舍尔，1985年；耶茨，1987年；
 查尔斯沃思等人，1989年）。
 
-.. image:: ./images/Kamb不同选项的影响.png
-    :align: center
-    :alt: Kamb不同选项的影响
-
 示例
 ===========
 
-待续
-
-.. image:: ./images/Kamb不同选项的影响2.png
+.. image:: ./images/FIG4.png
     :align: center
-    :alt: Kamb不同选项的影响
+    :alt: FIG4
+
+.. image:: ./images/FIG5.png
+    :align: center
+    :alt: FIG5
+
+.. image:: ./images/FIG6.png
+    :align: center
+    :alt: FIG6
+
+.. image:: ./images/FIG7.png
+    :align: right
+    :width: 10em
+    :alt: FIG7
 
 
+图4，5，6展示了三个用于不同地质分布数据集。这三个数据集的构造类型见图7的三角构造图，所有图表，除了A，B，J，都是
+使用 :math:`30 \times 30` 的网格。
 
+图表A-H使用不同的Kamb方法绘制。A 和 B使用双计数圆算法，通过网格面积等于计数圆面积在投影面计数。这等同与手绘图。
+
+C,D 和 E 分别使用 :math:` E = 3\sigma , E = 2\sigma , E = 1\sigma` 完成，并使用平方权重。
+
+F, G 和 H 是类似的，但是使用 指数权重。注意到平方权重的分辨率更高但平滑性较差，指数权重的更平滑，图更平均。
+
+I 使用 Diggle and Fisher(1985)的可能性密度函数生成。J使用Schmidt方法生成，与A和B 算法类似。
+
+C-H 和 K (还有图8中的A和B)使用球面等密度程序。图A，B和J使用程序的早期版本。图I（还有图8中的C）使用一个Diggle和Fisher一个未发表的程序。
+最终的布局由AutoCAD完成。
+
+**Example 1——weak maxima**
+
+FIG4的数据（来自于Kamb，1959）有大量的散点，较广的弱高峰。通过使用 :math:`E = 3\sigma` ，性质较好的表示出来。Kamb的作图如A所示。他有两个较明显的双峰。
+
+**Example 2——bimodal**
+
+Fig5展示了一组由38个断层阶梯（来自Angelier，1979）的数据集。没有经过优化的Kamb方法，如图A所示，没有成功的返回明显的双峰，由于样本数量小但是计数圆却过大。
+提供了一个很低的分辨率。
+
+对于明显的双峰构造。减小 k 值（期望数）可以得到更高的分辨率和更正确的数据分布。
+
+**Example 3——girdle**
+
+来自奥陶纪杂砂岩的不对称褶皱的56个常规层理的密度图展示在FIG6。这个数据集有一个典型的网格模式并又一个点峰值。
+同先前的例子一样，期望数减少强和了细节，给出一个更精细的网格模式。
+
+**Example 4——directed data**
+
+.. image:: ./images/FIG8.png
+    :align: center
+    :alt: FIG8
+
+Fig8
+略
 
 参考文献
 ================
