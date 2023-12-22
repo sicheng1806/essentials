@@ -22,7 +22,6 @@ Contents
    数据结构与算法
    Rust摘要
    ./dxs/dxs
-   赤平投影与统计分析
    ./structuralgeo/gzjh 
    ./translation/翻译或提取的文章
 
