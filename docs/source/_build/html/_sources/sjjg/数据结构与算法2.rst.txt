@@ -41,14 +41,100 @@
 
 **深度优先搜索**
 
-.. image:: ./images/深度优先搜索.png
+.. image:: ./images/dfs.png
     :align: right
     :width: 15em
-    :alt: Depth-First-Search(DFS)
+    :alt: Depth-First-Search(DFS) 
 
 深度优先搜索算法（Depth-First-Search，缩写为DFS）是一种用于遍历或搜索树或图的算法。
 这个算法会尽可能深地搜索树的分支。当节点v的所在边都己被探寻过，搜索将回溯到发现节点v的那条边的起始节点。
 这一过程一直进行到已发现从源节点可达的所有节点为止。如果还存在未被发现的节点，
 则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。
 这种算法不会根据图的结构等信息调整执行策略。 
+
+深度优先遍历分为：
+
+* 前序遍历(pre_order_traversal)
+* 中序遍历(in_order_traversal)
+* 后序遍历(post_order_traversal)
+
+**先序遍历**
+
+先序遍历先抛出自己，再进行下一步搜索
+
+.. code:: python
+    :number-lines:
+
+    # 深度优先搜索:by self
+    # 先序遍历
+    def iter_pre_order(root): 
+        yield root
+        if root.left is not None:
+            yield from dfs(root.left)
+        if root.right is not None:
+            yield from dfs(root.right)
+    # 中序遍历
+    def iter_in_order(root): 
+        if root.left is not None:
+            yield from dfs(root.left)
+        yield root
+        if root.right is not None:
+            yield from dfs(root.right)
+    # 后序遍历
+    def iter_post_order(root): 
+        if root.left is not None:
+            yield from dfs(root.left)
+        if root.right is not None:
+            yield from dfs(root.right)
+        yield root
+
+.. list-table:: 
+    :widths: 10 10 10
+    :header-rows: 0
+
+    * - .. image:: ./images/pre_order_traversal.png 
+      - .. image:: ./images/in_order_traversal.png 
+      - .. image:: ./images/post_order_traversal.png 
+
+**广度优先遍历**
+
+.. image:: ./images/bfs.png
+    :align: right
+    :width: 15em
+
+广度优先搜索算法（英语：Breadth-first search，缩写：BFS），
+又译作宽度优先搜索，或横向优先搜索，是一种图形搜索算法。
+简单的说，BFS是从根节点开始，沿着树的宽度遍历树的节点。
+如果所有节点均被访问，则算法中止。广度优先搜索的实现一般采用open-closed表。 
+
+**广度优先遍历的实现**
+
+利用“先进先出”的队列和循环可以实现广度优先遍历。
+
+.. code:: python
+    :number-lines:
+
+    from collections import deque
+
+    def iter_bfs(root): 
+        d = deque(root) # 根加入队列
+        while d :       # 队列为空则表明遍历结束
+            d_new = deque()
+            while d:
+                r = d.pop() 
+                yield r 
+                if r.left is not None:
+                    d_new.appendleft(r.left)
+                if r.right is not None:
+                    d_new.appendleft(r.right)
+            d = d_new
+    
+**用广度优先遍历判断一棵树是否为完全二叉树** 
+
+flag=0，
+
+第1次遇到leftChild或rightChild为空，置flag=1，
+
+继续，若后续结点有孩子非空，且flag为1，则不是完全二叉树；
+
 
