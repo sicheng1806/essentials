@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>赤平极射投影与统计分析 &#8212; sicheng_essentials 0.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <script src="../_static/documentation_options.js?v=7c91f8fd"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>赤平极射投影与统计分析<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p class="linemarker linemarker-5"><strong>摘要</strong></p>
+<p class="linemarker linemarker-7">赤平极射投影，这里包括等面积投影和等角度投影，是用于处理方向数据的工具，可以使三维方向数据以二维的形式呈现在投影圆中，
+并且通过等面积投影可以进行数据的统计分析。文章先简略介绍等角度投影和等面积投影的基础概念，然后介绍赤平投影在统计分析中的
+应用，主要为密度图的作法和程序实现，最后应用在一些地质问题中，包括求椭圆形褶皱的轴向，断层的阶层产状统计等。</p>
+<p class="linemarker linemarker-11"><strong>关键词</strong> : 赤平极射投影，统计分析，构造，密度图，python</p>
+<section id="id2">
+<h2>介绍<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-16">全文内容如摘要所示。文中图片除使用mplstereonet绘制的之外，均取自参考文献。
+赤平投影还可用于块体理论做力学和几何分析的基本工具，在此不涉及。
+为了有更好的应用性，在基础理论之后会有应用部分。
+赤平投影图由mplstereonet，python库绘制。</p>
+</section>
+<section id="id3">
+<h2>赤平投影的基本原理及应用<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-24">赤平投影可以用于两类数据的刻画，一是轴(没有定向的直线),二是单位向量(定向的直线)，将方向数据置于单位球的球心，
+经赤平投影或等面积投影可以将数据与球面的交点或交线投影到投影面上，从而使三维数据二维化。</p>
+<p class="linemarker linemarker-27"><strong>赤平投影方法</strong></p>
+<p class="linemarker linemarker-29">考虑单位球面上的一点P，选择球面的南极或北极与P点连线，连线交于赤平面上的点L就为P的赤平投影，也叫等角度投影。
+具体作图法参见 <a class="reference internal" href="../%E8%B5%A4%E5%B9%B3%E6%8A%95%E5%BD%B1%E4%B8%8E%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90.html#ragan1959" id="id4"><span>[Ragan1959]</span></a> 。</p>
+<img alt="赤平投影示意图" class="align-center" src="images/images/赤平投影示意图.png" />
+<p class="linemarker linemarker-37"><strong>赤平投影网</strong></p>
+<p class="linemarker linemarker-39">通过构建一系列大和小的圆我们可以得到赤平投影网。也叫赤道赤平投影网， 等角网或吴氏网。</p>
+<img alt="Stereonet" class="align-center" src="images/images/赤平投影网.png" />
+<p class="linemarker linemarker-45">赤平投影网由两种圆构成，分别是走向为NS的过原点平面，所得线可以称为经线（过原点），
+二是走向为EW的铅垂面，可以称为纬线（平行），每个同类型的圆相隔10度。度数的含义见下：</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-48">经线的度数（dip）</p></li>
+</ol>
+<p class="linemarker linemarker-50">经线的度数可以用dip表示,从 0 E 到 90 到 0 W 。</p>
+<p class="linemarker linemarker-52">经线可以视为倾角为 度数 的平面，也可以视为倾伏角为 度数 的直线构成。</p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-54">纬线</p></li>
+</ol>
+<p class="linemarker linemarker-56">纬线的度数通过其上每一点到 NS 轴的 到角 表示，纬线主要用于绕过在赤平面上的轴旋转。</p>
+<p class="linemarker linemarker-58">(Stauffer, 1966; Denness, 1970, 1972; see also
+Turner &amp; Weiss, 1963, p. 58f).</p>
+<p class="linemarker linemarker-61"><strong>极点网</strong></p>
+<p class="linemarker linemarker-63">极点网由一系列平行于赤平面的纬线（用于确定倾伏角）和一系列过原点的铅垂面（用于表示方位）构成。
+极点网在绘制平面上有难度，但在展示直线上很直观，也不需要旋转。</p>
+<img alt="极坐标网" class="align-center" src="images/images/极坐标网.png" />
+<p class="linemarker linemarker-70">赤平投影方法</p>
+<p class="linemarker linemarker-72"><strong>等面积投影方法</strong></p>
+<p class="linemarker linemarker-74">如果在赤平投影上绘制在下半球的均匀分布，会发现点的分布并不均匀，点会向网格中心汇聚，这样造成了与面积
+相关方法的使用困难，为了解决这个问题，通常使用 <em>Lambert equal-area projection</em> 。</p>
+<img alt="Lambert 投影" class="align-center" src="images/images/等面积投影.png" />
+<p class="linemarker linemarker-81">考虑一个单位参考球体的过直径的铅垂面，在这个面上倾伏角为 p 的直线 P。作角 <span class="math notranslate nohighlight">\(\theta = 90 - p\)</span>。
+。投影面是由过极轴最低点Z’的水平面，这个点的投影P’，是由旋转Z’P得到的。如上图。</p>
+<p class="linemarker linemarker-85"><strong>Schmidt网</strong></p>
+<img alt="Schmidt net" class="align-center" src="images/images/等面积投影网.png" />
+<p class="linemarker linemarker-91">同赤平投影网同样的做法，利用等面积投影法可以得到等面积投影网，又叫 Schmidt net。</p>
+<p class="linemarker linemarker-93"><strong>等面积极点网</strong></p>
+<img alt="Polar net" class="align-center" src="images/images/等面积极点网.png" />
+<p class="linemarker linemarker-99">同赤平投影网同样的做法</p>
+</section>
+<section id="contoured-diagrams">
+<h2>密度图(Contoured diagrams)<a class="headerlink" href="#contoured-diagrams" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-104">借助等面积投影的性质，可以确保点在施密特网上的分布等于点在球面上的分布。</p>
+<p class="linemarker linemarker-106">但是散点图并不好作比较和分析。
+解决这个问题的方法通常是作在施密特网上作密度图。
+一旦散点图出来，密度也可以计算出来，由一系列的方法可以完成这个任务。</p>
+<section id="id5">
+<h3>密度图制作方法<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-113"><strong>Schmidt method</strong></p>
+<img alt="Schmidt方法。" class="align-center" src="images/images/施密特方法.png" />
+<p class="linemarker linemarker-119">最初的和仍然广泛使用的计数方法是施密特方法 <a class="reference internal" href="../structuralgeo/gzjh.html#turner1963" id="id6"><span>[Turner1963]</span></a> 。
+点图叠加在间距为R/10的网格上。
+计数是用一种叫做施密德格计数器的特殊工具完成的(Knopf &amp; Ingerson, 1938, p. 245)。
+在图表主体中，计数器一端的圆圈以每个网格节点为中心，记录在圆内数据的个数。
+如果计数圆与投影圆边界重叠，则使用工具的两端，记录在两端圆内数据的个数。
+该工具还可以用作自由计数器,以确定更详细的密度变化。</p>
+<p class="linemarker linemarker-126"><strong>Kalsbeek method</strong></p>
+<img alt="Kalsbeek Method" class="align-center" src="images/images/Kalsbeek方法.png" />
+<p class="linemarker linemarker-132">接下来介绍另一个更简单通用的方法。</p>
+<p class="linemarker linemarker-134">为了使用这种方法，我们需要一个特殊的计数网格 <a class="reference internal" href="../structuralgeo/gzjh.html#kalsbeek1963" id="id7"><span>[Kalsbeek1963]</span></a> 。
+投影区域被小三角形完全分割，六个三角形等于1%区域。</p>
+<p class="linemarker linemarker-137"><em>计数</em></p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-139">将点图和第二张描图叠加在计数网上。在每个六边形的中心，写上该六边形内的点的总数(参见图18.9b, A点)。
+对于图的内部，每个重叠六边形的中心都会有数字。
+对于图中没有点的部分，六边形可以留空，而不是为每个六边形标注零。</p></li>
+<li><p class="linemarker linemarker-143">在投影网的边界，将网一侧各半六边形中的点与另一侧的互补半相结合，并将此数字沿原图写在网的两侧(见B点)。</p></li>
+<li><p class="linemarker linemarker-145">辐条两端的点使用互补的半圆(点C)进行计数。在最中心，使用1%的小圆(点D)。</p></li>
+</ol>
+<p class="linemarker linemarker-147">这个或任何这样的人工计数技术都有一个问题。
+正如我们所看到的，施密特网的性质是这样的:球体上的一个小圆的形状投射成一个椭圆形的区域，它的形状随倾角而不恒定。
+在过去，人们通过使用可变形状的计数器来解决这个问题。
+这需要更多的工作，而且对于大多数目的来说，这是不必要的。
+而计算机生成的图表完全消除了这个问题。</p>
+<p class="linemarker linemarker-153"><em>绘制等密度线</em></p>
+<img alt="等密度图" class="align-center" src="images/images/等密度图.png" />
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-159">在图的内部，A点的等密度线见上。这个等密度线可以很容易通过观察画出。
+找出密度最大的区域是非常简单的。</p></li>
+<li><p class="linemarker linemarker-162">对于接近边缘的等密度线，会用到半六三角形的计数。
+见B点</p></li>
+<li><p class="linemarker linemarker-165">当应该严格画一条与边界相交的等高线，但很明显它会立即再回圈时，允许避免与边界实际接触(点C)。</p></li>
+<li><p class="linemarker linemarker-166">当初步轮廓完成后，可以进行一些修改以改善图的外观(图18.10b):</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-168">在计数过程中发现的最大值可能不是图的真正最大值。
+通过将点图返回到计数网，可以找到最大的浓度。
+使用中间1%的圆圈作为自由计数器，移动图表，直到最大数量的点位于其中。</p></li>
+<li><p class="linemarker linemarker-171">所有的等高线可能不是显示图案所必需的;最多六个通常可以在不产生杂乱的情况下显示出图案。例如，如果间距非常接近，则可以消除中间轮廓。
+最终图中剩余等高线的值在图例中以2-4-8-12% / 1%面积的形式表示，最大为14%。</p></li>
+<li><p class="linemarker linemarker-173">浓度最大的区域往往变黑。虽然通常是不必要的，图案可以用在较少集中的区域。
+特别有效的是使用渐变的点状图案，使浓度较高的区域具有更密集的外观。
+线条图案会影响视觉效果，应该避免使用。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id8">
+<h3>散点图的统计分析<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-180">散点不可避免地涉及到统计性质的问题，可以使用各种技术来提取有关其最佳拟合和置信度的信息 <a class="reference internal" href="../structuralgeo/gzjh.html#mardia1972" id="id9"><span>[Mardia1972]</span></a> ; <a class="reference internal" href="../structuralgeo/gzjh.html#watson1983" id="id10"><span>[Watson1983]</span></a> ; <a class="reference internal" href="../structuralgeo/gzjh.html#fisher1987" id="id11"><span>[Fisher1987]</span></a> ，
+但仍存在许多问题。下面使用一个更直观的几何方法区介绍这个主题 <a class="reference internal" href="../structuralgeo/gzjh.html#vollmer1995" id="id12"><span>[Vollmer1995]</span></a> 。</p>
+<p class="linemarker linemarker-183">首先，散点图的分布是否有意义。面对散点图时，我们如何确定散点图之间的差异及其差异的重要性。</p>
+<p class="linemarker linemarker-185">想象我们从特定的数据集中取了一个点画在散点图上。在等区域网上，我们将计数器放置在网上的任意一个位置。在这样一个实验中可能会有两种情况——
+点在计数器中（成功），或者不在计数器中（失败）。对一个半径为R的区域A，实验成功的概率p为</p>
+<div class="math notranslate nohighlight">
+\[p = a/A = r^2/R^2\]</div>
+<p class="linemarker linemarker-190">对于1%计数器，p = 0.01。</p>
+<p class="linemarker linemarker-192">现在考虑随机放置总量为N的情况。实验的期望数可以用二项分布描述 <a class="reference internal" href="../structuralgeo/gzjh.html#walpole1993" id="id13"><span>[Walpole1993]</span></a> 。二项分布的期望为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}&amp;\ p_k = C_N^kp^k(1-p)^{(n-k)} \\
+&amp;\ E = \mu = \Sigma kp_k = np \\
+&amp;\ \sigma^2 = \Sigma (k - \mu)^2p_k = np(1-p) \\\end{split}\]</div>
+<p class="linemarker linemarker-200">Kamb 认为 随机分布的情况下偏差大于 <span class="math notranslate nohighlight">\(3\sigma\)</span> 的概率是极其小的，
+可以用数据偏离 <span class="math notranslate nohighlight">\(3\sigma\)</span> 的数据量来作为判断数据是否具有有意义的
+概率分布的判据。其作图方法如下。</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}&amp;\ 令 E = 3\sigma \\
+&amp;\ (Np)^2 = Np(1-p) \\
+&amp;\ p = 9/(N + 9) \\\end{split}\]</div>
+<p class="linemarker linemarker-209">现在我们需要确定完成这个的计数器大小。</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}&amp;\ p = r^2/R^2 \\
+&amp;\ r = 3R/\sqrt{N + 9}\end{split}\]</div>
+<p class="linemarker linemarker-216">有了这个，我们现在有一种方法来区分那些有意义的偏离一致性的散点图。
+如果用这种大小的计数器绘制的图表显示出更大的波动，那么它可能不是随机的。</p>
+<p class="linemarker linemarker-219">因为它们是在考虑特定的结构问题时产生的，所以大多数图表都有清晰可辨的模式，
+即使它们也有局部的、微不足道的波动。明显非随机的分布不再用二项分布来描述。
+在这种情况下，Kamb标准的主要好处是它减少了样本量的影响，因此可以比较具有不同点数的图表。</p>
+<p class="linemarker linemarker-223">然而，Vollmer(1995)也发现 <span class="math notranslate nohighlight">\(E = 3\mu\)</span> 倾向于过度平滑浓度较强的数据集。对于这些，需要一个较小的计数器。
+对于离群点较少的数据集，可以通过将 <span class="math notranslate nohighlight">\(3\mu 用 k\mu\)</span> 代替</p>
+<div class="math notranslate nohighlight">
+\[p = \frac{k^2}{N + k^2} and r = \frac{kR}{\sqrt{N + kappa^2}}\]</div>
+<img alt="k和N的关系" class="align-center" src="images/images/k和N的关系.png" />
+<p class="linemarker linemarker-232">通过kamb统计密度完成密度图的方法，叫Kamb方法。</p>
+</section>
+<section id="id14">
+<h3>电脑成图<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-237">大量数据点的散点图绘制和密度图绘制是一种理想的计算机应用。
+这不仅节省了大量的时间和精力，而且可以以各种方式快速检查数据，这个任务通过人力基本无法完成。</p>
+<p class="linemarker linemarker-240">Schmidt网上圆形计数器形状变化的问题是通过在半球表面而不是投影平面上计数来解决的(Warner, 1969)。
+虽然手工操作很困难，但实际上通过编程让计算机这样做更容易。单位球球冠的半径为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}&amp;\ 球冠面积 a = 2\pi(1-cos\phi) \\
+&amp;\ 概率 p = a/A = 1 - cos\phi \\
+&amp;\ \phi cos\phi = 1 - \frac{k^2}{N + k^2} = \frac{N}{N+k^2} \\\end{split}\]</div>
+<p class="linemarker linemarker-248">密度是通过使用点积确定网格节点的位置向量和每个数据向量之间的夹角来找到的(参见§7.3)。
+如果这个角度小于或等于φ，则计数增加。根据最终的节点数据，可以自动绘制轮廓。</p>
+<p class="linemarker linemarker-251">许多计算机程序已经被描述(参见Vollmer, 1995，一个很好的讨论和早期的参考资料)，其中一些是现成的:Allmendinger (2001)，
+Holcombe (2001)， Jacobson (1996)， RockWare (2001)， Wallbrecher(2005)。最近，Haneberg (2004, p. 43-47)
+给出了使用Mathematica的基本方法的一个很好的一般描述。</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-255">我们使用Kalsbeek网络而不是常规的方形图，对于每个结点：
+* 坐标轴原点位于投影网中心，+x = east , +y = north。
+* 每个结点的单位向量的方向余弦 <span class="math notranslate nohighlight">\(l_N,m_N,n_N\)</span> 由结点的倾伏角和走向算出。</p></li>
+<li><p class="linemarker linemarker-258">计算每个样本的方向余弦 <span class="math notranslate nohighlight">\(l_D,m_D,n_D\)</span> 。</p></li>
+<li><p class="linemarker linemarker-260">按顺序访问每个节点，并计算所有数据点和节点的点积。如果数据到结点的角距小于计数圈的角距则该节点的计数加1。
+最终将密度z由计数个数除以总数得出。</p></li>
+<li><p class="linemarker linemarker-262">为了正确计算与原始或附近的节点相关的密度，具有小倾角的数据点的相反向量被复制到上半球。</p></li>
+<li><p class="linemarker linemarker-263">最后将 <span class="math notranslate nohighlight">\(z(x,y)\)</span> 画出。</p></li>
+</ol>
+</section>
+</section>
+<section id="id15">
+<h2>参考文献<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-269"><a class="footnote-reference brackets" href="#id22" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, <a class="footnote-reference brackets" href="#id23" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> , <a class="footnote-reference brackets" href="#id24" id="id18" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> ,  , <a href="#id27"><span class="problematic" id="id19">[5]_</span></a> , <a class="footnote-reference brackets" href="#id25" id="id20" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> , <a class="footnote-reference brackets" href="#id26" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a> ,</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id22" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">1</a><span class="fn-bracket">]</span></span>
+<p class="linemarker linemarker-271">Kington,Joe.”mplstereonet Documentation“.“mplstereonet”.https://mplstereonet.readthedocs.io/en/latest/mplstereonet.html</p>
+</aside>
+<aside class="footnote brackets" id="id23" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">2</a><span class="fn-bracket">]</span></span>
+<p class="linemarker linemarker-272">Vollmer, 1995. C Program for Automatic Contouring of Spherical Orientation Data Using a Modified Kamb Method. Computers &amp; Geosciences, Vol. 21, No. 1, pp. 31–49.</p>
+</aside>
+<aside class="footnote brackets" id="id24" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id18">3</a><span class="fn-bracket">]</span></span>
+<p class="linemarker linemarker-273">Kamb, 1959. Ice Petrofabric Observations from Blue Glacier, Washington, in Relation to Theory and Experiment. Journal of Geophysical Research, Vol. 64, No. 11, pp. 1891–1909.</p>
+</aside>
+</aside>
+<div role="list" class="citation-list">
+<div class="citation" id="ragan1959" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">Ragan1959</a><span class="fn-bracket">]</span></span>
+<p class="linemarker linemarker-274">Ragan, D. M., 1918. Structural geology, an introduction to geometrical techniques(4rd ed.)</p>
+</div>
+<div class="citation" id="stauffer1966" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Stauffer1966<span class="fn-bracket">]</span></span>
+<p class="linemarker linemarker-275">Stauffer, M.R., 1966, An empirical-statistical study of three dimensional fabric diagrams as used in structural analysis: Canadian Journal of Earth Science, v. 3</p>
+</div>
+</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id25" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id20">6</a><span class="fn-bracket">]</span></span>
+<p class="linemarker linemarker-276">Denness, B., 1970, A method of contouring polar diagrams using curvilinear counting cells: Geological Magazine, v. 107,</p>
+</aside>
+<aside class="footnote brackets" id="id26" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id21">7</a><span class="fn-bracket">]</span></span>
+<p class="linemarker linemarker-277">Turner, F.J., &amp; L.E. Weiss, 1963, Structural Analysis of Metamorphic Tectonites: McGraw-Hill, New York.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">sicheng_essentials</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7%E4%B8%80%E8%A7%88.html">数学符号一览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%9C%B0%E8%B2%8C%E5%AD%A6%E5%8F%8A%E7%AC%AC%E5%9B%9B%E7%BA%AA%E5%9C%B0%E8%B4%A8%E5%AD%A6.html">地貌学及第四纪地质学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%8B%B1%E8%AF%AD%E5%85%AD%E7%BA%A7%E7%BB%83%E4%B9%A0.html">英语六级练习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsw/gsw.html">古生物和地史学概论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rust%E6%91%98%E8%A6%81.html">Rust摘要</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dxs/dxs.html">地下水动力学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structuralgeo/gzjh.html">构造地质学的几何方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation/%E7%BF%BB%E8%AF%91%E6%88%96%E6%8F%90%E5%8F%96%E7%9A%84%E6%96%87%E7%AB%A0.html">翻译或提取的文章</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="提交" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, sicheng.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/images/赤平投影与统计分析.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
