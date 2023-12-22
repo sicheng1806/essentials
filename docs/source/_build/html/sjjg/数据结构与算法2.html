@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>树、图与算法 &#8212; sicheng_essentials 0.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <script src="../_static/documentation_options.js?v=7c91f8fd"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Rust摘要" href="../Rust%E6%91%98%E8%A6%81.html" />
+    <link rel="prev" title="数据结构与算法1-C与顺序结构" href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%951.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>树、图与算法<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p class="linemarker linemarker-4"><strong>前置概念</strong></p>
+<ul class="simple">
+<li><p class="linemarker linemarker-6"><em>树型结构</em>：唯一前驱，后继可以不唯一</p></li>
+<li><p class="linemarker linemarker-7"><em>集合</em>：不存在前驱、后继的关系</p></li>
+<li><p class="linemarker linemarker-8"><em>线性结构</em>：唯一前驱，唯一后继</p></li>
+<li><p class="linemarker linemarker-9"><em>图结构</em>：前驱、后继均可不唯一</p></li>
+<li><p class="linemarker linemarker-10"><em>结点的度</em>：一个结点的分枝个数</p></li>
+<li><p class="linemarker linemarker-11"><em>层</em>、 <em>深度</em></p></li>
+</ul>
+<section id="id2">
+<h2>二叉树<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt><em>二叉树（Binary tree）</em>：是每个节点最多只有两个分支（即不存在分支度大于2的节点）的树结构。</dt><dd><p class="linemarker linemarker-18">通常分支被称作“左子树”或“右子树”。二叉树的分支具有左右次序，不能随意颠倒。</p>
+</dd>
+</dl>
+<p class="linemarker linemarker-20">二叉树第i层至多拥有 <span class="math notranslate nohighlight">\(2^{i-1}\)</span>;深度为k的二叉树至多共有 <span class="math notranslate nohighlight">\(2^{k+1} - 1\)</span> 个节点。</p>
+<p class="linemarker linemarker-22">对任意一棵非空的二叉树，如果其叶片数为 <span class="math notranslate nohighlight">\(n_0\)</span> ，分支度为 2 的节点数为 <span class="math notranslate nohighlight">\(n_2\)</span> ，则 <span class="math notranslate nohighlight">\(n_0 = n_2 + 1\)</span></p>
+<p class="linemarker linemarker-24"><em>满二叉树</em>：拥有最大节点树的二叉树</p>
+<dl class="simple">
+<dt><em>完全二叉树</em>：在一颗二叉树中，若除最后一层外的其余层都是满的，并且最后一层要么是满的，要么在右边缺少连续若干节点，则此二叉树为完全二叉树（Complete Binary Tree）。</dt><dd><p class="linemarker linemarker-27">完全二叉树可以通过在末尾增加结点转换为满二叉树。具有n个节点的完全二叉树的深度为 <span class="math notranslate nohighlight">\([log_2n] + 1\)</span></p>
+</dd>
+</dl>
+<p class="linemarker linemarker-29"><em>平衡树</em>: 平衡树是计算机科学中的一类数据结构，为改进的二叉查找树。
+一般的二叉查找树的查询复杂度取决于目标结点到树根的距离（即深度），因此当结点的深度普遍较大时，查询的均摊复杂度会上升[1]。
+为了实现更高效的查询，产生了平衡树。在这里，平衡指所有叶子的深度趋于平衡，更广义的是指在树上所有可能查找的均摊复杂度偏低。</p>
+<p class="linemarker linemarker-33"><strong>二叉树与普通树的区别</strong>:</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-35">与普通树不同，普通树的节点个数至少为1，而二叉树的节点个数可以为0；</p></li>
+<li><p class="linemarker linemarker-36">普通树节点的最大分支度没有限制，而二叉树节点的最大分支度为2；</p></li>
+<li><p class="linemarker linemarker-37">普通树的节点无左、右次序之分，而二叉树的节点有左、右次序之分。</p></li>
+</ul>
+<section id="id3">
+<h3>二叉树的周游（遍历）<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-42"><strong>深度优先搜索</strong></p>
+<a class="reference internal image-reference" href="../_images/深度优先搜索.png"><img alt="Depth-First-Search(DFS)" class="align-right" src="../_images/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.png" style="width: 15em;" /></a>
+<p class="linemarker linemarker-49">深度优先搜索算法（Depth-First-Search，缩写为DFS）是一种用于遍历或搜索树或图的算法。
+这个算法会尽可能深地搜索树的分支。当节点v的所在边都己被探寻过，搜索将回溯到发现节点v的那条边的起始节点。
+这一过程一直进行到已发现从源节点可达的所有节点为止。如果还存在未被发现的节点，
+则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。
+这种算法不会根据图的结构等信息调整执行策略。</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">sicheng_essentials</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7%E4%B8%80%E8%A7%88.html">数学符号一览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%9C%B0%E8%B2%8C%E5%AD%A6%E5%8F%8A%E7%AC%AC%E5%9B%9B%E7%BA%AA%E5%9C%B0%E8%B4%A8%E5%AD%A6.html">地貌学及第四纪地质学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%8B%B1%E8%AF%AD%E5%85%AD%E7%BA%A7%E7%BB%83%E4%B9%A0.html">英语六级练习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsw/gsw.html">古生物和地史学概论</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="sjjg.html">DataStructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rust%E6%91%98%E8%A6%81.html">Rust摘要</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dxs/dxs.html">地下水动力学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structuralgeo/gzjh.html">构造地质学的几何方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation/%E7%BF%BB%E8%AF%91%E6%88%96%E6%8F%90%E5%8F%96%E7%9A%84%E6%96%87%E7%AB%A0.html">翻译或提取的文章</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="sjjg.html">DataStructure</a><ul>
+      <li>Previous: <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%951.html" title="上一章">数据结构与算法1-C与顺序结构</a></li>
+      <li>Next: <a href="../Rust%E6%91%98%E8%A6%81.html" title="下一章">Rust摘要</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="提交" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, sicheng.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/sjjg/数据结构与算法2.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

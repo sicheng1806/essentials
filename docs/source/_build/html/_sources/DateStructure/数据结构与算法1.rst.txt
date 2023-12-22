@@ -1,11 +1,5 @@
-数据结构与算法
+数据结构与算法1-C与顺序结构
 #############################
-
-.. _example_code: https://github.com/sicheng1806/DateStructure
-
-在数据结构的讨论中，重点研究的是“结构”，而把组成结构的那些元素抽象成为一个结点。结点是数据结构中的基本单位，在有些结构中，也把结构称为元素、记录或表目。
-
-结点之间的结构关系称为数据结构，有线性结构、树形结构、集合、字典和图形结构。数据结构可以联想为结点之间的连线（关系），线性连接的为线性结构，树形连接的为树形结构，图形连接的为图形结构，没有连接的为集合或字典。
 
 .. contents:: 
 
@@ -141,17 +135,59 @@
 4. 控制流工具
 ==================
 
-PASS
+.. code::  C
 
-5. 输入与输出
-==================
+    if(boolean_expression)
+    {}else if {} else{}
 
-PASS
+    switch(expression){
+        case constant-expression  :
+        statement(s);
+        break; /* 可选的 */
+        case constant-expression  :
+        statement(s);
+        break; /* 可选的 */
+    
+        /* 您可以有任意数量的 case 语句 */
+        default : /* 可选的 */
+        statement(s);
+    }
 
-6. 错误和异常
+    while(condition){}
+
+    for (init;condition;increment){}
+
+    do {} while(condition);
+
+4. 错误和异常
 ===================
 
-PASS
+.. code:: C
+
+    #include <stdio.h>
+    #include <errno.h>
+    #include <string.h>
+    
+    extern int errno ;
+    
+    int main ()
+    {
+    FILE * pf;
+    int errnum;
+    pf = fopen ("unexist.txt", "rb");
+    if (pf == NULL)
+    {
+        errnum = errno;
+        fprintf(stderr, "错误号: %d\n", errno);
+        perror("通过 perror 输出错误");
+        fprintf(stderr, "打开文件错误: %s\n", strerror( errnum ));
+    }
+    else
+    {
+        fclose (pf);
+    }
+    return 0;
+    }
 
 
 第一章——线性结构
@@ -384,22 +420,3 @@ _next数组的优化：
 
 队列的先进先出适用于生产者-消费者模型的数据传输，因而在多进程管理中python提供了queue模块用于在多线程数据的传输
 
-第2章——树形结构
-***********************
-
-树型结构：唯一前驱，后继可以不唯一
-
-深度或高度(depth)
-
-度数：结点的度数等于结点的子结点树
-
-二叉树：度数小于2
-
-满二叉树：任意结点，要么度为0，要么度为2。
-
-完全二叉树：1 只允许最后两层结点的度数小于2;2 最后一层结点都集中在该层最左边的若干位置。
-
-1. 二叉树与二叉树的遍历
-========================
-
-ADL

@@ -13,13 +13,13 @@ Contents
 ========
 
 .. toctree:: 
-   :maxdepth: 2
+   :maxdepth: 1
 
    数学符号一览
    地貌学及第四纪地质学
    英语六级练习
    ./gsw/gsw
-   数据结构与算法
+   ./sjjg/sjjg
    Rust摘要
    ./dxs/dxs
    ./structuralgeo/gzjh 
