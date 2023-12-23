@@ -34,55 +34,111 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1>树、图与算法<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<p class="linemarker linemarker-4"><strong>前置概念</strong></p>
+<h1><a class="toc-backref" href="#id27" role="doc-backlink">树、图与算法</a><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<nav class="contents" id="id2">
+<p class="topic-title">目录</p>
 <ul class="simple">
-<li><p class="linemarker linemarker-6"><em>树型结构</em>：唯一前驱，后继可以不唯一</p></li>
-<li><p class="linemarker linemarker-7"><em>集合</em>：不存在前驱、后继的关系</p></li>
-<li><p class="linemarker linemarker-8"><em>线性结构</em>：唯一前驱，唯一后继</p></li>
-<li><p class="linemarker linemarker-9"><em>图结构</em>：前驱、后继均可不唯一</p></li>
-<li><p class="linemarker linemarker-10"><em>结点的度</em>：一个结点的分枝个数</p></li>
-<li><p class="linemarker linemarker-11"><em>层</em>、 <em>深度</em></p></li>
+<li><p><a class="reference internal" href="#id1" id="id27">树、图与算法</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id28">二叉树</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id4" id="id29">二叉树的周游（遍历）</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id30">完全二叉树的顺序表示</a></p></li>
 </ul>
-<section id="id2">
-<h2>二叉树<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<dl class="simple">
-<dt><em>二叉树（Binary tree）</em>：是每个节点最多只有两个分支（即不存在分支度大于2的节点）的树结构。</dt><dd><p class="linemarker linemarker-18">通常分支被称作“左子树”或“右子树”。二叉树的分支具有左右次序，不能随意颠倒。</p>
-</dd>
-</dl>
-<p class="linemarker linemarker-20">二叉树第i层至多拥有 <span class="math notranslate nohighlight">\(2^{i-1}\)</span>;深度为k的二叉树至多共有 <span class="math notranslate nohighlight">\(2^{k+1} - 1\)</span> 个节点。</p>
-<p class="linemarker linemarker-22">对任意一棵非空的二叉树，如果其叶片数为 <span class="math notranslate nohighlight">\(n_0\)</span> ，分支度为 2 的节点数为 <span class="math notranslate nohighlight">\(n_2\)</span> ，则 <span class="math notranslate nohighlight">\(n_0 = n_2 + 1\)</span></p>
-<p class="linemarker linemarker-24"><em>满二叉树</em>：拥有最大节点树的二叉树</p>
-<dl class="simple">
-<dt><em>完全二叉树</em>：在一颗二叉树中，若除最后一层外的其余层都是满的，并且最后一层要么是满的，要么在右边缺少连续若干节点，则此二叉树为完全二叉树（Complete Binary Tree）。</dt><dd><p class="linemarker linemarker-27">完全二叉树可以通过在末尾增加结点转换为满二叉树。具有n个节点的完全二叉树的深度为 <span class="math notranslate nohighlight">\([log_2n] + 1\)</span></p>
-</dd>
-</dl>
-<p class="linemarker linemarker-29"><em>平衡树</em>: 平衡树是计算机科学中的一类数据结构，为改进的二叉查找树。
-一般的二叉查找树的查询复杂度取决于目标结点到树根的距离（即深度），因此当结点的深度普遍较大时，查询的均摊复杂度会上升[1]。
-为了实现更高效的查询，产生了平衡树。在这里，平衡指所有叶子的深度趋于平衡，更广义的是指在树上所有可能查找的均摊复杂度偏低。</p>
-<p class="linemarker linemarker-33"><strong>二叉树与普通树的区别</strong>:</p>
+</li>
+<li><p><a class="reference internal" href="#id6" id="id31">二叉树的应用</a></p>
+<ul>
+<li><p><a class="reference internal" href="#huffman" id="id32">哈夫曼树与哈夫曼编码(Huffman)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id7" id="id33">哈夫曼树的构造</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id34">哈夫曼树的储存</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id9" id="id35">树的遍历</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id36">字典的存储之散列表示</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id11" id="id37">除余法</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id12" id="id38">碰撞处理方式1-线性探查法再散列</a></p></li>
+<li><p><a class="reference internal" href="#id13" id="id39">碰撞处理方式2-拉链法</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id14" id="id40">散列文件</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id15" id="id41">二叉查找树</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id16" id="id42">二叉查找树的查找算法和插入，删除</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#avl" id="id43">平衡二叉排序树(AVL)</a></p></li>
+<li><p><a class="reference internal" href="#id17" id="id44">插入排序</a></p></li>
+<li><p><a class="reference internal" href="#id18" id="id45">选择排序</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id19" id="id46">简单选择排序</a></p></li>
+<li><p><a class="reference internal" href="#id20" id="id47">堆排序</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id21" id="id48">交换排序和基数排序</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id22" id="id49">冒泡排序</a></p></li>
+<li><p><a class="reference internal" href="#id23" id="id50">快速排序</a></p></li>
+<li><p><a class="reference internal" href="#id24" id="id51">基数排序</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id25" id="id52">图</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id26" id="id53">图的储存结构</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<p class="linemarker linemarker-7"><strong>前置概念</strong></p>
 <ul class="simple">
-<li><p class="linemarker linemarker-35">与普通树不同，普通树的节点个数至少为1，而二叉树的节点个数可以为0；</p></li>
-<li><p class="linemarker linemarker-36">普通树节点的最大分支度没有限制，而二叉树节点的最大分支度为2；</p></li>
-<li><p class="linemarker linemarker-37">普通树的节点无左、右次序之分，而二叉树的节点有左、右次序之分。</p></li>
+<li><p class="linemarker linemarker-9"><em>树型结构</em>：唯一前驱，后继可以不唯一</p></li>
+<li><p class="linemarker linemarker-10"><em>集合</em>：不存在前驱、后继的关系</p></li>
+<li><p class="linemarker linemarker-11"><em>线性结构</em>：唯一前驱，唯一后继</p></li>
+<li><p class="linemarker linemarker-12"><em>图结构</em>：前驱、后继均可不唯一</p></li>
+<li><p class="linemarker linemarker-13"><em>结点的度</em>：一个结点的分枝个数</p></li>
+<li><p class="linemarker linemarker-14"><em>层</em>、 <em>深度</em></p></li>
 </ul>
 <section id="id3">
-<h3>二叉树的周游（遍历）<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
-<p class="linemarker linemarker-42"><strong>深度优先搜索</strong></p>
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">二叉树</a><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt><em>二叉树（Binary tree）</em>：是每个节点最多只有两个分支（即不存在分支度大于2的节点）的树结构。</dt><dd><p class="linemarker linemarker-21">通常分支被称作“左子树”或“右子树”。二叉树的分支具有左右次序，不能随意颠倒。</p>
+</dd>
+</dl>
+<p class="linemarker linemarker-23">二叉树第i层至多拥有 <span class="math notranslate nohighlight">\(2^{i-1}\)</span>;深度为k的二叉树至多共有 <span class="math notranslate nohighlight">\(2^{k+1} - 1\)</span> 个节点。</p>
+<p class="linemarker linemarker-25">对任意一棵非空的二叉树，如果其叶片数为 <span class="math notranslate nohighlight">\(n_0\)</span> ，分支度为 2 的节点数为 <span class="math notranslate nohighlight">\(n_2\)</span> ，则 <span class="math notranslate nohighlight">\(n_0 = n_2 + 1\)</span></p>
+<p class="linemarker linemarker-27"><em>满二叉树</em>：拥有最大节点树的二叉树</p>
+<dl class="simple">
+<dt><em>完全二叉树</em>：在一颗二叉树中，若除最后一层外的其余层都是满的，并且最后一层要么是满的，要么在右边缺少连续若干节点，则此二叉树为完全二叉树（Complete Binary Tree）。</dt><dd><p class="linemarker linemarker-30">完全二叉树可以通过在末尾增加结点转换为满二叉树。具有n个节点的完全二叉树的深度为 <span class="math notranslate nohighlight">\([log_2n] + 1\)</span></p>
+</dd>
+</dl>
+<p class="linemarker linemarker-32"><em>平衡树</em>: 平衡树是计算机科学中的一类数据结构，为改进的二叉查找树。
+一般的二叉查找树的查询复杂度取决于目标结点到树根的距离（即深度），因此当结点的深度普遍较大时，查询的均摊复杂度会上升[1]。
+为了实现更高效的查询，产生了平衡树。在这里，平衡指所有叶子的深度趋于平衡，更广义的是指在树上所有可能查找的均摊复杂度偏低。</p>
+<section id="id4">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">二叉树的周游（遍历）</a><a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-39"><strong>深度优先搜索</strong></p>
 <a class="reference internal image-reference" href="../_images/dfs.png"><img alt="Depth-First-Search(DFS)" class="align-right" src="../_images/dfs.png" style="width: 15em;" /></a>
-<p class="linemarker linemarker-49">深度优先搜索算法（Depth-First-Search，缩写为DFS）是一种用于遍历或搜索树或图的算法。
+<p class="linemarker linemarker-46">深度优先搜索算法（Depth-First-Search，缩写为DFS）是一种用于遍历或搜索树或图的算法。
 这个算法会尽可能深地搜索树的分支。当节点v的所在边都己被探寻过，搜索将回溯到发现节点v的那条边的起始节点。
 这一过程一直进行到已发现从源节点可达的所有节点为止。如果还存在未被发现的节点，
 则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。
 这种算法不会根据图的结构等信息调整执行策略。</p>
-<p class="linemarker linemarker-55">深度优先遍历分为：</p>
+<p class="linemarker linemarker-52">深度优先遍历分为：</p>
 <ul class="simple">
-<li><p class="linemarker linemarker-57">前序遍历(pre_order_traversal)</p></li>
-<li><p class="linemarker linemarker-58">中序遍历(in_order_traversal)</p></li>
-<li><p class="linemarker linemarker-59">后序遍历(post_order_traversal)</p></li>
+<li><p class="linemarker linemarker-54">前序遍历(pre_order_traversal)</p></li>
+<li><p class="linemarker linemarker-55">中序遍历(in_order_traversal)</p></li>
+<li><p class="linemarker linemarker-56">后序遍历(post_order_traversal)</p></li>
 </ul>
-<p class="linemarker linemarker-61"><strong>先序遍历</strong></p>
-<p class="linemarker linemarker-63">先序遍历先抛出自己，再进行下一步搜索</p>
+<p class="linemarker linemarker-58"><strong>先序遍历</strong></p>
+<p class="linemarker linemarker-60">先序遍历先抛出自己，再进行下一步搜索</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># 深度优先搜索:by self</span>
 <span class="linenos"> 2</span><span class="c1"># 先序遍历</span>
 <span class="linenos"> 3</span><span class="k">def</span> <span class="nf">iter_pre_order</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
@@ -123,14 +179,14 @@
 </tr>
 </tbody>
 </table>
-<p class="linemarker linemarker-99"><strong>广度优先遍历</strong></p>
+<p class="linemarker linemarker-96"><strong>广度优先遍历</strong></p>
 <a class="reference internal image-reference" href="../_images/bfs.png"><img alt="../_images/bfs.png" class="align-right" src="../_images/bfs.png" style="width: 15em;" /></a>
-<p class="linemarker linemarker-105">广度优先搜索算法（英语：Breadth-first search，缩写：BFS），
+<p class="linemarker linemarker-102">广度优先搜索算法（英语：Breadth-first search，缩写：BFS），
 又译作宽度优先搜索，或横向优先搜索，是一种图形搜索算法。
 简单的说，BFS是从根节点开始，沿着树的宽度遍历树的节点。
 如果所有节点均被访问，则算法中止。广度优先搜索的实现一般采用open-closed表。</p>
-<p class="linemarker linemarker-110"><strong>广度优先遍历的实现</strong></p>
-<p class="linemarker linemarker-112">利用“先进先出”的队列和循环可以实现广度优先遍历。</p>
+<p class="linemarker linemarker-107"><strong>广度优先遍历的实现</strong></p>
+<p class="linemarker linemarker-109">利用“先进先出”的队列和循环可以实现广度优先遍历。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="k">def</span> <span class="nf">iter_bfs</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
@@ -147,10 +203,273 @@
 <span class="linenos">14</span>        <span class="n">d</span> <span class="o">=</span> <span class="n">d_new</span>
 </pre></div>
 </div>
-<p class="linemarker linemarker-132"><strong>用广度优先遍历判断一棵树是否为完全二叉树</strong></p>
-<p class="linemarker linemarker-134">flag=0，</p>
-<p class="linemarker linemarker-136">第1次遇到leftChild或rightChild为空，置flag=1，</p>
-<p class="linemarker linemarker-138">继续，若后续结点有孩子非空，且flag为1，则不是完全二叉树；</p>
+<p class="linemarker linemarker-129"><strong>用广度优先遍历判断一棵树是否为完全二叉树</strong></p>
+<p class="linemarker linemarker-131">flag=0，</p>
+<p class="linemarker linemarker-133">第1次遇到leftChild或rightChild为空，置flag=1，</p>
+<p class="linemarker linemarker-135">继续，若后续结点有孩子非空，且flag为1，则不是完全二叉树；</p>
+<p class="linemarker linemarker-137"><strong>非递归深度优先遍历的实现</strong></p>
+<p class="linemarker linemarker-139">非递归深度优先遍历可以利用先进后出的栈和循环实现。</p>
+<p class="linemarker linemarker-141">增加路径视为入栈，返回值视为出栈</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-143">先序遍历是入栈后立即出栈，通过将右子结点先入栈来实现 先出栈左结点的功能</p></li>
+<li><p class="linemarker linemarker-144">中序遍历是出栈在左结点之后右结点之前，所以先沿着左结点入栈，然后出栈，如果有右结点再沿着左结点入栈，然后出栈，直至栈空。</p></li>
+<li><p class="linemarker linemarker-145">后序遍历是出栈在左右结点都入栈之后，所以先入栈右左结点，然后出栈，如果还有左右结点则继续入栈右左结点，直至栈空。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">iter_pre_order</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="c1">#将根置入栈</span>
+<span class="linenos"> 3</span>    <span class="k">while</span> <span class="n">stack</span> <span class="p">:</span>  <span class="c1"># 栈空时结束</span>
+<span class="linenos"> 4</span>        <span class="n">r</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1"># 出栈</span>
+<span class="linenos"> 5</span>        <span class="k">yield</span> <span class="n">r</span>
+<span class="linenos"> 6</span>        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+<span class="linenos"> 7</span>            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">right</span><span class="p">)</span> <span class="c1"># 入栈</span>
+<span class="linenos"> 8</span>        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
+<span class="linenos"> 9</span>            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="c1"># 入栈</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">def</span> <span class="nf">iter_in_order</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<span class="linenos">12</span>    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># 分为两个循环，入栈循环和出栈循环，出栈循环在外。</span>
+<span class="linenos">13</span>    <span class="n">p</span> <span class="o">=</span> <span class="n">root</span>
+<span class="linenos">14</span>    <span class="c1"># 第一次入栈循环</span>
+<span class="linenos">15</span>    <span class="k">while</span> <span class="n">p</span><span class="p">:</span>
+<span class="linenos">16</span>        <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">left</span>
+<span class="linenos">18</span>    <span class="c1"># 出栈循环</span>
+<span class="linenos">19</span>    <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+<span class="linenos">20</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="linenos">21</span>        <span class="k">yield</span> <span class="n">p</span>
+<span class="linenos">22</span>        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+<span class="linenos">23</span>            <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">right</span>
+<span class="linenos">24</span>            <span class="c1"># 入栈循环</span>
+<span class="linenos">25</span>            <span class="k">while</span> <span class="n">p</span><span class="p">:</span>
+<span class="linenos">26</span>                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="linenos">27</span>                <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">left</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="k">def</span> <span class="nf">iter_post_order</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<span class="linenos">30</span>    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">31</span>    <span class="n">p</span> <span class="o">=</span> <span class="n">root</span>
+<span class="linenos">32</span>    <span class="c1"># 入栈循环</span>
+<span class="linenos">33</span>    <span class="k">while</span> <span class="n">p</span> <span class="p">:</span>
+<span class="linenos">34</span>        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+<span class="linenos">35</span>            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="linenos">36</span>        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
+<span class="linenos">37</span>            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="linenos">38</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">left</span>
+<span class="linenos">39</span>    <span class="c1"># 出栈循环</span>
+<span class="linenos">40</span>    <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+<span class="linenos">41</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="linenos">42</span>        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+<span class="linenos">43</span>            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="linenos">44</span>            <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">right</span>
+<span class="linenos">45</span>            <span class="c1"># 入栈循环</span>
+<span class="linenos">46</span>            <span class="k">while</span> <span class="n">p</span> <span class="p">:</span>
+<span class="linenos">47</span>                <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+<span class="linenos">48</span>                    <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="linenos">49</span>                <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
+<span class="linenos">50</span>                    <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="linenos">51</span>                <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">left</span>
+<span class="linenos">52</span>        <span class="k">yield</span> <span class="n">p</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">完全二叉树的顺序表示</a><a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-206">完全二叉树可以按‘广度优先遍历’的顺序，进行顺序存储：</p>
+<p class="linemarker linemarker-208">如果用 <span class="math notranslate nohighlight">\(T_{层数，一层从左至右的个数} = T_{i,j}\)</span> 来表示一个元素。则第n个元素为。</p>
+<div class="math notranslate nohighlight">
+\[T_{i,j}: \qquad n = 2^{i-1} - 1 + j\]</div>
+</section>
+</section>
+<section id="id6">
+<h2><a class="toc-backref" href="#id31" role="doc-backlink">二叉树的应用</a><a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<section id="huffman">
+<h3><a class="toc-backref" href="#id32" role="doc-backlink">哈夫曼树与哈夫曼编码(Huffman)</a><a class="headerlink" href="#huffman" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-218"><strong>概念</strong></p>
+<ul class="simple">
+<li><p class="linemarker linemarker-220">权值(w) ： 给二叉树的每个结点赋予一个权值（正数），就成了带权二叉树</p></li>
+<li><p class="linemarker linemarker-221">树的路径长度(WPL) ：根结点到每个结点的路径长度只和，根到任意一个结点的路径长度为，层数乘结点权数。</p></li>
+</ul>
+<p class="linemarker linemarker-223"><strong>哈夫曼树</strong>: 在一个权值序列下，使路径长度最小的二叉树称为哈夫曼树，又叫最优二叉树</p>
+<section id="id7">
+<h4><a class="toc-backref" href="#id33" role="doc-backlink">哈夫曼树的构造</a><a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<img alt="哈夫曼树的构造" class="align-center" src="../_images/huffman_tree_con.png" />
+</section>
+<section id="id8">
+<h4><a class="toc-backref" href="#id34" role="doc-backlink">哈夫曼树的储存</a><a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<p class="linemarker linemarker-235">m个叶结点的哈夫曼树共2m-1个结点，使用顺序结构储存，前m个为叶结点。</p>
+<p class="linemarker linemarker-237">结点储存信息：自身信息，父索引，右子索引，左子索引</p>
+<img alt="../_images/huffman_tree_stro.png" src="../_images/huffman_tree_stro.png" />
+</section>
+</section>
+</section>
+<section id="id9">
+<h2><a class="toc-backref" href="#id35" role="doc-backlink">树的遍历</a><a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p class="linemarker linemarker-243">树的度：树中结点度的最大值；</p></li>
+<li><p class="linemarker linemarker-244">兄弟：有共同的父结点；</p></li>
+<li><p class="linemarker linemarker-245">无序树：兄弟间无左右次序；</p></li>
+<li><p class="linemarker linemarker-246">有序树：兄弟分左右；</p></li>
+<li><p class="linemarker linemarker-247">长子：最左子结点；</p></li>
+<li><p class="linemarker linemarker-248">次子：长子的右邻；</p></li>
+<li><p class="linemarker linemarker-249">左、右兄弟</p></li>
+</ul>
+<p class="linemarker linemarker-251"><strong>树的遍历</strong></p>
+<p class="linemarker linemarker-253">参考二叉树的遍历，想想树的遍历如何实现，注：树没有中序遍历。</p>
+<p class="linemarker linemarker-255"><strong>树的顺序储存</strong></p>
+<p class="linemarker linemarker-257">思考树如何借助遍历的顺序，实现顺序储存，结点需要哪些保存哪些信息。</p>
+<p class="linemarker linemarker-259">树如何转换为二叉树</p>
+</section>
+<section id="id10">
+<h2><a class="toc-backref" href="#id36" role="doc-backlink">字典的存储之散列表示</a><a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-264">希望得到一个函数满足 <span class="math notranslate nohighlight">\(h(key) = addr\)</span>，从而可以根据字典的值得到存储的地址。这样的函数叫散列函数或hash函数。</p>
+<p class="linemarker linemarker-266"><strong>散列函数设计的基本问题</strong></p>
+<ul class="simple">
+<li><p class="linemarker linemarker-268">如何求散列函数</p></li>
+<li><p class="linemarker linemarker-269">由于key的数目一般远大于地址的数目，发生 <span class="math notranslate nohighlight">\(h(key1) = h(key2)\)</span> 即碰撞时如何解决。</p></li>
+</ul>
+<p class="linemarker linemarker-271"><strong>负载因子</strong> : <span class="math notranslate nohighlight">\(\alpha = \frac{key的数目}{地址空间基本容量}\)</span></p>
+<section id="id11">
+<h3><a class="toc-backref" href="#id37" role="doc-backlink">除余法</a><a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[h(key) = key % p\]</div>
+<section id="id12">
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">碰撞处理方式1-线性探查法再散列</a><a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<img alt="../_images/line_search.png" src="../_images/line_search.png" />
+<p class="linemarker linemarker-283">由于线性探查法使非同义词可能占据同一空间，从而会发生堆积问题(非同义词发生冲突)。</p>
+</section>
+<section id="id13">
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">碰撞处理方式2-拉链法</a><a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<img alt="../_images/lalianfa.png" src="../_images/lalianfa.png" />
+</section>
+</section>
+<section id="id14">
+<h3><a class="toc-backref" href="#id40" role="doc-backlink">散列文件</a><a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-293">将散列表(拉链法解决碰撞)用于文件的存储。</p>
+<img alt="../_images/antongsanlie.png" src="../_images/antongsanlie.png" />
+<p class="linemarker linemarker-297"><strong>成倍扩充桶的好处</strong> ： 减少访问次数。</p>
+</section>
+</section>
+<section id="id15">
+<h2><a class="toc-backref" href="#id41" role="doc-backlink">二叉查找树</a><a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-302">二叉查找树（英语：Binary Search Tree），也称为二叉搜索树、有序二叉树（ordered binary tree）或
+排序二叉树（sorted binary tree），是指一棵空树或者具有下列性质的二叉树：</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-305">若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值；</p></li>
+<li><p class="linemarker linemarker-306">若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值；</p></li>
+<li><p class="linemarker linemarker-307">任意节点的左、右子树也分别为二叉查找树；</p></li>
+</ul>
+<p class="linemarker linemarker-309"><strong>二叉查找树的重要性质</strong> ： 通过中序查找可以返回一个顺序序列</p>
+<section id="id16">
+<h3><a class="toc-backref" href="#id42" role="doc-backlink">二叉查找树的查找算法和插入，删除</a><a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-314">通过二叉查找树的大小分布的性质来查找。</p>
+</section>
+</section>
+<section id="avl">
+<h2><a class="toc-backref" href="#id43" role="doc-backlink">平衡二叉排序树(AVL)</a><a class="headerlink" href="#avl" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-320">为了尽可能使平均检索长度(ASL)比较短，从而提出平衡二叉排序树。</p>
+<p class="linemarker linemarker-322"><strong>平衡二叉排序树</strong> : 每个结点的左、右子树高度之差的绝对值不超过1的二叉排序树。</p>
+<p class="linemarker linemarker-324">待续</p>
+</section>
+<section id="id17">
+<h2><a class="toc-backref" href="#id44" role="doc-backlink">插入排序</a><a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-329">插入排序的原理是通过构建有序序列，对未排序的数据，在已排序序列中从后向前扫描，找到相应的位置插入。
+插入排序在实现上，通常采用in-palce排序（占用空间O(1)），即从后向前扫描。</p>
+<p class="linemarker linemarker-332"><strong>in-palce排序</strong></p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-334">从第一个元素开始，该元素可以认为已经被排序</p></li>
+<li><p class="linemarker linemarker-335">取出下一个元素，在已经排序的元素序列中从后向前扫描</p></li>
+<li><p class="linemarker linemarker-336">如果该元素（已排序）大于新元素，将该元素移到下一位置</p></li>
+<li><p class="linemarker linemarker-337">重复步骤3，直到找到已排序的元素小于或者等于新元素的位置</p></li>
+<li><p class="linemarker linemarker-338">将新元素插入到该位置后</p></li>
+<li><p class="linemarker linemarker-339">重复步骤2~5</p></li>
+</ol>
+<p class="linemarker linemarker-341"><strong>二分插入排序</strong></p>
+<p class="linemarker linemarker-343">将上面的2-5步改为使用二分法查找位置</p>
+<p class="linemarker linemarker-345"><strong>希尔排序</strong>
+希尔排序（Shellsort），也称递减增量排序算法，是插入排序的一种更高效的改进版本。
+<em>希尔排序是非稳定排序算法</em>。</p>
+<p class="linemarker linemarker-349">希尔排序建立在这样的思想下：</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-351">插入排序每次只移动一部，效率低下，可以改变其步长</p></li>
+<li><p class="linemarker linemarker-352">使用步长减小的序列，只要步长最后为1，排序就一定成功</p></li>
+<li><p class="linemarker linemarker-353">选择合适的步长序列影响着算法的收敛速度</p></li>
+</ul>
+<p class="linemarker linemarker-355">因而希尔排序只是使用减小为1的步长序列来改善直接插入算法的方法。</p>
+<p class="linemarker linemarker-357">已知的最好步长序列是由Sedgewick提出的(1, 5, 19, 41, 109,…)，该序列的项，从第0项开始，
+偶数来自 <span class="math notranslate nohighlight">\(9 \times 4^i - 9 \times 2^i + 1\)</span> 和
+奇数来自 <span class="math notranslate nohighlight">\(2^{i + 2} \times ( 2^{i + 2} - 3 ) + 1\)</span> 这两个算式。
+这项研究也表明“比较在希尔排序中是最主要的操作，而不是交换。”
+用这样步长序列的希尔排序比插入排序要快，甚至在小数组中比快速排序和堆排序还快，
+但是在涉及大量数据时希尔排序还是比快速排序慢。</p>
+</section>
+<section id="id18">
+<h2><a class="toc-backref" href="#id45" role="doc-backlink">选择排序</a><a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-367">选择排序与插入排序不同，是在未排序的序列中寻找最大或最小值，然后加到已排序序列中的算法。</p>
+<section id="id19">
+<h3><a class="toc-backref" href="#id46" role="doc-backlink">简单选择排序</a><a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-372">简单的选择排序就是将未排序序列中的最小值（最大值）依次加到已排序序列中，但未排序序列为空时停止。</p>
+</section>
+<section id="id20">
+<h3><a class="toc-backref" href="#id47" role="doc-backlink">堆排序</a><a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-377"><strong>堆</strong>：满足堆序性的完全二叉树，堆序性是指，结点的值满足子结点恒大于或等于母结点（或恒小于等于）。</p>
+<p class="linemarker linemarker-379">基于堆的性质，可以依次去除堆根结点完成排序，所指定的排序为堆排序。</p>
+<p class="linemarker linemarker-381">堆的存储方式和完全二叉树相同，可以采用顺序储存。</p>
+<p class="linemarker linemarker-383"><strong>堆支持的基本操作</strong></p>
+<img alt="../_images/duicaozuo.png" src="../_images/duicaozuo.png" />
+<p class="linemarker linemarker-387"><strong>build</strong></p>
+<p class="linemarker linemarker-389">建立堆有两种方法，一是不断插入新的元素，二是将待排序记录建成一个完全二叉树（存入序列），然后从后向前依次调整。</p>
+<p class="linemarker linemarker-391">方法1的时间复杂度 <span class="math notranslate nohighlight">\(\Sigma_1^n log(i) =O(log(n!))\)</span>,方法2的从后向前指的是序列顺序，时间复杂度为 <span class="math notranslate nohighlight">\(O(n)\)</span>。</p>
+<p class="linemarker linemarker-393">在其他算法中，充分利用大小的性质，可以得到较快速简洁的算法。</p>
+</section>
+</section>
+<section id="id21">
+<h2><a class="toc-backref" href="#id48" role="doc-backlink">交换排序和基数排序</a><a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-398">交换排序是以比较然后交换操作为基础的排序。</p>
+<section id="id22">
+<h3><a class="toc-backref" href="#id49" role="doc-backlink">冒泡排序</a><a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-403">冒泡排序是对未排序序列 [0:n] 相邻的元素两两比较（共 n-1次），将大的置后，从而使最后一个元素完成排序，重复直至未排序序列只有一个元素，完成排序的算法。</p>
+<p class="linemarker linemarker-405">冒泡排序开销较大，效率较低。</p>
+</section>
+<section id="id23">
+<h3><a class="toc-backref" href="#id50" role="doc-backlink">快速排序</a><a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-410">快速排序是冒泡排序的改进版本。由于冒泡排序每次只进行相邻元素的比较交换，效率低下。
+快速排序则一次性确定一个排序好的元素。</p>
+<img alt="../_images/kuaisupaixu.png" src="../_images/kuaisupaixu.png" />
+</section>
+<section id="id24">
+<h3><a class="toc-backref" href="#id51" role="doc-backlink">基数排序</a><a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-419">将排序分解为若干个部分分别排序的方法，叫分配排序方法。</p>
+<p class="linemarker linemarker-421">常见的分配排序为基数排序，用于排序整数。</p>
+<p class="linemarker linemarker-423">基数排序是指按个位、十位、百位… 依次排序的方法。</p>
+</section>
+</section>
+<section id="id25">
+<h2><a class="toc-backref" href="#id52" role="doc-backlink">图</a><a class="headerlink" href="#id25" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-428"><strong>相关概念</strong></p>
+<ul class="simple">
+<li><p class="linemarker linemarker-430">完全图：任意两个顶点之间，都有1条边</p></li>
+<li><p class="linemarker linemarker-431">稀疏图：N个顶点，很少条边(弧)</p></li>
+<li><p class="linemarker linemarker-432">稠密图：N个顶点，很多条边(弧)</p></li>
+<li><p class="linemarker linemarker-433">(顶点间)邻接、(顶点与边)关联</p></li>
+<li><p class="linemarker linemarker-434">顶点的度D(V):
+* 有向图中，入度为以V为终点的边数，出度 = 以V为起点的边数，度 = 入度 + 出度
+* 无相图中，以顶点V相关联的边数。</p></li>
+<li><p class="linemarker linemarker-437">路径，以顶点序列来表示一个路径</p></li>
+<li><p class="linemarker linemarker-438">路径长度，该路径的边数</p></li>
+<li><p class="linemarker linemarker-439">回路：起点与终点相同</p></li>
+<li><p class="linemarker linemarker-440">简单路径：只有起点和终点可以相同，即内部无回路 l</p></li>
+<li><p class="linemarker linemarker-441">简单回路：回路 + 简单路径</p></li>
+<li><p class="linemarker linemarker-442">有根图：在一个有向图中存在一个可以到达所有结点的顶点V，则称该图为有根图，该顶点为有根图的一个根。</p></li>
+<li><p class="linemarker linemarker-443">子图：图的子集</p></li>
+<li><p class="linemarker linemarker-444">连通：顶点之间至少存在一条路径则称顶点连通。</p></li>
+<li><p class="linemarker linemarker-445">连通图：图中任意两个顶点都连通</p></li>
+<li><p class="linemarker linemarker-446">连通分量：分量量（英语：Component）又称为连通分量、元件、或分支，
+是一个无向子图，在分量中的任何两个顶点都连通，且没有任何一边可以连到其他子图的顶点。</p></li>
+<li><p class="linemarker linemarker-448">强连通图：双向连通图</p></li>
+<li><p class="linemarker linemarker-449">带权图：给边赋予权值</p></li>
+<li><p class="linemarker linemarker-450">带权路径长度：路径上权值之和</p></li>
+<li><p class="linemarker linemarker-451">网络：带权的连通图</p></li>
+</ul>
+<section id="id26">
+<h3><a class="toc-backref" href="#id53" role="doc-backlink">图的储存结构</a><a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
 </section>
 </section>
 </section>
