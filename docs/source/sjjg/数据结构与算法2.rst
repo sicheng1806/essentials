@@ -452,3 +452,49 @@ m个叶结点的哈夫曼树共2m-1个结点，使用顺序结构储存，前m�
 
 图的储存结构
 ----------------
+
+* 顶点表+邻接矩阵
+* 顶点表+（出或入）边表（n个单链表）
+
+邻接矩阵表示法
+^^^^^^^^^^^^^^^^^
+
+.. image:: ./images/linjiejuzhen.png
+    :width: 35em
+    :align: center
+
+
+邻接表
+^^^^^^^
+
+.. image:: ./images/linjiebiao.png
+    :width: 35em
+    :align: center
+
+图的遍历
+------------
+
+.. image:: ./images/tudebianliwenti.png
+
+深度优先遍历
+^^^^^^^^^^^^^
+
+.. image:: ./images/bfs_wuxiangtu.png
+    :width: 35em
+    :align: center
+
+.. image:: ./images/bfs_youxiangtu.png
+    :width: 35em
+    :align: center
+
+广度优先遍历
+^^^^^^^^^^^^
+
+.. image:: ./images/bfs_wuxiangtu.png
+    :width: 35em
+    :align: center
+
+.. image:: ./images/bfs_youxiangtu.png
+    :width: 35em
+    :align: center
+
