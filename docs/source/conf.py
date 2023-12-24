@@ -26,7 +26,3 @@ language = 'zh_CN'
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
-html_extra_path = [
-    "./gsw/cjhsml.pdf",
-    "./gsw/精要知识一览.pdf"
-]
