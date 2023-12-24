@@ -12,6 +12,9 @@
   :alt: 动物界各门类的演化谱系图
   :align: center
 
+.. math:: 多细胞 \rightarrow 组织分化（二胚层） \rightarrow 器官分化(三胚层) \rightarrow 体腔 \rightarrow 分节 \rightarrow 后口 \rightarrow 脊索 \rightarrow 脊椎
+
+
 海绵动物门和古杯动物门(原始多细胞动物)
 ==========================================
 属于侧生动物，不认为是真后生动物。
