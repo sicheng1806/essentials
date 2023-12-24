@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>数据结构与算法1-C与顺序结构 &#8212; sicheng_essentials 0.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <script src="../_static/documentation_options.js?v=7c91f8fd"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="树、图与算法" href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%952.html" />
+    <link rel="prev" title="DataStructure" href="sjjg.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="c">
+<h1><a class="toc-backref" href="#id21" role="doc-backlink">数据结构与算法1-C与顺序结构</a><a class="headerlink" href="#c" title="Link to this heading">¶</a></h1>
+<nav class="contents" id="id1">
+<p class="topic-title">目录</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#c" id="id21">数据结构与算法1-C与顺序结构</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id22">第0章——C的回顾</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id23">1. 头文件与程序结构</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id24">2. 编译和链接</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id25">3. c数据结构</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id6" id="id26">3.1. 基本数据类型占用内存量</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id27">3.2. 分配内存和管理内存</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id8" id="id28">4. 控制流工具</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id29">4. 错误和异常</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id10" id="id30">第一章——线性结构</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id11" id="id31">1. 线性表</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id12" id="id32">1.1. 顺序表</a></p></li>
+<li><p><a class="reference internal" href="#id13" id="id33">1.2. 单链表</a></p></li>
+<li><p><a class="reference internal" href="#id14" id="id34">1.3. 循环单链表</a></p></li>
+<li><p><a class="reference internal" href="#id15" id="id35">1.4. 双链表</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id16" id="id36">2. 字符串</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id17" id="id37">2.1 字符串的模式匹配</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id18" id="id38">3. 栈</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id19" id="id39">3.1 栈的应用</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id20" id="id40">4. 队列</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="id2">
+<h2><a class="toc-backref" href="#id22" role="doc-backlink">第0章——C的回顾</a><a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">1. 头文件与程序结构</a><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-12">防止重复预定义的方法</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef STATUS_H</span>
+<span class="cp">#define STATUS_H</span>
+<span class="c1">// 正式的预定义内容</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-21">预处理命令</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define A B </span><span class="c1">// 采用特殊的字符串语法来定义常量、函数等</span>
+<span class="cp">#define True        1 </span><span class="c1">// 简单将True替换为1</span>
+<span class="cp">#define message_for(a,b) printf(#a &quot; and &quot; #b &quot;: We love you!\n&quot;) </span><span class="c1">// 会将a，b替换成具体的内容，相当于函数定义</span>
+<span class="cp">#define square(x) ((x) * (x))</span><span class="c1">// 同</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> // 导入标准库</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;test.h&quot;</span><span class="c1"> // 导入自定义库</span>
+<span class="cp">#undef True </span><span class="c1">//取消宏</span>
+<span class="cp">#ifndef A </span><span class="c1">// 如果没有定义A则</span>
+<span class="cp">#ifdef A </span><span class="c1">// 如果定义A则</span>
+
+<span class="cp">#if !defined (MESSAGE)</span>
+<span class="w">    </span><span class="cp">#define MESSAGE &quot;You wish!&quot;</span>
+<span class="cp">#endif </span><span class="c1">//if语句的终点，适用于出现的三个if预处理命令</span>
+
+<span class="cp">#error      </span><span class="c1">//当遇到标准错误时，输出错误消息</span>
+<span class="cp">#pragma     </span><span class="c1">//使用标准化方法，向编译器发布特殊的命令到编译器中</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-42">头文件的编写</p></li>
+</ol>
+<p class="linemarker linemarker-44">对 <code class="docutils literal notranslate"><span class="pre">Status.h</span></code> 和 <code class="docutils literal notranslate"><span class="pre">VEML7700.h</span></code> 的学习下得出以下结构：</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// 1.防止重复定义处理</span>
+<span class="cp">#ifndef VEML7700</span>
+<span class="cp">#define VEML7700</span>
+<span class="c1">// 2.导入所需的包</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Wire.h&gt;</span>
+<span class="c1">// 3.预定义常量或预定义函数语句</span>
+<span class="cp">#define True        1</span>
+<span class="cp">#define FALSE       0</span>
+<span class="c1">// 4. 函数声明</span>
+<span class="cm">/*</span>
+<span class="cm">* 从文件中读取预设的英文符号</span>
+<span class="cm">*</span>
+<span class="cm">* 这是自定义的数据录入函数，用于从文件fp中读取格式化的输入，</span>
+<span class="cm">* 与fscanf的不同之处在于此函数只会读取英文字符，对于中文字符，则直接跳过。</span>
+<span class="cm">*</span>
+<span class="cm">* 注：</span>
+<span class="cm">* 1. 这里约定所有格式串为简单形式，如：%d%c%s等，而不是%2d%5s等</span>
+<span class="cm">* 2. 读取字符串时，遇到空格或非打印字符会停止读取</span>
+<span class="cm">*/</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">ReadData</span><span class="p">(</span><span class="kt">FILE</span><span class="o">*</span><span class="w"> </span><span class="n">fp</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+<span class="c1">// 5. 类声明（c++)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">VEML7700</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="nc">als_gain_t</span><span class="p">{</span>
+<span class="w">        </span><span class="n">ALS_GAIN_x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x0</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ALS_GAIN_x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x1</span>
+<span class="w">        </span><span class="p">};</span><span class="w"> </span><span class="c1">// 注意哪类的常量适合枚举</span>
+
+<span class="w">    </span><span class="n">VEML7700</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">setGain</span><span class="p">(</span><span class="n">als_gain_t</span><span class="w"> </span><span class="n">gain</span><span class="p">);</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">I2C_ADDRESS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x10</span><span class="w"> </span><span class="p">};</span>
+
+<span class="p">};</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p class="linemarker linemarker-89">程序结构</p></li>
+</ol>
+<p class="linemarker linemarker-91">程序使用 <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main();</span></code> 函数作为主程序入口。</p>
+</section>
+<section id="id4">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">2. 编译和链接</a><a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-96">编译是 <code class="docutils literal notranslate"><span class="pre">*.c</span></code> 输出为二进制文件 <code class="docutils literal notranslate"><span class="pre">*.o</span></code> ，此时的文件通过了语法检测并转换为了二进制，但依赖关系并没有解决</p>
+<p class="linemarker linemarker-98">链接是 <code class="docutils literal notranslate"><span class="pre">*.o</span></code> 输出为可执行文件 <code class="docutils literal notranslate"><span class="pre">*</span></code> 或 <code class="docutils literal notranslate"><span class="pre">*.exe</span></code> ,此时文件已经解决了依赖关系，包括与系统的依赖关系和标准库和自定义库的依赖关系。</p>
+<p class="linemarker linemarker-100">采用 <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-c</span> <span class="pre">file1.c</span> <span class="pre">-o</span> <span class="pre">file2.o</span></code> 编译文件，其中-o 默认为file1.o。</p>
+<p class="linemarker linemarker-102">采用 <code class="docutils literal notranslate"><span class="pre">gcc</span> <span class="pre">-o</span> <span class="pre">file</span> <span class="pre">[file1.o</span> <span class="pre">file2.o</span> <span class="pre">...]</span></code> 来链接程序。</p>
+<p class="linemarker linemarker-104">已经完成使用make 自动编译和链接程序——学习Makefile的语法。</p>
+</section>
+<section id="id5">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">3. c数据结构</a><a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<section id="id6">
+<h4><a class="toc-backref" href="#id26" role="doc-backlink">3.1. 基本数据类型占用内存量</a><a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<p class="linemarker linemarker-112"><code class="docutils literal notranslate"><span class="pre">sizeof</span></code> 用于获取类型的储存字节，值得注意的是 <code class="docutils literal notranslate"><span class="pre">sizeof(void)</span></code> 返回 1 。</p>
+<p class="linemarker linemarker-114">整型、字符型和浮点型有:
+1. int uint(表示 unsigned int) luint(表示long unsigned int) 分别占4 4 8 字节。
+2. char uchar 占 1 1 字节。1 字节有8位比特
+3. float double 占 4 8 字节
+4. void 占 1 字节</p>
+</section>
+<section id="id7">
+<h4><a class="toc-backref" href="#id27" role="doc-backlink">3.2. 分配内存和管理内存</a><a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-123"><code class="docutils literal notranslate"><span class="pre">void*</span></code> 指针表示未被赋予具体类型的地址，可以通过强制类型转换为希望的类型如：</p></li>
+</ol>
+<p class="linemarker linemarker-125">`` int* p_a = (int*) malloc(8 * sizeof(int))``</p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-127">malloc用于分配内存，free用于释放内存。free释放后的内存内的数据已经不再可信。</p></li>
+<li><p class="linemarker linemarker-128">指针可以使用索引取值 <code class="docutils literal notranslate"><span class="pre">p_a[i]</span></code> 等价于 <code class="docutils literal notranslate"><span class="pre">(*(p_a</span> <span class="pre">+</span> <span class="pre">i))</span></code>。</p></li>
+<li><p class="linemarker linemarker-129">realloc用于重新分配之前用malloc或alloc分配的内存，返回形式和malloc一样。对于数据结构扩容很有效。</p></li>
+</ol>
+</section>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">4. 控制流工具</a><a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">boolean_expression</span><span class="p">)</span>
+<span class="p">{}</span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="k">else</span><span class="p">{}</span>
+
+<span class="k">switch</span><span class="p">(</span><span class="n">expression</span><span class="p">){</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">constant</span><span class="o">-</span><span class="no">expression</span><span class="w">  </span><span class="p">:</span>
+<span class="w">    </span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 可选的 */</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">constant</span><span class="o">-</span><span class="no">expression</span><span class="w">  </span><span class="p">:</span>
+<span class="w">    </span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 可选的 */</span>
+
+<span class="w">    </span><span class="cm">/* 您可以有任意数量的 case 语句 */</span>
+<span class="w">    </span><span class="k">default</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="cm">/* 可选的 */</span>
+<span class="w">    </span><span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">while</span><span class="p">(</span><span class="n">condition</span><span class="p">){}</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">init</span><span class="p">;</span><span class="n">condition</span><span class="p">;</span><span class="n">increment</span><span class="p">){}</span>
+
+<span class="k">do</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="n">condition</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">4. 错误和异常</a><a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+
+<span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">errno</span><span class="w"> </span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span>
+<span class="p">{</span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pf</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">errnum</span><span class="p">;</span>
+<span class="n">pf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;unexist.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rb&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pf</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">errnum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">errno</span><span class="p">;</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;错误号: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">errno</span><span class="p">);</span>
+<span class="w">    </span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;通过 perror 输出错误&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;打开文件错误: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">strerror</span><span class="p">(</span><span class="w"> </span><span class="n">errnum</span><span class="w"> </span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">fclose</span><span class="w"> </span><span class="p">(</span><span class="n">pf</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">第一章——线性结构</a><a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-194">线性结构指结点以顺序结构储存。</p>
+<section id="id11">
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">1. 线性表</a><a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-199">线性表根据储存类型的不同分为顺序表和链表。链表分为单链表，循环单链表，双链表和循环双链表。</p>
+<p class="linemarker linemarker-201">线性表模型：</p>
+<p class="linemarker linemarker-203">使用a_i,表示第i个元素。a_0为第一个元素。a_i 等价与 a[i]</p>
+<section id="id12">
+<h4><a class="toc-backref" href="#id32" role="doc-backlink">1.1. 顺序表</a><a class="headerlink" href="#id12" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-208">结点结构</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ElemType</span><span class="o">*</span><span class="w"> </span><span class="n">elem</span><span class="p">;</span><span class="w">     </span><span class="c1">// 顺序表存储空间的基址（指向顺序表所占内存的起始位置）</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="p">;</span><span class="w">   </span><span class="c1">// 当前顺序表长度（包含多少元素）</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">listsize</span><span class="p">;</span><span class="w"> </span><span class="c1">// 当前分配的存储容量（可以存储多少元素）</span>
+<span class="p">}</span><span class="w"> </span><span class="n">SqList</span><span class="p">;</span>
+</pre></div>
+</div>
+<p class="linemarker linemarker-218">elem为链表头地址</p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-220">初始化</p></li>
+</ol>
+<p class="linemarker linemarker-222">使用malloc分配内存，length=0</p>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-224">插入元素</p></li>
+</ol>
+<p class="linemarker linemarker-226">令索引大于i的元素向后移动一位，对a_i赋值。代价o(n)</p>
+<ol class="arabic simple" start="4">
+<li><p class="linemarker linemarker-228">删除元素</p></li>
+</ol>
+<p class="linemarker linemarker-230">令索引大于i的元素向前移动一位，代价o(n)</p>
+<ol class="arabic simple" start="5">
+<li><p class="linemarker linemarker-232">删除</p></li>
+</ol>
+<p class="linemarker linemarker-234">释放elem指向的内存</p>
+</section>
+<section id="id13">
+<h4><a class="toc-backref" href="#id33" role="doc-backlink">1.2. 单链表</a><a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-239">结点结构</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">LNode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ElemType</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w">      </span><span class="c1">// 数据结点</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">LNode</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"> </span><span class="c1">// 指向下一个结点的指针</span>
+<span class="p">}</span><span class="w"> </span><span class="n">LNode</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-248">初始化</p></li>
+</ol>
+<p class="linemarker linemarker-250">分配内存，next指向空</p>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-252">插入元素</p></li>
+</ol>
+<p class="linemarker linemarker-254">令索引i-1的next指向新结点，新结点的next指向索引i结点。</p>
+<ol class="arabic simple" start="4">
+<li><p class="linemarker linemarker-256">删除元素</p></li>
+</ol>
+<p class="linemarker linemarker-258">令索引i-1的next指向i+1，释放i的内存。</p>
+<ol class="arabic simple" start="5">
+<li><p class="linemarker linemarker-260">删除</p></li>
+</ol>
+<p class="linemarker linemarker-262">释放所有结点next指向的内存</p>
+</section>
+<section id="id14">
+<h4><a class="toc-backref" href="#id34" role="doc-backlink">1.3. 循环单链表</a><a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<p class="linemarker linemarker-267">将最后一个元素指向第一个元素就形成循环单链表</p>
+</section>
+<section id="id15">
+<h4><a class="toc-backref" href="#id35" role="doc-backlink">1.4. 双链表</a><a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<p class="linemarker linemarker-272">单链表基础上增加一个指向前继的指针</p>
+</section>
+</section>
+<section id="id16">
+<h3><a class="toc-backref" href="#id36" role="doc-backlink">2. 字符串</a><a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-277">与线性表相比，字符串更加注重整体的运算，而线性表更加注重元素的操作。其储存逻辑基本通用</p>
+<section id="id17">
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">2.1 字符串的模式匹配</a><a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<p class="linemarker linemarker-282">问题描述：对于字符串s和p，求p是否在s中，如果在则返回第一次匹配成功的索引</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-284">朴素的模式匹配算法</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">p</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)]:</span>
+            <span class="k">return</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-295">无回溯的模式匹配算法</p></li>
+</ol>
+<p class="linemarker linemarker-297">问题进一步描述：朴素的模式匹配算法的低效在于每次匹配失败都只右移1位，并且没有利用字符串s或p的性质，
+Knuth 等人发现下次匹配失败后存在k值，可以直接向右移动k位并用p_k进行下一次比较，由k组成的数组next存在且
+只与p有关。:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>t0 ... tm p0 p1 p2 p3 p4 ... pi-1 tn ... tN
+            p0 p1 p2 p3 ... pi-2 pi           必定失败 =: p[1:i] != p[0:i-1]
+                                pk pk+1 ...   若从pk开始下一次比较
+
+                    p0 p1 ... pk-1            说明p[0:k] == p[i-k:i],前缀等于后缀
+
+k 最大等于在p[0:i]字符串中，最长的前缀匹配后缀问题。
+
+即：
+pk = p[next[i]]
+next[i] = max(符合(p[0:k] == p[i-k:i]))
+</pre></div>
+</div>
+<p class="linemarker linemarker-313">假设next数组已经求出</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">p</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    <span class="n">p_next</span> <span class="o">=</span> <span class="n">makeNext</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">j</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="c1">#退出条件</span>
+        <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">p_next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">continue</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="c1"># 表示s与p在最末尾匹配成功</span>
+</pre></div>
+</div>
+<p class="linemarker linemarker-331">求_next数组:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">makeNext</span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="sd">&#39;&#39;&#39;返回字符创p的next数组&#39;&#39;&#39;</span>
+<span class="n">_next</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># i = 0时必定为0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)):</span>
+    <span class="c1"># p[0:k] == p[i-k:i]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">k</span><span class="p">:</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">_next</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">_next</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">_next</span>
+</pre></div>
+</div>
+<p class="linemarker linemarker-346">_next数组的优化：</p>
+<p class="linemarker linemarker-348">尚可优化。</p>
+</section>
+</section>
+<section id="id18">
+<h3><a class="toc-backref" href="#id38" role="doc-backlink">3. 栈</a><a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-353">栈(stack)：一种特殊的线性表，插入和删除都只能在表的同一端进行；</p>
+<p class="linemarker linemarker-355">也分为顺序栈和链栈</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-357">顺序栈</p></li>
+</ol>
+<p class="linemarker linemarker-359">结点表示</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">SeqStack</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">MaxNum</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">top</span><span class="p">;</span>
+<span class="w">    </span><span class="n">DataType</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p class="linemarker linemarker-370">其他：</p>
+<p class="linemarker linemarker-372">略</p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-374">顺序栈的共享技术</p></li>
+</ol>
+<p class="linemarker linemarker-376">两个栈共享一个数组，栈顶分别在数组的两端</p>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-378">链栈</p></li>
+</ol>
+<p class="linemarker linemarker-380">结点表示：</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Node</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">DataType</span><span class="w"> </span><span class="n">info</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PNode</span><span class="w"> </span><span class="n">link</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<section id="id19">
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">3.1 栈的应用</a><a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-393">栈与数制转换</p></li>
+</ol>
+<p class="linemarker linemarker-395">问题描述： 将十进制数N转换为m进制数M</p>
+<dl class="simple">
+<dt>问题分析::</dt><dd><p class="linemarker linemarker-398">用m_n,m_n-1,…,m_0表示M,
+通过求余和整除可以依次求得m_0,m_1,…,m_n
+数据要求高位输出因而满足先进后出的栈要求，使用栈来承接结果。</p>
+</dd>
+</dl>
+<p class="linemarker linemarker-402">算法 <a class="reference external" href="https://github.com/sicheng1806/essentials/blob/main/src_test/py/m%E8%BF%9B%E5%88%B6%E6%95%B4%E6%95%B0%E6%B1%82%E6%B3%95.py">m进制整数求法</a></p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-405">栈与括号匹配</p></li>
+</ol>
+<p class="linemarker linemarker-407">问题描述： 对文字的括号用法进行判别正误</p>
+<p class="linemarker linemarker-409">问题分析： 将读到左括号入栈，读到右括号出栈，出栈与入栈类型不匹配或读完栈未空视为错误。</p>
+</section>
+</section>
+<section id="id20">
+<h3><a class="toc-backref" href="#id40" role="doc-backlink">4. 队列</a><a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-415">队列是满足先进先出的线性结构</p>
+<p class="linemarker linemarker-417">在python中collection.deque便是队列。</p>
+<p class="linemarker linemarker-419">队列的先进先出适用于生产者-消费者模型的数据传输，因而在多进程管理中python提供了queue模块用于在多线程数据的传输</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">sicheng_essentials</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7%E4%B8%80%E8%A7%88.html">数学符号一览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%9C%B0%E8%B2%8C%E5%AD%A6%E5%8F%8A%E7%AC%AC%E5%9B%9B%E7%BA%AA%E5%9C%B0%E8%B4%A8%E5%AD%A6.html">地貌学及第四纪地质学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%8B%B1%E8%AF%AD%E5%85%AD%E7%BA%A7%E7%BB%83%E4%B9%A0.html">英语六级练习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsw/gsw.html">古生物和地史学概论</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="sjjg.html">DataStructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rust%E6%91%98%E8%A6%81.html">Rust摘要</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dxs/dxs.html">地下水动力学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structuralgeo/gzjh.html">构造地质学的几何方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation/%E7%BF%BB%E8%AF%91%E6%88%96%E6%8F%90%E5%8F%96%E7%9A%84%E6%96%87%E7%AB%A0.html">翻译或提取的文章</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="sjjg.html">DataStructure</a><ul>
+      <li>Previous: <a href="sjjg.html" title="上一章">DataStructure</a></li>
+      <li>Next: <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%952.html" title="下一章">树、图与算法</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="提交" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, sicheng.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/sjjg/数据结构与算法1.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
