@@ -987,6 +987,8 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 
 **脊椎动物杂谈**
 
+.. image:: ./image/jizuitezheng.png
+
 有一类化石鱼类和现代鱼类类似，但是背鳍、腹鳍等前端均有硬棘，且内骨骼开始骨化，这一类化石鱼
 类称为棘鱼 。
 
@@ -1039,8 +1041,6 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 * 石炭--二叠纪：两栖类的时代
 * 中生代：爬行动物时代
 * 新生代：哺乳动物时代，鸟类、硬骨鱼类全面发展
-
-.. image:: ./image/jizuitezheng.png
 
 **脊椎动物进化的重要事件**
 
