@@ -1,4 +1,4 @@
 微体化石
 *****************
 
-.. contents:: 目录
+:download:`微体化石.pdf<./weiti.pdf>`
