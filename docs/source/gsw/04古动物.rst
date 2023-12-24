@@ -8,6 +8,9 @@
 .. image:: ./image/动物界各门类的演化谱系.jpg
   :alt: 动物界各门类的演化谱系图
   :align: center
+.. image:: ./image/animalia.png
+  :alt: 动物界各门类的演化谱系图
+  :align: center
 
 海绵动物门和古杯动物门(原始多细胞动物)
 ==========================================
