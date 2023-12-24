@@ -1073,3 +1073,5 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 5. 晚期智人（Homo sapiens sapiens）：19-10 万年前，如旧石器时代晚期（3.8 万年）的克罗马农人。我
       国发现有柳江人、资阳人、河套人、山顶洞人等。
 
+
+.. image:: ./image/renleiqiyuan.png
