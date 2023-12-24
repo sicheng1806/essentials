@@ -806,12 +806,18 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 * 树形笔石类：树枝状，底栖固着
 * 正笔石类：列式，漂浮生活——指相化石
 
+.. image:: ./image/bishigan.png
+
 树形笔石类硬体构造
 ^^^^^^^^^^^^^^^^^^^^^
 
 胎管→胞管→笔石枝→笔石体→笔石簇
 
 .. image:: ./image/shuxingbishi.png 
+
+**胎管**
+
+.. image:: ./image/bishitaiguan.png
 
 
 **胞 管**
