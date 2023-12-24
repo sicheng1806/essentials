@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. 地下水运动基础概论和一般数学模型 &#8212; sicheng_essentials 0.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <script src="../_static/documentation_options.js?v=7c91f8fd"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="2. 河渠附近的地下水运动" href="12%E6%B2%B3%E6%B8%A0%E9%99%84%E8%BF%91%E7%9A%84%E5%9C%B0%E4%B8%8B%E6%B0%B4%E8%BF%90%E5%8A%A8.html" />
+    <link rel="prev" title="地下水动力学" href="dxs.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1><a class="toc-backref" href="#id40" role="doc-backlink"><span class="section-number">1. </span>地下水运动基础概论和一般数学模型</a><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<nav class="contents" id="id2">
+<p class="topic-title">目录</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id40">地下水运动基础概论和一般数学模型</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id41">欧拉法</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id42">典型单元体和渗流模型</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id8" id="id43">多孔介质和地下水在多孔介质的实际运动</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id44">典型单元体</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id45">渗流模型</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id11" id="id46">突变界面的水流折射</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id13" id="id47">渗流基本定律——达西定律</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id15" id="id48">渗流定律下的数学模型</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id16" id="id49">饱和地下水水体的数学模型</a></p></li>
+<li><p><a class="reference internal" href="#id17" id="id50">承压水体的数学模型</a></p></li>
+<li><p><a class="reference internal" href="#id18" id="id51">半承压含水层的二维数学模型</a></p></li>
+<li><p><a class="reference internal" href="#id19" id="id52">潜水面的二维模型</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id20" id="id53">概念参考</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id21" id="id54">微分方程相关概念</a></p></li>
+<li><p><a class="reference internal" href="#nu" id="id55">液体运动粘滞系数(<span class="math notranslate nohighlight">\(\nu\)</span>)</a></p></li>
+<li><p><a class="reference internal" href="#n" id="id56">孔隙度(<span class="math notranslate nohighlight">\(n\)</span>)</a></p></li>
+<li><p><a class="reference internal" href="#k" id="id57">渗透系数(<span class="math notranslate nohighlight">\(K\)</span>)</a></p></li>
+<li><p><a class="reference internal" href="#darcy" id="id58">Darcy定律</a></p></li>
+<li><p><a class="reference internal" href="#h" id="id59">水头(H)</a></p></li>
+<li><p><a class="reference internal" href="#j-or-j" id="id60">水力梯度 (J or j)</a></p></li>
+<li><p><a class="reference internal" href="#mu" id="id61">给水度(<span class="math notranslate nohighlight">\(\mu\)</span>)</a></p></li>
+<li><p><a class="reference internal" href="#mu-s" id="id62">贮水系数(<span class="math notranslate nohighlight">\(\mu_s\)</span>)</a></p></li>
+<li><p><a class="reference internal" href="#id31" id="id63">贮水率(<span class="math notranslate nohighlight">\(\mu^*\)</span>)</a></p></li>
+<li><p><a class="reference internal" href="#beta-alpha-alpha-p-alpha-s" id="id64">体积压缩系数(<span class="math notranslate nohighlight">\(\beta ;\alpha ;\alpha_p ;\alpha_s\)</span>)</a></p></li>
+<li><p><a class="reference internal" href="#id33" id="id65">有效应力原理</a></p></li>
+<li><p><a class="reference internal" href="#t" id="id66">渗透率(T)</a></p></li>
+<li><p><a class="reference internal" href="#q-wout" id="id67">排水量 <span class="math notranslate nohighlight">\(Q_{wout}\)</span></a></p></li>
+<li><p><a class="reference internal" href="#id35" id="id68">弱透水层</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id37" id="id69">黏土层的地下水动力学理想模型</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#b" id="id70">越流因素(B)</a></p></li>
+<li><p><a class="reference internal" href="#sigma" id="id71">越流系数(<span class="math notranslate nohighlight">\(\sigma^{'}\)</span>)</a></p></li>
+<li><p><a class="reference internal" href="#dupuit" id="id72">Dupuit假设</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<p class="linemarker linemarker-6">这章介绍地下水动力学的一般数学模型。</p>
+<section id="id3">
+<h2><a class="toc-backref" href="#id41" role="doc-backlink"><span class="section-number">1.1. </span>欧拉法</a><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-11">欧拉法采用场论的观点描述空间中的物理量。</p>
+<p class="linemarker linemarker-13">物理量：考察物质点的物理量 <span class="math notranslate nohighlight">\(\psi\)</span></p>
+<p class="linemarker linemarker-15">控制体：研究的空间区域</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-17">物理量 <span class="math notranslate nohighlight">\(\psi\)</span> 在空间中的描述：</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(1)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[\psi(x,y,z,t)\]</div>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-22">控制体中物理量时间导数：</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(2)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[系统导数 = 瞬变项 + 流项 = 源项\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-27">系统导数</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(3)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[\frac{D}{Dt}\iiint\psi\mathrm{d}\tau\]</div>
+<ul class="simple" id="id4">
+<li><p class="linemarker linemarker-34">瞬变项</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(4)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[\iiint\frac{\partial\psi}{\partial t}\mathrm{d}\tau\]</div>
+<ul class="simple" id="id5">
+<li><p class="linemarker linemarker-41">流项</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(5)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[\iint \psi \mathbf{V n}\mathrm{d}A\]</div>
+<ul class="simple" id="id6">
+<li><p class="linemarker linemarker-48">源项   任意可以增加 <span class="math notranslate nohighlight">\(\psi\)</span> 的项，一般表示为 W</p></li>
+</ul>
+<p class="linemarker linemarker-50">表示为数学式如下:</p>
+<div class="math notranslate nohighlight" id="equation-eq">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq" title="Link to this equation">¶</a></span>\[\frac{D}{Dt}\iiint\psi\mathrm{d}\tau
+= \iiint\frac{\partial\psi}{\partial t}\mathrm{d}\tau
++ \iint \psi \mathbf{V n}\mathrm{d}A
++ = \iiint W \mathrm{d}\tau\]</div>
+<p class="linemarker linemarker-60">微分：</p>
+<div class="math notranslate nohighlight" id="equation-2-eq">
+<span class="eqno">(7)<a class="headerlink" href="#equation-2-eq" title="Link to this equation">¶</a></span>\[\frac{\partial\psi}{\partial t} + \nabla(\psi\mathbf{V}) = W\]</div>
+</section>
+<section id="id7">
+<h2><a class="toc-backref" href="#id42" role="doc-backlink"><span class="section-number">1.2. </span>典型单元体和渗流模型</a><a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-71">典型单元体和渗流模型是地下水运动的基础模型</p>
+<section id="id8">
+<h3><a class="toc-backref" href="#id43" role="doc-backlink"><span class="section-number">1.2.1. </span>多孔介质和地下水在多孔介质的实际运动</a><a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-76">地下水运动的介质——多孔介质</p></li>
+</ol>
+<p class="linemarker linemarker-78">多孔介质：在地下水动力学中，把具有空隙的岩体称为多孔介质。根据岩体中空隙的类型，多孔介质可分为 <em>孔隙介质</em> 、 <em>裂隙介质</em> 和 <em>溶穴介质</em> 。</p>
+<p class="linemarker linemarker-80">多孔介质中的地下水可能以吸着水、薄膜水、毛管水和重力水等多种形式存在。本书主要研究重力水的运动。</p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-82">地下水运动的流态类型</p></li>
+</ol>
+<p class="linemarker linemarker-84">层流：液体质点作有规律的线状运动。</p>
+<p class="linemarker linemarker-86">紊流：液体质点作杂乱无章的运动。</p>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-88">流态判别系数</p></li>
+</ol>
+<p class="linemarker linemarker-90">层流和紊流是用Reynolds数来判别的：</p>
+<div class="math notranslate nohighlight" id="equation-re-eq">
+<span class="eqno">(8)<a class="headerlink" href="#equation-re-eq" title="Link to this equation">¶</a></span>\[Re = \frac{\upsilon d}{\nu}\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-95"><span class="math notranslate nohighlight">\(\upsilon\)</span>        为液体流速</p></li>
+<li><p class="linemarker linemarker-96"><span class="math notranslate nohighlight">\(\nu\)</span>             为液体运动粘滞系数</p></li>
+<li><p class="linemarker linemarker-97"><span class="math notranslate nohighlight">\(d\)</span>                       为含水层颗粒平均粒径</p></li>
+</ul>
+<p class="linemarker linemarker-99">地下水由层流转变为紊流时的Reynolds数称为临界Reynolds数。一般情况下，临界Reynolds数为150～300。
+天然情况下，含水层中地下水的Reynolds数远小于临界Reynolds数，因此天然状态下地下水流多处于层流状态。</p>
+<ol class="arabic simple" start="4">
+<li><p class="linemarker linemarker-102">地下水在多孔介质的运动——渗透</p></li>
+</ol>
+<p class="linemarker linemarker-104">地下水沿着形状不一、大小各异、弯弯曲曲的多孔介质空隙通道流动的现象称为渗透。渗透描述的是真实地下水的运动特征。</p>
+</section>
+<section id="id9">
+<h3><a class="toc-backref" href="#id44" role="doc-backlink"><span class="section-number">1.2.2. </span>典型单元体</a><a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-109">典型单元体（Representative Elementary Volume，简称REV），亦称表征单元体。对于均质多孔介质，各物理量（如空隙度、水头、压力等）在一定体积范围内不随体积的变化而变化，此时，称这一范围的体积为典型单元体。记为      。</p>
+<p class="linemarker linemarker-111">定义p点的各物理量时，用以p为中心的典型单元体内该物理量的平均值来定义 。</p>
+<p class="linemarker linemarker-113">REV 只是保证了参数在空间上的连续性，其他各项性质与真实的多孔介质无差异。下面列出与多孔介质的物理性质和力学性质</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-115">弹性释水现象 (见 <a class="reference internal" href="#id32">体积压缩系数</a> 和 <a class="reference internal" href="#id30">贮水系数</a> )</p></li>
+<li><p class="linemarker linemarker-118">重力排水现象 (见 <a class="reference internal" href="#id29">给水度</a>)</p></li>
+</ol>
+</section>
+<section id="id10">
+<h3><a class="toc-backref" href="#id45" role="doc-backlink"><span class="section-number">1.2.3. </span>渗流模型</a><a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-123">渗流：一种假想的水流，这种假想的水流满足下列条件：</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-125">它充满了整个含水层空间（包括空隙空间和岩石颗粒所占据的空间）；</p></li>
+<li><p class="linemarker linemarker-126">水流的性质（如密度、粘滞性等）和真实地下水相同</p></li>
+<li><p class="linemarker linemarker-127">通过任一断面的流量和实际水流相同；</p></li>
+<li><p class="linemarker linemarker-128">任一点的压力或水头均和实际水流相同；</p></li>
+<li><p class="linemarker linemarker-129">水流运动时，在任意岩石体积内所受的阻力等于真实水流所受的阻力。</p></li>
+</ol>
+<p class="linemarker linemarker-131">满足上述条件的假想水流，称为渗流。</p>
+<section id="id11">
+<span id="id12"></span><h4><a class="toc-backref" href="#id46" role="doc-backlink"><span class="section-number">1.2.3.1. </span>突变界面的水流折射</a><a class="headerlink" href="#id11" title="Link to this heading">¶</a></h4>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(9)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[tan\theta_1 : tan\theta_2 = K1 : K2\]</div>
+<img alt="水流折射定律" class="align-center" src="../_images/%E6%B0%B4%E6%B5%81%E6%8A%98%E5%B0%84%E5%AE%9A%E5%BE%8B.jpg" />
+<p class="linemarker linemarker-146">根据流量守恒可以证明：</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-148">分界面微元 <span class="math notranslate nohighlight">\(\mathrm{d}x\)</span></p></li>
+<li><p class="linemarker linemarker-149">等水头面差 <span class="math notranslate nohighlight">\(\Delta H\)</span></p></li>
+<li><p class="linemarker linemarker-150">等水头面距离 <span class="math notranslate nohighlight">\(\Delta s_1 ; \Delta s_2\)</span></p></li>
+<li><p class="linemarker linemarker-151">流线距离 <span class="math notranslate nohighlight">\(\Delta t_1 ; \Delta t_2\)</span></p></li>
+<li><p class="linemarker linemarker-152"><span class="math notranslate nohighlight">\(J_1 ; J_2 ; v_1 ; v_2 ; Q_1 ; Q_2\)</span></p></li>
+</ul>
+<p class="linemarker linemarker-154">根据流量守恒证明如下：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}&amp;\ Q_1 = \Delta t_1 v_1 = \Delta t_2 v_2 = Q_2 \\
+&amp;\ J_1 : J_2 = \Delta s_2 : \Delta s_1 = sin\theta_2 : sin\theta_1 \\
+&amp;\ v_1 : v_2 = K_1J_1 : K_2J_2 = K_1sin\theta_2 : K_2sin\theta_1 \\
+&amp;\ t1 : t2 = cos\theta_1 : cos\theta_2 \\
+&amp;\ v_1t_1 = v_2t_2 \Rightarrow tan\theta_1 : tan\theta_2 = K1 : K2 \\\end{split}\]</div>
+</section>
+</section>
+<section id="id13">
+<h3><a class="toc-backref" href="#id47" role="doc-backlink"><span class="section-number">1.2.4. </span>渗流基本定律——达西定律</a><a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-168">Darcy定律的适用范围</p></li>
+</ol>
+<p class="linemarker linemarker-170">只有当 水流流速 和 水力梯度呈线性关系时才能适用Darcy定律，具体情况如下：</p>
+<img alt="Darcy 定律的适用范围" class="align-center" src="../_images/Darcy%E7%9A%84%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4.png" />
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-176">Darcy定律含义 <a class="reference internal" href="#equation-darcy-law">(20)</a></p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\upsilon = KJ = =K\nabla H\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-180">J 为水力梯度</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-j-eq">
+<span class="eqno">(10)<a class="headerlink" href="#equation-j-eq" title="Link to this equation">¶</a></span>\[J = - \nabla H\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-185">H 为水头</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-h-eq">
+<span class="eqno">(11)<a class="headerlink" href="#equation-h-eq" title="Link to this equation">¶</a></span>\[H = h + \frac{v^2}{2g} + \frac{p}{\gamma_w}\]</div>
+<ul class="simple" id="id14">
+<li><p class="linemarker linemarker-192">K 为渗透系数</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-k-eq">
+<span class="eqno">(12)<a class="headerlink" href="#equation-k-eq" title="Link to this equation">¶</a></span>\[K = \frac{gk}{\nu}\]</div>
+<p class="linemarker linemarker-197">k 为渗透率，只与介质有关。</p>
+</section>
+</section>
+<section id="id15">
+<h2><a class="toc-backref" href="#id48" role="doc-backlink"><span class="section-number">1.3. </span>渗流定律下的数学模型</a><a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-202">数学模型的选取应当灵活取用，不能硬套公式。</p>
+<section id="id16">
+<h3><a class="toc-backref" href="#id49" role="doc-backlink"><span class="section-number">1.3.1. </span>饱和地下水水体的数学模型</a><a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-207">模型条件：</p></li>
+</ol>
+<p class="linemarker linemarker-209">指向饱和地下水水体，满足：</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-211">水体质量 <span class="math notranslate nohighlight">\(m_w =\iiint\rho n\mathrm{d}\tau\)</span></p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-213">模型公式</p></li>
+</ol>
+<p class="linemarker linemarker-215">在多孔介质中，考虑水体质量守恒，即考察物理量 <span class="math notranslate nohighlight">\(\rho\)</span> 的欧拉输运公式 <a class="reference internal" href="#equation">(2)</a> <a class="reference internal" href="#equation-eq">(6)</a></p>
+<ul class="simple">
+<li><p class="linemarker linemarker-217">源项：W</p></li>
+<li><p class="linemarker linemarker-218">瞬变项： <span class="math notranslate nohighlight">\(\frac{\partial \rho n}{\partial t}\)</span></p></li>
+<li><p class="linemarker linemarker-219">流项:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\nabla(\rho v) = = \nabla(\rho \nabla (KH))\]</div>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-225">微分方程:</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-model-eq">
+<span class="eqno">(13)<a class="headerlink" href="#equation-model-eq" title="Link to this equation">¶</a></span>\[\frac{\partial \rho n}{\partial t} + \nabla(\rho \nabla (KH)) = W\]</div>
+<p class="linemarker linemarker-232">该模型的未知量为 <span class="math notranslate nohighlight">\(H(x,y,z,t)\)</span>。类型为：<cite>待续</cite></p>
+<ol class="arabic" start="4">
+<li><p class="linemarker linemarker-234">模型简化</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-236">简化条件：</p></li>
+</ol>
+<ul class="simple">
+<li><p class="linemarker linemarker-238">密度恒定流 <span class="math notranslate nohighlight">\(\rho = \rho_0\)</span></p></li>
+<li><p class="linemarker linemarker-239">空隙度n不随着时间变化 <span class="math notranslate nohighlight">\(n = n_0\)</span></p></li>
+<li><p class="linemarker linemarker-240">K不随着时间改变: :math:</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-242">简化后公式</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\nabla^2 H = W / (\rho K)\]</div>
+<p class="linemarker linemarker-246">类型为 <cite>泊松方程</cite> 。</p>
+<p class="linemarker linemarker-248">当 <span class="math notranslate nohighlight">\(W = 0\)</span> 时 ，类型为 <cite>拉普拉斯方程</cite> 。</p>
+</li>
+</ol>
+</section>
+<section id="id17">
+<h3><a class="toc-backref" href="#id50" role="doc-backlink"><span class="section-number">1.3.2. </span>承压水体的数学模型</a><a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-253">模型条件</p></li>
+</ol>
+<ul class="simple">
+<li><p class="linemarker linemarker-255">满足饱和水体模型条件 <a class="reference internal" href="#equation-model-eq">(13)</a></p></li>
+<li><p class="linemarker linemarker-256">源汇项为弹性释水 <span class="math notranslate nohighlight">\(W = \rho_w\mu_s\frac{\partial H}{\partial t}\)</span></p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-258">得到方程:</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-model-eq">
+<span class="eqno">(14)<a class="headerlink" href="#equation-model-eq" title="Link to this equation">¶</a></span>\[\frac{\partial \rho n}{\partial t} + \nabla(\rho \nabla (KH)) = \rho_w\mu_s\frac{\partial H}{\partial t}\]</div>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-265">模型简化</p></li>
+</ol>
+<ul class="simple">
+<li><p class="linemarker linemarker-267">恒密度流</p></li>
+<li><p class="linemarker linemarker-268">n恒定</p></li>
+<li><p class="linemarker linemarker-269">各向同性</p></li>
+</ul>
+<p class="linemarker linemarker-271">简化后方程:</p>
+<div class="math notranslate nohighlight">
+\[\nabla^2 H = \frac{\mu_s}{ K}\frac{\partial H}{\partial t}\]</div>
+<p class="linemarker linemarker-277">当模型为稳态模型时 为拉普拉斯方程</p>
+</section>
+<section id="id18">
+<h3><a class="toc-backref" href="#id51" role="doc-backlink"><span class="section-number">1.3.3. </span>半承压含水层的二维数学模型</a><a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-282">半承压含水层为可接受来自 <a class="reference internal" href="#id35">弱透水层</a> 越流补给的承压含水层。</p>
+<img alt="半承压含水层的二维数学模型" class="align-center" src="../_images/%E5%8D%8A%E6%89%BF%E5%8E%8B%E5%90%AB%E6%B0%B4%E5%B1%82.png" />
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-288">模型条件</p></li>
+</ol>
+<ul class="simple">
+<li><p class="linemarker linemarker-290">弱透水层的补给</p></li>
+<li><p class="linemarker linemarker-291">主含水层水平流动，上下层面水平</p></li>
+<li><p class="linemarker linemarker-292">恒密度流</p></li>
+<li><p class="linemarker linemarker-293">垂直方向同性</p></li>
+</ul>
+<p class="linemarker linemarker-295">在这样的条件下，由于垂直方向上H没有变化，问题简化为xoy平面上的二维问题。</p>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-297">得到公式</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}&amp;\ 瞬变项 = \frac{\partial\rho n}{\partial t}M = 0 \\
+&amp;\ 流项 = \rho\nabla (v M) = - \rho\nabla (KM\nabla H) = -\rho \nabla(T\nabla H)\\
+&amp;\ 源项 = 弹性释水 + 越流补给 = - \rho\mu_s\frac{\partial H}{\partial t}M +
+\rho K_1(H - H_1)/m_1 + \rho K_2(H_2 - H)/m_2 \\\end{split}\]</div>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-306">模型公式</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-model-eq">
+<span class="eqno">(15)<a class="headerlink" href="#equation-model-eq" title="Link to this equation">¶</a></span>\[\nabla(T\nabla H) + K_1(H - H_1)/m_1 + K_2(H_2 - H)/m_2 = \mu^*\frac{\partial H}{\partial t}\]</div>
+<ol class="arabic simple" start="4">
+<li><p class="linemarker linemarker-313">模型简化</p></li>
+</ol>
+<p class="linemarker linemarker-315">添加条件：</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-317">各向同性</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-model-eq">
+<span class="eqno">(16)<a class="headerlink" href="#equation-model-eq" title="Link to this equation">¶</a></span>\[\nabla^2 H + \frac{H - H_1}{B_1^2} + \frac{H_2 - H}{B_2^2} = \frac{\mu^*}{T}\frac{\partial H}{\partial t}\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-322">B 为 <a class="reference internal" href="#id38">越流因素</a></p></li>
+</ul>
+</section>
+<section id="id19">
+<h3><a class="toc-backref" href="#id52" role="doc-backlink"><span class="section-number">1.3.4. </span>潜水面的二维模型</a><a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<img alt="潜水面二维模型" class="align-center" src="../_images/%E6%BD%9C%E6%B0%B4%E9%9D%A2%E4%BA%8C%E7%BB%B4.png" />
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-331">模型条件</p></li>
+</ol>
+<ul class="simple">
+<li><p class="linemarker linemarker-333"><a class="reference internal" href="#dupuit">Dupuit假设</a></p></li>
+<li><p class="linemarker linemarker-334">恒密度流</p></li>
+<li><p class="linemarker linemarker-335">以潜水面高度 <span class="math notranslate nohighlight">\(h\)</span> 为未知量</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p class="linemarker linemarker-337">得到公式</p></li>
+</ol>
+<p class="linemarker linemarker-339">由于是恒密度流，这次直接用流量守恒</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}&amp;\ 瞬变项 = 0 \\
+&amp;\ 流项 = \nabla (v h) = - \nabla(Kh\nabla H) \\
+&amp;\ 源项 = 降雨补给量 + 给水量 = W_{降雨} -  \mu\frac{\partial h}{\partial t}\end{split}\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-347">Dupuit假设使 <span class="math notranslate nohighlight">\(\nabla(vh) = -\nabla(Kh\nabla H)\)</span> 在潜水面也成立</p></li>
+<li><p class="linemarker linemarker-348">h 这里是潜水面到底面的高度，dh 不一定等于 dH</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-350">模型公式</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-model-eq">
+<span class="eqno">(17)<a class="headerlink" href="#equation-model-eq" title="Link to this equation">¶</a></span>\[\nabla(Kh\nabla H) + W_{降雨} = \mu\frac{\partial h}{\partial t}\]</div>
+<ol class="arabic simple" start="4">
+<li><p class="linemarker linemarker-357">简化公式</p></li>
+</ol>
+<p class="linemarker linemarker-359">简化条件：</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-361">当潜水层底面水平时 dh = dH</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-model-eq">
+<span class="eqno">(18)<a class="headerlink" href="#equation-model-eq" title="Link to this equation">¶</a></span>\[\nabla(Kh\nabla h) + W_{降雨} = \mu\frac{\partial h}{\partial t}\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-368">当各向同性</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-model-eq">
+<span class="eqno">(19)<a class="headerlink" href="#equation-model-eq" title="Link to this equation">¶</a></span>\[\nabla(h\nabla h) + W_{降雨}/K = \frac{\mu}{K}\frac{\partial h}{\partial t}\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-375">稳态模型</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\nabla(h\nabla h) + W_{降雨}/K = 0\]</div>
+</section>
+</section>
+<section id="id20">
+<h2><a class="toc-backref" href="#id53" role="doc-backlink"><span class="section-number">1.4. </span>概念参考</a><a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
+<p class="linemarker linemarker-382">包括了多孔介质、地下水物理性质和概念。</p>
+<section id="id21">
+<h3><a class="toc-backref" href="#id54" role="doc-backlink"><span class="section-number">1.4.1. </span>微分方程相关概念</a><a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple" id="id22">
+<li><p class="linemarker linemarker-389"><a class="reference internal" href="#id22">系统导数</a>:控制体内物质的物理量随时间的变化</p></li>
+<li><p class="linemarker linemarker-392"><a class="reference internal" href="#id4">瞬变项</a></p></li>
+<li><p class="linemarker linemarker-395"><a class="reference internal" href="#id5">流项</a></p></li>
+<li><p class="linemarker linemarker-397"><a class="reference internal" href="#id6">源项</a></p></li>
+</ol>
+<p class="linemarker linemarker-399">由于恒密度流时的公式一般使用流量守恒来直接替代质量守恒，所以源项W的量纲也可以是 <span class="math notranslate nohighlight">\([s^{-1}]\)</span>,当使用质量
+守恒表达时 量纲为 <span class="math notranslate nohighlight">\([ML^{-3}s^{-1}]\)</span></p>
+</section>
+<section id="nu">
+<span id="id23"></span><h3><a class="toc-backref" href="#id55" role="doc-backlink"><span class="section-number">1.4.2. </span>液体运动粘滞系数(<span class="math notranslate nohighlight">\(\nu\)</span>)</a><a class="headerlink" href="#nu" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-407">粘滞性：液体对于外加切应力或剪切变形会表现出抵抗的性质，称为粘滞性。</p>
+<p class="linemarker linemarker-409">流体的粘滞性规律可以用Newton内摩擦定律表示</p>
+<div class="math notranslate nohighlight">
+\[F = \mu A \frac{\mathrm{d}u}{\mathrm{d}y}\]</div>
+<p class="linemarker linemarker-413">式中：F为内摩阻力，A为接触面积；u为相对速度； <span class="math notranslate nohighlight">\(\mu\)</span> 为动力粘滞系数,也叫动力黏度。</p>
+<p class="linemarker linemarker-415"><span class="math notranslate nohighlight">\(\mu\)</span> 与液体的种类有关，<span class="math notranslate nohighlight">\(\mu\)</span> 越大，流体越难流动。液体粘滞性大小还可以用运动粘滞系数 <span class="math notranslate nohighlight">\(\nu\)</span> 来表示。</p>
+<div class="math notranslate nohighlight">
+\[\mu = \frac{\nu}{\rho}\]</div>
+</section>
+<section id="n">
+<span id="id24"></span><h3><a class="toc-backref" href="#id56" role="doc-backlink"><span class="section-number">1.4.3. </span>孔隙度(<span class="math notranslate nohighlight">\(n\)</span>)</a><a class="headerlink" href="#n" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-424">孔隙度：</p>
+<div class="math notranslate nohighlight">
+\[n = \frac{V_v}{V}\]</div>
+<p class="linemarker linemarker-428">孔隙率:</p>
+<div class="math notranslate nohighlight">
+\[e = \frac{V_v}{V_s}\]</div>
+</section>
+<section id="k">
+<h3><a class="toc-backref" href="#id57" role="doc-backlink"><span class="section-number">1.4.4. </span>渗透系数(<span class="math notranslate nohighlight">\(K\)</span>)</a><a class="headerlink" href="#k" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-434">见 <a class="reference internal" href="#darcy">Darcy定律</a></p>
+<div class="math notranslate nohighlight">
+\[K = \frac{gk}{\nu}\]</div>
+<p class="linemarker linemarker-441" id="id25">渗透率(k):与渗流相关的只与介质相关的参数</p>
+</section>
+<section id="darcy">
+<span id="id26"></span><h3><a class="toc-backref" href="#id58" role="doc-backlink"><span class="section-number">1.4.5. </span>Darcy定律</a><a class="headerlink" href="#darcy" title="Link to this heading">¶</a></h3>
+<div class="math notranslate nohighlight" id="equation-darcy-law">
+<span class="eqno">(20)<a class="headerlink" href="#equation-darcy-law" title="Link to this equation">¶</a></span>\[\begin{split}\upsilon = KJ = -K\nabla H \\
+Q = KA\frac{\Delta H}{L} = - \iint K\nabla H \mathrm{d}A\end{split}\]</div>
+</section>
+<section id="h">
+<span id="id27"></span><h3><a class="toc-backref" href="#id59" role="doc-backlink"><span class="section-number">1.4.6. </span>水头(H)</a><a class="headerlink" href="#h" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-462">由水头的计算公式 <a class="reference internal" href="#equation-h-eq">(11)</a> ，加上地下水流速很慢，动力水头和其他水体相差太大可得</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{flalign}
+&amp;\   H \approx h + p/\gamma  \\
+&amp;\   p \approx (H - h)\gamma
+\Rightarrow (h_{潜水面} - h)\gamma \\
+&amp;\ \Delta p = \Delta H \gamma &amp; 空间位置上不变重力水头不变。
+\end{flalign}\end{split}\]</div>
+</section>
+<section id="j-or-j">
+<span id="id28"></span><h3><a class="toc-backref" href="#id60" role="doc-backlink"><span class="section-number">1.4.7. </span>水力梯度 (J or j)</a><a class="headerlink" href="#j-or-j" title="Link to this heading">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[J = -\nabla H\]</div>
+</section>
+<section id="mu">
+<span id="id29"></span><h3><a class="toc-backref" href="#id61" role="doc-backlink"><span class="section-number">1.4.8. </span>给水度(<span class="math notranslate nohighlight">\(\mu\)</span>)</a><a class="headerlink" href="#mu" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-485">单位水头下降（潜水面高度下降）单位面积重力排水量</p>
+<div class="math notranslate nohighlight">
+\[Q_{wout} = \iint\mu(\Delta H)\mathrm{d}A\]</div>
+<p class="linemarker linemarker-490">贮水系数与给水度的区别：</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-492">（1）物理意义不同</p></li>
+</ul>
+<p class="linemarker linemarker-494">贮水系数表示弹性释放出来的水，释水过程是瞬时完成的，而给水度表示重力排水，水的释放需要一个较长的时间，存在迟后疏干现象。</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-496">（2）数值大小不同</p></li>
+</ul>
+<p class="linemarker linemarker-498">贮水系数在10-3～10-5之间，而给水度值一般在0.05～0.25之间；一般情况贮水系数不随时间变化，而给水度是时间的函数，排水时间越长，给水度值越大，最后趋于定值。</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-500">（3）影响区域不同</p></li>
+</ul>
+<p class="linemarker linemarker-502">贮水系数值与整个含水层和水的弹性性质有关；而给水度只与水位变动带及其上部包气带排水部分的岩性有关。</p>
+</section>
+<section id="mu-s">
+<span id="id30"></span><h3><a class="toc-backref" href="#id62" role="doc-backlink"><span class="section-number">1.4.9. </span>贮水系数(<span class="math notranslate nohighlight">\(\mu_s\)</span>)</a><a class="headerlink" href="#mu-s" title="Link to this heading">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[Q_{wout} = \iiint\mu_s(\Delta H)\mathrm{d}\tau\]</div>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-513">根据体积压缩系数的定义</p></li>
+<li><p class="linemarker linemarker-514">体积压缩系数很小的事实</p></li>
+<li><p class="linemarker linemarker-515"><a class="reference internal" href="#id33">有效应力原理</a></p></li>
+<li><p class="linemarker linemarker-516">考虑承压水水头变化的情况(减压释水)</p></li>
+</ol>
+<p class="linemarker linemarker-518">状态方程：</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}&amp;\ \beta p = - lnV_w + C\\&amp;\ V_w = V_{w0}e^{- \beta p} &amp; (V_0 为p = 0 时的体积)\\&amp;\ V_w \approx V_{w0}(1 - \beta p)\end{aligned}\end{align} \]</div>
+<p class="linemarker linemarker-528">同理可得：</p>
+<div class="math notranslate nohighlight" id="equation">
+<span class="eqno">(21)<a class="headerlink" href="#equation" title="Link to this equation">¶</a></span>\[\begin{split}&amp; V_w = V_{w0}(1 - \beta p) \\
+&amp; V_b = V_b(1 - \alpha \delta) \\
+&amp; (1-n) = (1-n_0)(1-\alpha p) \\
+&amp; V_v = nV_{b0}(1 - \alpha \delta / n) \\
+&amp; V_s 基本不变 \\\end{split}\]</div>
+<p class="linemarker linemarker-539">单位体积 <em>孔隙排水</em> 和 <em>水体积增大排水</em> ：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}&amp;\ - \mathrm{d}n = - (1-n)\alpha\mathrm{d}p \\
+&amp;\ \mathrm{d}V_w/V_b = - n\beta\mathrm{d}p \\\end{split}\]</div>
+<p class="linemarker linemarker-546">H变化引起的V_v变化和水体积变化:</p>
+<div class="math notranslate nohighlight" id="equation-eq">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq" title="Link to this equation">¶</a></span>\[\begin{split}&amp;\ 根据贮水系数定义： \mu_s = 单位体积排出的水量/dH \\
+\\
+&amp;\ 单位体积排出的水量： \mu_s(-dH) = - (1-n)\alpha\mathrm{d}p - n\beta\mathrm{d}p \\
+\\
+&amp;\ 贮水系数： \mu_s = (1-n)\alpha\gamma_w + n\beta\gamma_w \approx (1-n)\alpha\gamma_w\end{split}\]</div>
+</section>
+<section id="id31">
+<h3><a class="toc-backref" href="#id63" role="doc-backlink"><span class="section-number">1.4.10. </span>贮水率(<span class="math notranslate nohighlight">\(\mu^*\)</span>)</a><a class="headerlink" href="#id31" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-560">厚度为M含水层，单位层面积下降单位水头释放的水量: <span class="math notranslate nohighlight">\(\mu^{*} = \mu_s M\)</span></p>
+</section>
+<section id="beta-alpha-alpha-p-alpha-s">
+<span id="id32"></span><h3><a class="toc-backref" href="#id64" role="doc-backlink"><span class="section-number">1.4.11. </span>体积压缩系数(<span class="math notranslate nohighlight">\(\beta ;\alpha ;\alpha_p ;\alpha_s\)</span>)</a><a class="headerlink" href="#beta-alpha-alpha-p-alpha-s" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-567">在地下水动力学中共有四个压缩系数:</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-569"><span class="math notranslate nohighlight">\(\delta\)</span> 为有效应力 <span class="math notranslate nohighlight">\(p\)</span> 为水压力。</p></li>
+<li><p class="linemarker linemarker-570"><span class="math notranslate nohighlight">\(n_0 为 p = 0 时的取值\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}水压缩系数: \beta  = - \frac{1}{V_w}\frac{\mathrm{d}V_w}{\mathrm{d}p} \\
+多孔介质压缩系数: \alpha = - \frac{1}{V_b}\frac{\mathrm{d}V_b}{\mathrm{d}{\delta}} \\
+介质固体颗粒压缩系数: \alpha_s = - \frac{1}{V_s}\frac{\mathrm{d}V_s}{\mathrm{d}{\delta}} \\
+孔隙压缩系数: \alpha_p = - \frac{1}{V_v}\frac{\mathrm{d}V_v}{\mathrm{d}{\delta}}\end{split}\\\begin{split}\\\end{split}\\\begin{split}&amp; \alpha = (1 - n)\alpha_s + n\alpha_p \approx n\alpha_p \\
+\\
+&amp; \frac{\mathrm{d}V_b}{V_b} = \frac{n\mathrm{d}(nV_b)}{nV_b} = \frac{n\mathrm{d}V_b}{V_b} + \mathrm{d}n \\
+&amp; \frac{\mathrm{d}V_b}{V_b} = \frac{\mathrm{d}n}{1-n} \\
+\\
+&amp; \alpha = -\frac{\mathrm{d}n}{1-n}/\mathrm{d}\delta \\
+&amp; (1-n) = (1-n_0)e^{-\alpha p}  \approx (1-n_0)(1-\alpha p) \\
+\\
+&amp; \mathrm{d}n = -(1-n)\alpha\mathrm{d}\delta = (1-n)\alpha\mathrm{d}p \\\end{split}\end{aligned}\end{align} \]</div>
+<p class="linemarker linemarker-594">孔隙压缩系数反映了骨架的可形变程度。</p>
+</section>
+<section id="id33">
+<span id="id34"></span><h3><a class="toc-backref" href="#id65" role="doc-backlink"><span class="section-number">1.4.12. </span>有效应力原理</a><a class="headerlink" href="#id33" title="Link to this heading">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}\sigma = \sigma^{'} + u \\
+u = \gamma_w h_w \\\end{split}\]</div>
+<p class="linemarker linemarker-606">总负荷一般不变:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{d}u = -\mathrm{d}\sigma^{'}\]</div>
+<ul class="simple">
+<li><p class="linemarker linemarker-610"><span class="math notranslate nohighlight">\(\sigma 为总应力，\sigma^{'} 为有效应力 ， u 为水应力。h_w 为测压水头\)</span></p></li>
+</ul>
+</section>
+<section id="t">
+<h3><a class="toc-backref" href="#id66" role="doc-backlink"><span class="section-number">1.4.13. </span>渗透率(T)</a><a class="headerlink" href="#t" title="Link to this heading">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[T = KM\]</div>
+</section>
+<section id="q-wout">
+<h3><a class="toc-backref" href="#id67" role="doc-backlink"><span class="section-number">1.4.14. </span>排水量 <span class="math notranslate nohighlight">\(Q_{wout}\)</span></a><a class="headerlink" href="#q-wout" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-619">排出水的体积，因为水的密度变化不大，所以可以使用排水量来直接说明水的物质量变化情况</p>
+</section>
+<section id="id35">
+<span id="id36"></span><h3><a class="toc-backref" href="#id68" role="doc-backlink"><span class="section-number">1.4.15. </span>弱透水层</a><a class="headerlink" href="#id35" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-626">相对于主含水层渗透系数极小的含水层，一般小3个数量级且本身厚度相对于含水层来说很薄。</p>
+<p class="linemarker linemarker-628">弱透水层的弹性释水 <a class="reference internal" href="#equation-eq">(22)</a></p>
+<div class="math notranslate nohighlight">
+\[\mu_s = (1 - n)\alpha\gamma_w\]</div>
+<p class="linemarker linemarker-632">弱透水层主要为黏土层，黏土层渗透系数小但是贮水系数却很大，直观上黏土层更能隔水，但也更能贮水，
+用同样大的压强压缩黏土层和非黏土层会发现黏土层更容易变形，即:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\alpha 大\\
+\mu_s 大\\
+K 小 \\\end{split}\]</div>
+<section id="id37">
+<h4><a class="toc-backref" href="#id69" role="doc-backlink"><span class="section-number">1.4.15.1. </span>黏土层的地下水动力学理想模型</a><a class="headerlink" href="#id37" title="Link to this heading">¶</a></h4>
+<p class="linemarker linemarker-644">对于研究对象非黏土层，且黏土层的厚度较薄，一般作如下简化处理:</p>
+<ol class="arabic simple">
+<li><p class="linemarker linemarker-646">忽略弱透水层的弹性释水</p></li>
+<li><p class="linemarker linemarker-647">由 <a class="reference internal" href="#id11">水流折射定律</a> 可知黏土层的入射角或出射角</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}&amp;\ tan\theta_{弱透水层} = tan\theta_{主含水层}(K_1/K_2) &gt; 10^3 tan\theta_{主含水层} \\
+&amp;\ \theta \approx 90^{\circ} \\\end{split}\]</div>
+<ol class="arabic simple" start="3">
+<li><p class="linemarker linemarker-653">忽略在弱透水层的水头损耗</p></li>
+</ol>
+<p class="linemarker linemarker-655">故将弱透水层抽象为：</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-657">使水流流向平行于边界且还有越流补给的边界。</p></li>
+</ul>
+<p class="linemarker linemarker-659">等价于：</p>
+<ul class="simple">
+<li><p class="linemarker linemarker-661">不透水边界 but 有补给W。</p></li>
+</ul>
+</section>
+</section>
+<section id="b">
+<span id="id38"></span><h3><a class="toc-backref" href="#id70" role="doc-backlink"><span class="section-number">1.4.16. </span>越流因素(B)</a><a class="headerlink" href="#b" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-668">反映一个越流系统中越流能力的大小，于岩层相关</p>
+<div class="math notranslate nohighlight">
+\[Q_{越流补给水量} = T\iint\frac{\Delta H}{ B^2}\mathrm{d}A\]</div>
+<p class="linemarker linemarker-674">计算公式:</p>
+<div class="math notranslate nohighlight" id="equation-b-eq">
+<span class="eqno">(23)<a class="headerlink" href="#equation-b-eq" title="Link to this equation">¶</a></span>\[B = \sqrt{\frac{Tm}{K}}\]</div>
+</section>
+<section id="sigma">
+<h3><a class="toc-backref" href="#id71" role="doc-backlink"><span class="section-number">1.4.17. </span>越流系数(<span class="math notranslate nohighlight">\(\sigma^{'}\)</span>)</a><a class="headerlink" href="#sigma" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-682">单位面积单位水体下的越流量</p>
+<p class="linemarker linemarker-684">量纲 <span class="math notranslate nohighlight">\([L^3T^{-1}]\)</span></p>
+<div class="math notranslate nohighlight">
+\[Q_{越流量} = \iint\sigma^{'}\Delta H\mathrm{d}A\]</div>
+<p class="linemarker linemarker-688">计算公式：</p>
+<p class="linemarker linemarker-690">量纲 <span class="math notranslate nohighlight">\([T^{-1}]\)</span></p>
+<div class="math notranslate nohighlight">
+\[\sigma^{'} = \frac{K}{m}\]</div>
+</section>
+<section id="dupuit">
+<span id="id39"></span><h3><a class="toc-backref" href="#id72" role="doc-backlink"><span class="section-number">1.4.18. </span>Dupuit假设</a><a class="headerlink" href="#dupuit" title="Link to this heading">¶</a></h3>
+<p class="linemarker linemarker-699">在计算潜水面时，由于潜水面存在垂向水流，因而水力梯度的公式为</p>
+<div class="math notranslate nohighlight">
+\[J = \nabla H = (\frac{\partial H}{\partial x},\frac{\partial H}{\partial y},\frac{\partial H}{\partial z})\]</div>
+<p class="linemarker linemarker-703">而不是</p>
+<div class="math notranslate nohighlight">
+\[J = (\frac{\partial H}{\partial x},\frac{\partial H}{\partial y})\]</div>
+<p class="linemarker linemarker-707">假设潜水面的水流没有垂向流动，就是Dupuit假设。</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">sicheng_essentials</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7%E4%B8%80%E8%A7%88.html">数学符号一览</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E5%9C%B0%E8%B2%8C%E5%AD%A6%E5%8F%8A%E7%AC%AC%E5%9B%9B%E7%BA%AA%E5%9C%B0%E8%B4%A8%E5%AD%A6.html">地貌学及第四纪地质学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../%E8%8B%B1%E8%AF%AD%E5%85%AD%E7%BA%A7%E7%BB%83%E4%B9%A0.html">英语六级练习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gsw/gsw.html">古生物和地史学概论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sjjg/sjjg.html">DataStructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rust%E6%91%98%E8%A6%81.html">Rust摘要</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="dxs.html">地下水动力学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../structuralgeo/gzjh.html">构造地质学的几何方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation/%E7%BF%BB%E8%AF%91%E6%88%96%E6%8F%90%E5%8F%96%E7%9A%84%E6%96%87%E7%AB%A0.html">翻译或提取的文章</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="dxs.html">地下水动力学</a><ul>
+      <li>Previous: <a href="dxs.html" title="上一章">地下水动力学</a></li>
+      <li>Next: <a href="12%E6%B2%B3%E6%B8%A0%E9%99%84%E8%BF%91%E7%9A%84%E5%9C%B0%E4%B8%8B%E6%B0%B4%E8%BF%90%E5%8A%A8.html" title="下一章"><span class="section-number">2. </span>河渠附近的地下水运动</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="提交" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, sicheng.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/dxs/11地下水运动基础概论和一般数学模型.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
