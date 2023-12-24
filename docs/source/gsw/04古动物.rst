@@ -676,6 +676,11 @@ Cambrian-Permian,Cam.- Ord.最盛，二叠纪末灭绝，是
 .. image:: ./image/wangu.png
 .. image:: ./image/wangugouzao.png
 
+腕足类与双壳类化石的一般特征比较
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: ./image/wanjubishuangqiao.png 
+
 
 腕足动物门的生态和地史分布
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
