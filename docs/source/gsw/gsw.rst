@@ -31,3 +31,5 @@
    See :download:`知识点精要 <./精要知识一览.pdf>`.
 
    See :download:`化石图片<./image/化石标本.zip>`
+   
+   See :download:`化石图片<./huashi.pdf>`
