@@ -3,6 +3,8 @@
 
 .. contents:: 目录
 
+地质年代表
+
 .. image:: ./image/chronostratigraphic-chart.png
   :alt: 年代地层表
   :align: left
