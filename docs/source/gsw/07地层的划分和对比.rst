@@ -3,15 +3,15 @@
 
 .. contents:: 目录
 
-地质年代表
+地质年代表1
 
 .. image:: ./image/chronostratigraphic-chart.png
   :alt: 年代地层表
-  :align: left
+  :scale: 50
 
 .. image:: ./image/guojiniandaidiceng.png
   :alt: 年代地层表1
-  :align: left
+  :scale: 50
 
 基本概念
 ==================
