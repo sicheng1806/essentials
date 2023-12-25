@@ -22,6 +22,7 @@ Contents
    ./dxs/dxs
    ./structuralgeo/gzjh 
    ./tulixue/tlx
+   ./岩体力学/ytlx
    地貌学及第四纪地质学
    英语六级练习
    ./translation/翻译或提取的文章
