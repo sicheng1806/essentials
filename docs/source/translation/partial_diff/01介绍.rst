@@ -1,0 +1,113 @@
+偏微分方程简介
+======================
+
+**定义**
+
+* 偏微分方程通用形式
+
+.. math:: \mathbf{F}(D^k\mathbf{u}(x),D^{k-1}\mathbf{u}(x),...,D\mathbf{u}(x),\mathbf{u}(x),x) = \mathbf{0} (x \in U)
+    :label: 1_1
+
+为 :math:`k^{th} order system` 偏微分方程系统
+
+.. math:: \mathbf{F} : R^{n^k} \times R^{n^{k-1}} \times ... \times R^{n} \times R \times U \rightarrow R
+
+
+* 线性偏微分方程
+  
+  .. math:: \sum \limits_{|\alpha | \le k} a_\alpha (x) D^\alpha u  = f(x)
+    :label: 1_2
+
+* 半线性偏微分方程
+  
+  .. math:: \sum \limits_{|\alpha | = k} a_\alpha(x) D^\alpha u + a_0(D^{k-1}u,...,Du,u,x) = 0
+    :label: 1_3
+
+* 准线性偏微分方程
+  
+  .. math:: \sum \limits_{|\alpha | = k} a_\alpha(D^{k-1} u ,...,Du,u,x)D^\alpha u  + a_0(D^{k-1}u,...,Du,u,x) = 0
+    :label: 1_4
+
+* 非线性偏微分方程，不具有上述形式的偏微分方程叫非线性方程
+
+**示例**
+
+a. 线性方程
+
+   1. Laplace's equation
+
+      .. math:: \Delta u = \sum \limits_{i = 1}^n u_{x_ix_i} = 0
+        :label: 1_5
+   
+   2. Helmholtz's(or eigenvalue) equation
+
+      .. math:: - \Delta u = \lambda u 
+        :label: 1_6
+   
+   3. Linear transport equation
+
+      .. math:: u_t + \sum\limits_{i=1}^n b^i u_{x_i} = 0
+        :label: 1_7
+
+   4. Liouville's equation 
+      
+      .. math:: u_t - \sum\limits_{i=1}^n b^i u_{x_i} = 0
+        :label: 1_8
+ 
+   5. Heat (or diffusion) equation
+      
+      .. math:: u_t - \Delta u = 0
+        :label: 1_9
+    
+   6. Schrodinger's equation
+      
+      .. math:: iu_t + \Delta u = 0
+        :label: 1_10
+  
+   7. Kolmogorov's equation
+
+      .. math:: u_t - \sum\limits_{i,j = 1}^n a^{ij} u_{x_{i}x_{j}} + \sum\limits_{i = 1}^n b^i u_{x_i} = 0
+        :label: 1_11
+
+   8. Fokker-Planck equation
+
+      .. math:: u_t - \sum\limits_{i,j = 1}^n a^{ij} u_{x_{i}x_{j}} - \sum\limits_{i = 1}^n b^i u_{x_i} = 0
+        :label: 1_12
+
+   9. Wave equation
+      
+      .. math:: u_{tt} - \Delta u = 0
+        :label: 1_13
+
+   10. Klein-Gordon equation
+
+       .. math:: u_{tt} - \Delta u + m^2 u = 0
+            :label: 1_14
+
+   11. Telegraph equation
+
+       .. math:: u_{tt} + 2du_t - u{xx} = 0
+            :label: 1_15
+    
+   12. General wave equation
+
+       .. math:: u_{tt} - \sum\limits_{i,j = 1}^n a^{ij} u_{x_ix_j} + \sum\limits_{i = 1}^n b^i u_{x_i} = 0
+         :label: 1_16
+    
+   13. Airy's equation
+
+       .. math:: u_t + u_{xxx} = 0
+        :label: 1_17
+
+   14. Beam equation
+
+       .. math:: u_{tt} + u_{xxxx} = 0
+        :label: 1_18
+
+b. 非线性方程
+c. 线性方程系统
+d. 非线性方程系统
+
+研究线性方程的策略
+------------------------
+
