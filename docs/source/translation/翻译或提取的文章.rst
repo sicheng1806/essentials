@@ -7,3 +7,4 @@
 
     Kamb赤平极射投影等密度图的c程序
     ./partial_diff/partial_diff
+    ./math_appendix/math

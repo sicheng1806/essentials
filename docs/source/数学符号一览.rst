@@ -251,7 +251,14 @@
     * - 空格2
       - :math:`a\qquad b`
       - ``\qquad``
-
+    * - 帽子
+      - :math:`\hat{z}`
+      - ``\hat{z} or \hat z``
+    * - 头标
+      - :math:`\overset{\cdot}h`
+      - ``\overset{\cdot}h``
+    
+    
 
 参考文献格式
 ---------------------------

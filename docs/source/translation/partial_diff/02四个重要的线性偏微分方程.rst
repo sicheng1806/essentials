@@ -1,0 +1,16 @@
+===========================
+四个重要的线性偏微分方程
+===========================
+
+.. contents:: 
+    :depth: 1
+
+这章介绍四个重要的线性偏微分方程:
+
+* the transport equation  :math:`u_t + b\cdot\mathrm{D}u = 0`
+* Laplace's equation  :math:`\Delta u = 0`
+* the heat equation :math:`u_t - \Delta u = 0`
+* the wave equation :math:`u_{tt} - \Delta u = 0`    
+    
+在开始之前读者应该回顾在附录 B 和 C中不等式，部分积分，格林公式和卷积的知识。之后这些理论将是必需的。
+

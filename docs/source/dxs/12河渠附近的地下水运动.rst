@@ -3,7 +3,7 @@
 
 由第一章可知，河渠中的地下水问题一般被视为二维问题，由公式
 
-.. math:: \nabla (Kh\nabla H) + W_{降雨} = \mu \frac{\partial h}{\partial t}
+.. math:: \nabla (Kh\nabla H) + W^{降雨} = \mu h_t
 
 确定浅水面水头和潜水面高度。
 
@@ -23,9 +23,9 @@
 .. math:: 
 
     \left\{\begin{matrix}
-    \frac{\mathrm{d}(h\frac{\mathrm{d} h}{\mathrm{d} x})}{\mathrm{d} x} + \frac{W}{K} = 0 \\
-    h(0) = h_1 \\
-    h(l) = h_2 
+        \frac{\mathrm{d}(h\frac{\mathrm{d} h}{\mathrm{d} x})}{\mathrm{d} x} + \frac{W}{K} = 0 \\
+        h(0) = h_1 \\
+        h(l) = h_2 
     \end{matrix}\right.
 
 **h解**
@@ -103,4 +103,9 @@
     u_{x,0} = u_{0,0} + \frac{u_{l,0} - u_{0,0}}{l}x \\
     u_{0,t} = u_1 \\
     u_{l,t} = u_2
-    \end{matrix}\right.
+    \end{matrix}\right. \\
+    略
+
+**应用**
+
+分析大堤防洪中修建防渗墙后对地下水动态和周边环境的影响
