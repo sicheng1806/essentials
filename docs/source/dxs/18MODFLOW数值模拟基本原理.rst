@@ -132,4 +132,13 @@ MODFLOW是应用有限差分法解决地下水数值模拟的软件。目前是�
 
 用于求解的有限差分方程最终具有形式 :math:`[A]\mathbf{H} = \mathbf{q}`
 
-略
+.. math:: 
+
+    &\ \quad CV_{i,j,k-1/2}H_{i,j,k-1}+CC_{i-1/2,j,k}H_{i-1,j,k}+CR_{i,j-1/2,k}H_{i,j-1,k} \\
+    &\ + (-CR_{i,j-1/2,k}-CR_{i,j+1/2,k}-CC_{i-1/2,j,k}-CC_{i+1/2,j,k}-CV_{i,j,k-1/2}-CV_{i,j,k+1/2} + HCOF_{i,j,k})H_{i,j,k} \\
+    &\ + CR_{i,j+1/2,k}H_{i,j+1,k} + CC_{i+1/2,j,k}H_{i+1,j,k} + CV_{i,j,k+1/2}H_{i,j,k+1} = RHS_{i,j,k}
+
+* 方程外部源项系数 :math:`HCOF_{i,j,k} = P_{i,j,k} - \frac{SS_{i,j,k}\Delta x_j \Delta y_j \Delta v_k}{t - t^{m-1}}`
+* 方程常项 :math:`RHS_{i,j,k} = -Q_{i,j,k} - SS_{i,j,k}\Delta x_j \Delta y_j \Delta v_k\frac{H^{m-1}}{t - t^{m-1}}`
+
+
