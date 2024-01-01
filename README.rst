@@ -13,19 +13,26 @@ Contents
 ========
 
 .. toctree:: 
+   :caption: 文章或文章集
+   :maxdepth: 1
+   
+   ./mydocs/数学符号一览
+   ./mydocs/Rust摘要
+   ./mydocs/translation/翻译或提取的文章
+   ./mydocs/数学札记/sxzj
+
+.. toctree:: 
+   :caption: 专业课程集
    :maxdepth: 1
 
-   数学符号一览
-   ./gsw/gsw
-   ./sjjg/sjjg
-   Rust摘要
-   ./dxs/dxs
-   ./structuralgeo/gzjh 
-   ./tulixue/tlx
-   ./岩体力学/ytlx
-   地貌学及第四纪地质学
-   英语六级练习
-   ./translation/翻译或提取的文章
+   ./mydocs/古生物与地史学/gsw
+   ./mydocs/数据结构/sjjg
+   ./mydocs/地下水动力学/dxs
+   ./mydocs/构造地质学/gzjh
+   ./mydocs/土力学/tlx
+   ./mydocs/岩体力学/ytlx
+   ./mydocs/地貌学及第四纪地质学
+   ./mydocs/英语六级练习
    
 
    
