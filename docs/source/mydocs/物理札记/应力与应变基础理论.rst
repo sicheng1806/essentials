@@ -1,0 +1,160 @@
+====================
+应力与应变基础理论
+====================
+
+.. contents:: 
+
+**摘要** 回答以下问题：应力与应变是如何导出的？应力与应变的数学表达方式？
+有哪些常见的应变状态？什么是本构关系？有哪些本构关系？
+
+应变
+------
+
+**应变概念的导出**
+
+物体的空间位置变化并不总像刚体一样可以用刚体转动和刚体位移简单的表示，还需要考虑形状对物质点位置变化的
+影响，即 :math:`空间位置变化 = 刚体位移 + 刚体转动 + 形变`。而形变也包括体积改变和形状畸变，即 
+:math:`形变 = 体积变形 + 形状畸变`
+
+为了描述一点的变形，考察过这点的任意微小线段即线元，变形前后任意线元只能发生长度和方向上的改变。
+变形前后长度的相对改变量定义为这一方向的正应变。为了考察形状的相对改变，考察三个两两垂直的线元，他们之间的夹角
+改变量定义为这一面的形状改变。即：
+
+.. math:: 
+
+    \left.\begin{matrix}
+     \varepsilon_\alpha = \frac{\Delta l_\alpha}{l_\alpha} \\
+     \gamma_{\alpha\beta} = \frac{\pi}{2} - <l_\alpha,l_\beta> 
+    \end{matrix}\right\}
+
+* 用下标表示线元的方向
+
+**应变与变形的关系和任意方向的应变**
+
+应变和物体变形的实际关系可以用简单的模型直观表述。简单起见，用二维模型表述。先通过简单的模型获得一些直观认识：
+
+* 考虑如下一个正方形，将其等比例划分为诸多微分单元体。正方形发生如下变形，这是正方体各微分单元体，应变状态都一致下的变形。
+  可以得出应变是变形的空间微分。
+* 考虑如下一个长条状的矩形，将其长度方向等比例划分为诸多微分单元体，各微分单元体的切应变不同，可以得出，长条状矩形的偏转角是
+  切应变的曲线积分。
+* 考虑如下一个单位圆，若只发生正应变，则它的形状将会变成一个椭圆，若 :math:`\varepsilon_x 和 \varepsilon_y` 已知。
+
+  .. image:: ./images/strain_ellipse.png
+    :scale: 50
+
+  .. math:: 
+
+    &\ DO = sin\alpha \\
+    &\ OC = cos\alpha \\
+    &\ \Delta x = \varepsilon_x \\
+    &\ \Delta y = \varepsilon_y \\
+    &\ \varepsilon_\alpha = DO\varepsilon_xcos\alpha + OCsin\alpha \\
+    &\ \quad = \varepsilon_x cos^2\alpha + \varepsilon_y cos^2\alpha 
+
+* 考虑如下一个单位圆，若在上步的基础上还发生了切应变，则，切应变对 :math:`\varepsilon_\alpha` 也有增量。
+
+  .. math:: \varepsilon_\alpha = \varepsilon_x cos^2\alpha + \varepsilon_y cos^2\alpha + \gamma_{xy}cos\alpha sin\alpha
+
+**应变的数学推导**
+
+考察空间微分系统中，反映位移梯度的任意方向线元AB(:math:`ds`)在一次变形的位移情况。
+
+* 定义位移函数 :math:`u = (u^x,u^y,u^z)` 和 位置函数 :math:`r` ,
+* 记上标为分量，下标为偏导。
+* 用 :math:`'` 区分变形前和变形后
+* :math:`ds = (dx \quad dy) = \mathrm{d}r_i`
+
+则在此次位移过程中：
+ 
+.. math:: 
+
+    &\ r_{A'} = u_A + r_A \\
+    &\ r_{B'} = u_B + r_B \\
+    &\ \mathrm{d}s{'} = \mathrm{d}s + u_B - u_A \\
+    &\ 矢量计算已经排除了刚体位移微元：\\
+    &\ 刚体旋转微元 + 形变微元 = \mathrm{d}s{'} - \mathrm{d}s = \mathrm{d}u = 位移微元\\
+    &\ 利用微分系统等价关系： \\
+    &\ u_B - u_A = \mathrm{d}u = 
+    \mathrm{grad}\mathbf{u}\mathrm{d} s 
+     = \begin{pmatrix}
+        u^x_x  & u^x_y  \\
+        u^y_x  & u^y_x 
+    \end{pmatrix}  
+    \mathrm{d}r_j
+    = u^i_j \mathrm{d} r_j
+
+可见位移微元:
+
+.. math::  \mathrm{d} u = u^i_j\mathrm{d} r_j= 刚体转动微元 + 形变微元
+
+位移梯度张量：
+
+.. math:: \mathrm{grad}\mathbf{u} = \mathrm{grad}\mathbf{u_{形变}} + \mathrm{grad}\mathbf{u_{刚体转动}}
+
+为了一步区分刚体转动和形变：
+
+如果只有刚体转动，则 :math:`\mathrm{d}s'^{2} = \mathrm{d}s^2` : 
+
+.. math:: 
+    &\ \mathrm{d}s'^{2} - \mathrm{d}s^2 = (dx+du^x)^2+(dy+du^y)^2- (dx^2 + dy^2)  \\
+    &\ 略去偏导的乘积 \\
+    &\ = u^x_x (\mathrm{d}x^2) + u^x_y(\mathrm{d}x\mathrm{d}y) + u^y_x(\mathrm{d}x\mathrm{d}y) + u^y_y(\mathrm{d}y^2) \\
+    & \ = u^i_j \mathrm{d}r_i\mathrm{d}r_j  = 0 \\
+    &\ 得 \left\{\begin{matrix}
+        u^i_i = 0 \\
+        u^x_y = u^y_x
+       \end{matrix}\right.
+
+可知刚体转动的位移梯度为 `反对称矩阵` ，相应的形变的位移梯度为 `对称矩阵` 。
+
+**应变状态和应变张量** 
+
+由上节可以知道应变张量与位移梯度的关系：
+
+.. math:: 
+    &\ \mathrm{grad} \mathbf{u} = u^i_j 
+    = \mathrm{grad} \mathbf{u_{形变}} + \mathrm{grad} \mathbf{u_{刚体转动}} \\
+    &\ =
+    \begin{pmatrix}
+    u^x_x & \frac{u^x_y + u^y_x}{2} & \frac{u^x_y + u^y_x}{2}\\
+    \frac{u^y_x + u^x_y}{2} & u_y^y & \frac{u^y_z + u^z_y}{2} \\
+    \frac{u^z_x + u^x_z}{2} & \frac{u^z_y + u^y_z}{2} & u^z_z
+    \end{pmatrix}
+    + 
+    \begin{pmatrix}
+       0 & \frac{u^y_x - u^x_y}{2} & \frac{u^z_x - u^x_z}{2} \\
+      \frac{u^x_y - u^y_x}{2} & 0 &  \frac{u^z_y - u^y_z}{2} \\
+      \frac{u^x_z - u^z_x}{2} &  \frac{u^y_z - u^z_y}{2} & 0
+    \end{pmatrix}
+
+.. math:: 
+    \mathrm{grad} \mathbf{u_{形变}} = \varepsilon^i_j 
+    = 
+    \begin{pmatrix}
+    \varepsilon_x & \frac{1}{2}\gamma_{xy}   & \frac{1}{2}\gamma_{xz} \\
+    \frac{1}{2}\gamma_{xy}   & \varepsilon_y & \frac{1}{2}\gamma_{yz} \\
+    \frac{1}{2}\gamma_{xz}   & \frac{1}{2}\gamma_{yx}   & \varepsilon_{z} \\
+    \end{pmatrix} 
+    = 
+    \begin{pmatrix}
+    u^x_x & \frac{u^x_y + u^y_x}{2} & \frac{u^x_y + u^y_x}{2}\\
+    \frac{u^y_x + u^x_y}{2} & u_y^y & \frac{u^y_z + u^z_y}{2} \\
+    \frac{u^z_x + u^x_z}{2} & \frac{u^z_y + u^y_z}{2} & u^z_z
+    \end{pmatrix}
+
+.. math:: 
+    应变标记\left\{
+    \begin{matrix}
+    \varepsilon_i = \varepsilon_i^i \\
+    \gamma_{ij} = \varepsilon^i_j + \varepsilon^j_i
+    \end{matrix}\right.
+
+**求三维任意方向应变**
+
+继续沿用上面的微分系统，结合应变的定义：
+
+.. math:: 
+    &\ \varepsilon_\alpha = \mathrm{grad}\mathbf{u}_{形变}\cdot r_\alpha = \left [ \varepsilon^i_j \right ] 
+    \begin{pmatrix}cos<\alpha,x> \\cos<\alpha,y>\\cos<\alpha,z> \end{pmatrix} = \left [ \varepsilon^i_j \right ]
+    \begin{pmatrix}\beta_{\alpha x} \\\beta_{\alpha y} \\\beta_{\alpha z}  \end{pmatrix} \\
+    & =  

@@ -1,0 +1,86 @@
+==========================
+微元法与微分系统等价性
+==========================
+
+**摘要** 这篇文章解决，“在使用微元法得到的等式时，我们所运用的原理到底是什么? ”，这个问题。
+我认为是利用了微分系统的等价性，即，在某个无穷小极限条件下(如 :math:`t \rightarrow 0`)，的无穷小量直接的极限关系。
+
+**定义** 
+
+* 记 某个无穷小极限条件下的系统称为在这个极限条件下的微分系统。暂不做符号定义。
+* 在微分系统下的无穷小量，等于该量的全微分，具有无穷小量的物体，在微分系统中叫做微元。
+* 微元可以是一个标量，也可以是一个矢量，可以是张量，可以是任何定义了无穷小的量。
+
+**举例**
+
+* t代表时间， :math:`t \rightarrow 0` 时，的微分系统有 :math:`速度 v = \frac{\mathrm{d}x}{\mathrm{d}t}` ， 这里
+  在极限条件下，时间，位移成为了无穷小量，可以抽象出位移微元，时间微元。
+* 常用的微分单元体(具有正方体形状，且3边长度无穷小的量)，是在 :math:`\Delta x \rightarrow 0,\Delta y \rightarrow 0,\Delta z \rightarrow 0` 微分系统中的微元。
+
+**微分系统中的全微分**
+
+即使在一般推导中熟练了微元法的运用，但是还是在处理包括微元，向量，张量这些物理量的关系时遇到了极大的问题。
+
+此外，用微分系统来解释抽象的微分形式，不失一种优雅的解决方案。
+
+
+**1. 方向导数与偏导及其含义**
+
+**定义** 
+
+* 设 :math:`D \subset R^2` 为开集， :math:`z=f(x,y),\quad (x,y)\in D` 是定义在D上的二元函数，
+  :math:`(x_0,y_0) \in D` 为一定点 ， :math:`r_\alpha = (cos \alpha,sin \alpha)` 为一个方向。
+  如果极限：
+
+  .. math:: \lim\limits_{t\rightarrow 0+}\frac{f(x_0+tcos\alpha,y_0+tsin\alpha)-f(x_0,y_0)}{t}
+  
+  存在，则称此极限为函数 :math:`f` 在点 :math:`(x_0,y_0)` 的沿方向 :math:`r_\alpha` 的 **方向导数** ， 记为：
+
+  .. math:: \frac{\partial f}{\partial r_\alpha}(x_0,y_0)
+
+* **偏导** 类似的:
+
+  .. math:: \frac{\partial f}{\partial x}(x_0,y_0) = \lim\limits_{t\rightarrow 0+}\frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}
+
+* **全微分**
+  
+  全微分的特殊点在于增量之间无关。
+  
+  记函数的 **全增量** 为：
+
+  .. math:: \Delta z = f(x_0+\Delta x,y_0 + \Delta y) - f(x_0,y_0)
+  
+  * 其中 :math:`\Delta x 与 \Delta y` 无关。
+  
+  相应的有全微分的定义：
+
+  若存在只与点 :math:`(x_0,y_0) \in D` 有关 ,而与 :math:`Delta x,\Delta y` 无关的常数 A 和 B 使得，
+ 
+  .. math:: \Delta z = A \Delta x + B \Delta y + o(\sqrt{\Delta x^2 + \Delta y^2})
+  
+  则称函数 :math:`z在点(x_0,y_0)处可微`。记为 :math:`\mathrm{d}z(x_0,y_0) = A\mathrm{d}x + B\mathrm{d}y`
+
+* 由偏导和全微分的定义，得到：
+  
+  .. math:: \mathrm{d}z = \frac{\partial z}{\partial x}\mathrm{d}x + \frac{\partial z}{\partial y}\mathrm{d}y
+
+* **梯度** :math:`\mathbf{grad}f = f_x \mathrm{i} + f_y \mathrm{j}`
+* **向量值函数的导数与Jocobi矩阵** :
+  
+  类似的：
+
+  .. math:: 
+
+    \mathrm{D}f(x) = J_f(x) = f'(x) = 
+    \begin{pmatrix}
+        f^1_1 & f^1_2 & \dots & f^1_n \\
+        f^2_1 & f^2_2 & \dots & f^1_n \\
+        \vdots & \vdots &  & \vdots \\
+        f^m_1 & f^m_2 & \dots & f^m_n
+    \end{pmatrix} = f^i_j 
+
+* **向量值函数的全导数** 
+  
+  类似的：
+
+  .. math:: \mathrm{d} y = Df(x) \mathrm{d} x = f^i_j d r_j
