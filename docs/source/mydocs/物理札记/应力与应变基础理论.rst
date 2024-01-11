@@ -29,7 +29,7 @@
 
 * 用下标表示线元的方向
 
-**应变与变形的关系和任意方向的应变**
+**应变与变形的关系**
 
 应变和物体变形的实际关系可以用简单的模型直观表述。简单起见，用二维模型表述。先通过简单的模型获得一些直观认识：
 
@@ -55,7 +55,7 @@
 
   .. math:: \varepsilon_\alpha = \varepsilon_x cos^2\alpha + \varepsilon_y cos^2\alpha + \gamma_{xy}cos\alpha sin\alpha
 
-**应变的数学推导**
+**位移梯度的组成**
 
 考察空间微分系统中，反映位移梯度的任意方向线元AB(:math:`ds`)在一次变形的位移情况。
 
@@ -75,7 +75,7 @@
     &\ 刚体旋转微元 + 形变微元 = \mathrm{d}s{'} - \mathrm{d}s = \mathrm{d}u = 位移微元\\
     &\ 利用微分系统等价关系： \\
     &\ u_B - u_A = \mathrm{d}u = 
-    \mathrm{grad}\mathbf{u}\mathrm{d} s 
+    J_u\mathrm{d} s 
      = \begin{pmatrix}
         u^x_x  & u^x_y  \\
         u^y_x  & u^y_x 
@@ -89,16 +89,17 @@
 
 位移梯度张量：
 
-.. math:: \mathrm{grad}\mathbf{u} = \mathrm{grad}\mathbf{u_{形变}} + \mathrm{grad}\mathbf{u_{刚体转动}}
+.. math:: J_\mathbf{u} = J_\mathbf{u_{形变}} + J_\mathbf{u_{刚体转动}}
 
 为了一步区分刚体转动和形变：
 
 如果只有刚体转动，则 :math:`\mathrm{d}s'^{2} = \mathrm{d}s^2` : 
 
 .. math:: 
-    &\ \mathrm{d}s'^{2} - \mathrm{d}s^2 = (dx+du^x)^2+(dy+du^y)^2- (dx^2 + dy^2)  \\
+    &\ \parallel\mathrm{d}s'^{2} \parallel - \parallel\mathrm{d}s^2 \parallel = (dx+du^x)^2+(dy+du^y)^2- (dx^2 + dy^2)  \\
     &\ 略去偏导的乘积 \\
-    &\ = u^x_x (\mathrm{d}x^2) + u^x_y(\mathrm{d}x\mathrm{d}y) + u^y_x(\mathrm{d}x\mathrm{d}y) + u^y_y(\mathrm{d}y^2) \\
+    &\ \frac{1}{2}(\parallel\mathrm{d}s'^{2} \parallel - \parallel\mathrm{d}s^2 \parallel)
+    = u^x_x (\mathrm{d}x^2) + u^x_y(\mathrm{d}x\mathrm{d}y) + u^y_x(\mathrm{d}x\mathrm{d}y) + u^y_y(\mathrm{d}y^2) \\
     & \ = u^i_j \mathrm{d}r_i\mathrm{d}r_j  = 0 \\
     &\ 得 \left\{\begin{matrix}
         u^i_i = 0 \\
@@ -107,13 +108,13 @@
 
 可知刚体转动的位移梯度为 `反对称矩阵` ，相应的形变的位移梯度为 `对称矩阵` 。
 
-**应变状态和应变张量** 
+**应变张量与转动张量** 
 
 由上节可以知道应变张量与位移梯度的关系：
 
 .. math:: 
-    &\ \mathrm{grad} \mathbf{u} = u^i_j 
-    = \mathrm{grad} \mathbf{u_{形变}} + \mathrm{grad} \mathbf{u_{刚体转动}} \\
+    &\ J_\mathbf{u} = u^i_j 
+    = J_\mathbf{u_{形变}} + J_\mathbf{u_{刚体转动}} \\
     &\ =
     \begin{pmatrix}
     u^x_x & \frac{u^x_y + u^y_x}{2} & \frac{u^x_y + u^y_x}{2}\\
@@ -127,8 +128,10 @@
       \frac{u^x_z - u^z_x}{2} &  \frac{u^y_z - u^z_y}{2} & 0
     \end{pmatrix}
 
+应变张量 :math:`\left [ \varepsilon^i_j \right]`
+
 .. math:: 
-    \mathrm{grad} \mathbf{u_{形变}} = \varepsilon^i_j 
+    J_\mathbf{u_{形变}} = \varepsilon^i_j 
     = 
     \begin{pmatrix}
     \varepsilon_x & \frac{1}{2}\gamma_{xy}   & \frac{1}{2}\gamma_{xz} \\
@@ -148,13 +151,144 @@
     \varepsilon_i = \varepsilon_i^i \\
     \gamma_{ij} = \varepsilon^i_j + \varepsilon^j_i
     \end{matrix}\right.
+  
+刚体转动张量 :math:`\Omega_{ij}=\Omega^i_j` :
 
-**求三维任意方向应变**
+.. math:: 
+
+  \left [ \Omega_{ij} \right]
+  = 
+  \begin{pmatrix}
+       0 & \frac{u^y_x - u^x_y}{2} & \frac{u^z_x - u^x_z}{2} \\
+      \frac{u^x_y - u^y_x}{2} & 0 &  \frac{u^z_y - u^y_z}{2} \\
+      \frac{u^x_z - u^z_x}{2} &  \frac{u^y_z - u^z_y}{2} & 0
+  \end{pmatrix}
+
+刚体转动张量:
+
+.. math:: \Omega_{ij} = \frac{u^i_j - u^j_i}{2} 
+
+
+
+**求指定方向应变**
 
 继续沿用上面的微分系统，结合应变的定义：
 
+.. math:: \varepsilon_\alpha = \frac{\parallel \mathrm{d}s'\parallel-\parallel \mathrm{d}s\parallel }{\parallel  \mathrm{d}s \parallel}
+
+* 此时 :math:`\alpha` 作为线元的任意方向。
+* 记 :math:`l_i = l,m,n = \beta_{\alpha x},\beta_{\alpha y},\beta_{\alpha z}`
+* 有
+  
+  .. math:: 
+    l,m,n = \frac{\parallel \mathrm{d}x\parallel}{ \parallel \mathrm{d}s\parallel}
+    , \frac{\parallel \mathrm{d}y\parallel}{ \parallel \mathrm{d}s\parallel}
+    , \frac{\parallel \mathrm{d}z\parallel}{ \parallel \mathrm{d}s\parallel}
+
+则 
+
 .. math:: 
-    &\ \varepsilon_\alpha = \mathrm{grad}\mathbf{u}_{形变}\cdot r_\alpha = \left [ \varepsilon^i_j \right ] 
-    \begin{pmatrix}cos<\alpha,x> \\cos<\alpha,y>\\cos<\alpha,z> \end{pmatrix} = \left [ \varepsilon^i_j \right ]
-    \begin{pmatrix}\beta_{\alpha x} \\\beta_{\alpha y} \\\beta_{\alpha z}  \end{pmatrix} \\
-    & =  
+  &\ \varepsilon_\alpha = \frac{\parallel \mathrm{d} s' \parallel^2 - \parallel \mathrm{d}s \parallel ^2}
+  {2\parallel ds \parallel^2}  
+  = u^x_x (l^2) + u^x_y(lm) + u^y_x(lm) + u^y_y(m^2) = u^i_j(l_i l_j) \\
+  &\ \quad = \frac{u^i_j + u^j_i}{2}l_i l_j  = \varepsilon_{ij} l_i l_j 
+
+若三维同样的：
+
+.. math:: 
+  \varepsilon_\alpha = \varepsilon_{ij} l_i l_j 
+
+**应变矢量法处理**
+
+* 指定方向的应变矢量 :math:`E(n) = \frac{\mathrm{d}u}{\parallel \mathrm{d}r \parallel}` 。
+  
+  由定义可知: :math:`\varepsilon_\alpha = E(n) \cdot n` ， 即应变为 :math:`\mathrm{d}u` 在 :math:`n` 方向上的投影。
+
+  .. math:: E(n) = 
+
+体积形变和形变形变
+------------------------
+
+
+  
+
+应变张量的性质和变形协调方程
+-------------------------------
+
+
+应变率和应变增量
+-------------------
+
+应力
+------
+
+弹性体的本构方程
+-----------------
+
+.. math:: 
+  \left\{
+  \begin{matrix}
+    \varepsilon_x = \frac{1}{E}[\sigma_x - \mu(\sigma_y + \sigma_z)] \\
+    \varepsilon_y = \frac{1}{E}[\sigma_y - \mu(\sigma_x + \sigma_z)] \\
+    \varepsilon_z = \frac{1}{E}[\sigma_z - \mu(\sigma_y + \sigma_x)] \\
+    \gamma_{xy} = \frac{\tau_{xy}}{G}\\
+    \gamma_{yz} = \frac{\tau_{yz}}{G}\\
+    \gamma_{zx} = \frac{\tau_{zx}}{G}\\
+    G = \frac{E}{2(1 + \mu)}
+  \end{matrix}\right.
+
+柱座标系下的应力应变
+---------------------
+
+
+
+特殊应力应变状态
+------------------
+
+平面应力状态
+^^^^^^^^^^^^^^
+
+半无限空间体
+^^^^^^^^^^^^^
+
+
+
+
+平面应变状态
+^^^^^^^^^^^^^^
+
+**平面应变状态下的应力应变和本构方程**
+
+* 平面应变条件下，物体可以在一个平面发生变形，但垂直于这个平面方向没有变形。
+
+若令 y 方向没有变形。则：
+
+有条件：
+
+.. math:: 
+  \left \{ 
+  \begin{matrix}
+    \varepsilon_y = 0 \\
+    \gamma_{yx} = \gamma_{yz} = 0 \\
+  \end{matrix}\right.
+
+得弹性体本构方程：
+
+.. math:: 
+  \left \{ 
+  \begin{matrix}
+    \varepsilon_x = \frac{1-\mu^2}{E}(\sigma_x - \frac{\mu}{1-\mu}\sigma_z) \\
+    \varepsilon_z = \frac{1-\mu^2}{E}(\sigma_z - \frac{\mu}{1-\mu}\sigma_x) \\
+    \gamma_{xy} = \frac{\tau_{xy}}{G} \\
+    G = \frac{E}{2(1 + \mu)} \\
+    \sigma_y = \mu(\sigma_x + \sigma_z)
+  \end{matrix}\right.
+
+测限应力状态
+^^^^^^^^^^^^^
+
+* 只允许一个方向发生正应变，其他两个方向不会发生。
+  
+有条件：
+
+.. math:: 

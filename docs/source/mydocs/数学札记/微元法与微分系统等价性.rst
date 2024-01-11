@@ -77,10 +77,10 @@
         f^2_1 & f^2_2 & \dots & f^1_n \\
         \vdots & \vdots &  & \vdots \\
         f^m_1 & f^m_2 & \dots & f^m_n
-    \end{pmatrix} = f^i_j 
+    \end{pmatrix} =  \left [ f^i_j \right ]
 
 * **向量值函数的全导数** 
   
   类似的：
 
-  .. math:: \mathrm{d} y = Df(x) \mathrm{d} x = f^i_j d r_j
+  .. math:: \mathrm{d} y = Df(x) \mathrm{d} x = \left [ f^i_j \right ] d r_j
