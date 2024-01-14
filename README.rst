@@ -18,6 +18,7 @@ Contents
    
    ./mydocs/数学符号一览
    ./mydocs/Rust摘要
+   ./mydocs/Typst摘要
    ./mydocs/translation/翻译或提取的文章
    ./mydocs/数学札记/sxzj
    ./mydocs/物理札记/wlzj

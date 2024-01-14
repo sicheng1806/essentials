@@ -292,3 +292,15 @@
 有条件：
 
 .. math:: 
+  \left \{ 
+  \begin{matrix}
+    \varepsilon_z = \frac{1}{E_s}\sigma_z = \frac{1-2\mu^2}{(1 - \mu) E}\sigma_z = \frac{1-2\mu K_0}{E}\sigma_z \\
+    \gamma_{yz} = \frac{\tau_{yz}}{G} \\
+    \gamma_{xz} = \frac{\tau_{xz}}{G} \\
+    \varepsilon_x = \varepsilon_y = 0 ,
+    \gamma_{xy} = 0 \\
+    G = \frac{E}{2(1 + \mu)} ,
+    K_0 = \frac{\mu}{1 - \mu} \\
+    \sigma_x = \sigma_y = K_0\sigma_z
+  \end{matrix}\right.
+  
