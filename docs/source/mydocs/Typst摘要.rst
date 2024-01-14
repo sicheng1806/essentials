@@ -259,3 +259,18 @@ Linux下我的字体设置
 
 .. image:: ./_images/typst_fonts.png
 
+布局设置
+------------
+
+下划线
+^^^^^^^^^^^^^
+
+typst中的 `underline` 只对字符添加下划线，如果要设置封面中的下划线，可以利用 `line` 块。
+由于 `line` 返回的是不内联的内容块。所以需要与线上的内容分开。
+
+.. code:: c
+
+    grid(
+        columns: (80pt)
+    )
+
