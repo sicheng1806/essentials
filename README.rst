@@ -20,21 +20,26 @@ Contents
    ./mydocs/Rust摘要
    ./mydocs/Typst摘要
    ./mydocs/translation/翻译或提取的文章
+   ./mydocs/cetz/计算机绘画
    ./mydocs/数学札记/sxzj
    ./mydocs/物理札记/wlzj
 
 .. toctree:: 
-   :caption: 专业课程集
+   :caption: 专业课程集I
    :maxdepth: 1
 
-   ./mydocs/古生物与地史学/gsw
-   ./mydocs/数据结构/sjjg
+   ./mydocs/分析学/fxx
    ./mydocs/地下水动力学/dxs
    ./mydocs/构造地质学/gzjh
    ./mydocs/土力学/tlx
    ./mydocs/岩体力学/ytlx
+   
+.. toctree:: 
+   :caption: 专业课程集II
+   :maxdepth: 1
+
+   ./mydocs/古生物与地史学/gsw
+   ./mydocs/数据结构/sjjg
    ./mydocs/地貌学及第四纪地质学
    ./mydocs/英语六级练习
-   
-
    
