@@ -7,3 +7,5 @@
 .. math:: (\forall \varepsilon) \wedge (\exists N) \wedge (\forall n,m \gt N) \Longrightarrow (\mid x_n - x_m \mid \le \varepsilon)
 
 * 柯西收敛准则
+
+
