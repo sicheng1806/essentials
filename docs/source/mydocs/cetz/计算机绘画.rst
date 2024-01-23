@@ -7,10 +7,12 @@ matplotlib更适合函数式绘画，对于示意图等绘画显得不太搭调�
 想使用一个专门用于画图的，且是代码类型的，希望cetz可以满足我的要求。
 
 .. toctree:: 
-    :maxdepth: 2 
+    :maxdepth: 1
 
-    ./matplotlib的投影轴
     ./各种工具的api特点分析
+    ./matplotlib的投影轴
+    ./使用matplotlib设置类ctez的可行性分析
+    ./matplotlib使用精要
     
 
 
