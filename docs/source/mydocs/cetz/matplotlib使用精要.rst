@@ -562,3 +562,72 @@ matplotlib.style
 4. ``mstyle.library`` 储存样式的字典
 5. ``mstyle.available`` 可用样式的列表
 
+主要类及其用法
+======================
+
+``Figure`` 
+----------------
+
+``class matplotlib.figure.Figure(figsize=None,dpi=None,*,facecolor=None,
+edgecolor=None,linewidth=0.0,frameon=None,subplotpars=None,tight_layout=None,
+constrained_layout=None,layout=None,**kwargs)`` 
+
+* 具有属性
+  
+  * patch 背景图案
+  * suppressComposite 
+* 调用时的参数
+  
+  * figsize : [6.4,4.8]
+  * dpi : 100.0
+  * facecolor : 'white'
+  * edgecolor : 'white'
+  * linewidth : 1
+  * frameon : True 
+  * subplotpars : 
+  * tight_layout : bool or dict 
+  * constrained_layout : bool 
+  * layout : {'constrained', 'compressed', 'tight', 'none', LayoutEngine, None}
+  * 其他参数：
+
+    * alpha
+    * animated 
+    * gid 
+    * 等
+
+figure的常用方法
+^^^^^^^^^^^^^^^^^^^^^
+
+- ``add_artist(artist,clip=False)`` , 添加一个artist给figure。
+- ``add_axes(*args,**kwargs)`` 
+- ``add_axobserver(func)``
+- ``add_callback(func)`` 
+- ``add_subfigure`` 
+- ``add_subplot``
+- ``align_labels(axs=None)`` 
+- ``clear`` 
+- ``clf`` 
+- ``colorbar`` 
+- ``delaxes(ax)`` 
+- ``draw(renderer)`` 
+- ``draw_artist(a)`` 
+- ``figimage`` 
+- ``gca()``
+- ``get_agg_filter``
+- ``get_alpha``
+- ``get_axes``
+- ``sca``
+- ``set``
+- ``subplots``
+
+
+axes的常用方法
+^^^^^^^^^^^^^^^^^^
+
+Line2D
+^^^^^^^^^^
+
+其他Artist
+^^^^^^^^^^^^
+
+
