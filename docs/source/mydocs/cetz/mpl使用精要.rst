@@ -630,4 +630,96 @@ Line2D
 其他Artist
 ^^^^^^^^^^^^
 
+Patch类
+------------
 
+Patch 是定义了填充色和轮廓线的图案，和ctez中的绘图类一致。
+
+``class Patch`` 
+^^^^^^^^^^^^^^^^^^^^^^
+
+Patch类的设计思路：
+
+Patch也是Artist的基类，因此也是通过 ``draw(self,renderer)`` 方法绘制的。
+其中renderer是绘制引擎。抽象的Artist并不可以绘制，draw方法只会返回空值。
+
+其可绘制的子类一般都可以绘制出，也就是完成了draw方法的绘制部分，例如 ``Line2D`` 
+
+.. code:: python 
+
+  # 这里查看代码后有了使用标记型伪代码快速画流程图的思想，在这里使用初步想象的python伪代码写流程图
+  if 不可见:return 
+  if invalid需要处理 : 缓存
+  if subslice需要处理 : 
+    subslice 处理
+  else: 
+    subslice = None 
+  if 如果有阴影效果: 获取有阴影效果的renderer 
+    renderer 开启line2d组 
+  if 需要绘制线型 : code marker: 线绘制 
+  if 需要绘制标记 : code 标记绘制
+  
+  code 线绘制: 
+    获取 tpath 和 affine 
+    if tpath有顶点 : 
+      从渲染器创建gc : gc = renderer.new_gc()
+      设置gc的参数: clip,url,antialiased,linewidth 
+      if dased : 
+        cap 和 join 为 dash类型
+      else: 
+        cap 和 join 为 solid类型
+      设置gc参数: cap,join 
+      设置gc参数: snap 
+      if 有sketch参数 : 设置sketch参数
+      if 为dash类型且有gapcolor: 
+        设置gc参数: 前景色,dash 
+        绘制路径: render.draw_path(gc,tpath,affine.froze()) 
+      设置gc参数: 前景色,dash 
+      绘制路径
+      gc.restore() 
+  
+  code 标记绘制: 
+    从渲染器创建gc
+    设置gc参数: clip,url,linewidth,antialiased,前景色
+    if 有sketch参数: 设置gc参数: sketch 
+    获取 tpath 和 affine 
+    if tpath有顶点: 
+      设置gc参数: snap,joinstyle,capstyle,linewidth
+      获取marker path , trans,subsampled
+      绘制标记: render.draw_markers(
+        gc,alt_marker_path,alt_marker_trans,subsampled,
+        affine.froze(),fcalt_rgba
+      )
+    gc.restore 
+
+
+**Patch的绘制流程** 
+
+.. code:: python 
+
+  if 不可见: return
+  获取path,transform
+  由path,transform获取tpath,affine: 
+    tpath = transform.transform_path_non_affine(path)
+    affine = transform.get_affine()
+  传入带属性绘制函数 : self._draw_paths_with_artist_properties(
+    render,
+    [(tpath,affine,self._facecolor if self._facecolor[3] else None)]
+  )
+
+  code _draw_paths_with_artist_properties(self,renderer,draw_path_args_list) : 
+    开启渲染器组: patch  
+    创建gc 
+    设置gc参数 : foreground,linewidth,dash,capstyle,joinstyle,antialiased,clip,\
+                url,snap,alpha,hatch,sketch_params,path_effects 
+    使用draw函数传入的参数列表绘制路径 : 
+      for draw_path_args in draw_path_args_list:
+        renderer.draw_path(gc,*draw_path_args)
+    gc.restore()
+    渲染器关闭组: patch 
+    self.stale = False
+
+绘制在于调用底层的渲染器的参数设置
+
+mpl的渲染器
+----------------

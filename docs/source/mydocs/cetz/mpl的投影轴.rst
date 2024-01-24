@@ -69,7 +69,4 @@ matplotlib.projections的翻译
 * can_zoom 方法 决定是否放缩,类似的方法还有很多，例如 `can_pan` 等。
 * can_pan 方法 决定展示页面是否可以平移，如果可以，则会根据 `start_pan` ， `end_pan` 、 `drag_pan` 来设置pan的动作。   
 
-
-
-
 .. include:: ./_AxesBase_Class.rst

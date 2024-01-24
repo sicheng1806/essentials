@@ -10,9 +10,10 @@ matplotlib更适合函数式绘画，对于示意图等绘画显得不太搭调�
     :maxdepth: 1
 
     ./各种工具的api特点分析
-    ./matplotlib的投影轴
-    ./使用matplotlib设置类ctez的可行性分析
-    ./matplotlib使用精要
+    ./mpl的投影轴
+    ./使用mpl设置类ctez的可行性分析
+    ./mpl使用精要
+    ./基于pytez绘制流程图
     
 
 
