@@ -3,6 +3,9 @@ matplotlib使用精要
 
 本文档用于记录matplotlib的使用技巧，由其知识繁多以总结。
 
+.. seealso:: 
+  https://matplotlib.org/stable/api/matplotlib_configuration_api.html
+
 .. contents:: 
 
 matplotlib的组织形式
@@ -114,7 +117,8 @@ matplotlib是所有其他模块的接口，同时还具有一些全局功能的�
             fig, ax = plt.subplots()
             ... 
   4. ``matplotlib.rc(group,**kwargs)`` : 设置当前的rcParams。 提供了实时的rcParams设置。
-  5. ``matplotlib.rcdefaults()`` : 将rcParams恢复为Matplotlib内部默认样式
+  5. ``matplotlib.rcdefaults()`` : 将rcPa.. seealso:: 
+  https://matplotlib.org/stable/api/matplotlib_configuration_api.htmlrams恢复为Matplotlib内部默认样式
   6. ``matplotlib.rc_file_defaults()`` : 按Matplotlib的默认样式文件恢复rcParams。
   7. ``matplotlib.rc_file(fname,*,use_defualt_template=True)`` : 由文件更新 rcParams。
   8. 等。
@@ -128,8 +132,7 @@ matplotlib是所有其他模块的接口，同时还具有一些全局功能的�
   1. ``matplotlib.MatplotlibDeprecationWarning`` 
   2. ``matplotlib.get_cachedir()`` : 返回缓存目录的路径
 
-.. seealso:: 
-  https://matplotlib.org/stable/api/matplotlib_configuration_api.html
+
    
 matplotlib.pyplot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -660,7 +663,7 @@ Patch也是Artist的基类，因此也是通过 ``draw(self,renderer)`` 方法�
   if 需要绘制标记 : code 标记绘制
   
   code 线绘制: 
-    获取 tpath 和 affine 
+    获取 tpath 和 affine : _get_transformed_path() , get_transform_path_and_affine()
     if tpath有顶点 : 
       从渲染器创建gc : gc = renderer.new_gc()
       设置gc的参数: clip,url,antialiased,linewidth 
@@ -721,5 +724,235 @@ Patch也是Artist的基类，因此也是通过 ``draw(self,renderer)`` 方法�
 
 绘制在于调用底层的渲染器的参数设置
 
-mpl的渲染器
+mpl的变换
 ----------------
+
+由之前的代码可知，mpl图形的绘制是通过渲染器和若干参数完成的。
+
+draw的过程重要的就是确定不同的渲染器参数，其中重要的有:
+
+* gc 图形上下文管理器 
+* transform 变换，基础图形经过变换成为最终图形，而且各种对figure和axes的交互或非交互式变换都是通过transform完成。
+* tpath 绘制图案的路径
+
+在Line2D的绘制过程中gc的设置略去，画线型的流程中，tpath是基于Path的，转换后的path是由path经过 TransformedPath变换而来。
+变换只涉及仿射变换，是通过线的变换的 get_affine属性得来的。
+
+所以draw的绘制过程就是控制渲染器，传入以Path为基础的tpath和TransformNode为基础的transform，加上样式设置器gc完成的。其中path和tranform都
+可能由多个参数共同决定。
+
+目前Path已经可以了解清楚，对于transform，mpl有一个框架。
+
+.. image:: https://matplotlib.org/stable/_images/inheritance-a70c221b36fca7451171560e6e1b2d934dcb52c9.png
+
+下面进入transform教程翻译：
+
+Transformations Tutorial理解性翻译
+========================================
+
+matplotlib的绘图过程是通过基础图形+图形变换+样式配置完成的。
+
+这里的绘图过程既包括了figure和axes中由数据坐标转换到屏幕坐标的过程，也指在绘图过程中，
+可以传入transform参数，使其再变换。
+
+mpl具有一个变换框架。变换的本质就是一个坐标变换的函数。由于性能要求将变换分为非仿射部分和仿射部分。
+为了方便变换之间的衔接还设计了管道机制，变换一般还会设置逆变换，用于反向操作。
+
+变换框架介绍
+----------------
+
+为了正确高效的使用变换，必需理解变换的框架。
+
+``class TransformNode``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+TransformNode是所有变换的基类，由其衍射出三种类型：TransformedPath，Bbox方向和Transform方向。
+
+其中Transform是所有变换的基类，所有仿射变换都是其子类 Affine2D的子类，所有非仿射变换是Transform非Affine2D的子类。
+
+Bbox方向用于完成边框机制
+
+TransformedPath 按其文档说是，用于缓存Path的非仿射变换拷贝，缓存的拷贝在transform的非仿射部分变换时自动更新，用于将变换中的非仿射部分(往往计算量比仿射大很多)缓存下来用于单独计算。
+
+``TransformNode`` 
+
+* 提供了froze()接口，用于在子类改变时也保存原来的变换。
+* 提供了invalidate()接口，可以使变换无效。
+
+
+``Transform``
+^^^^^^^^^^^^^^^^^^^^^^^
+
+是所有仿射变换和非仿射变换的基类。
+
+* 提供了input_dims和outputdims属性，用于返回输入输出的维度
+* 提供了Transform(value)接口，是执行变换的函数
+* 提供了inverted()接口，如果存在逆变换，则返回逆变换，类型也是tranform类。
+* 提供了is_separable和has_inverse属性用于确定变换是否可以单独分解为x部分和y部分以及是否具有逆变换
+* 提供了transform_path接口，如果需要对Path对象做额外的操作，例如添加一段曲线，transfrom_path(path)将会被运用于获得新的Path用于变换。
+* 以供了管道机制：
+  
+  ::
+    # In general:
+    A - B == A + B.inverted()
+    # (but see note regarding frozen transforms below).
+
+    # If A "ends with" B (i.e. A == A' + B for some A') we can cancel
+    # out B:
+    (A' + B) - B == A'
+
+    # Likewise, if B "starts with" A (B = A + B'), we can cancel out A:
+    A - (A + B') == B'.inverted() == B'^-1    
+
+.. seealso:: https://matplotlib.org/stable/users/explain/artists/transforms_tutorial.html#transforms-tutorial
+
+``CompositeGenericTransform(a,b,**kwargs)`` 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+通过运用两个变换的组合形成的符合变换，这个符合版本变换可以掌控两个任意的变换。你可以通过变换a，b的组合构建一个复合变换： :math:`a + b` 。
+
+坐标系统间的转换
+------------------
+
+所有坐标系统的数据要想正确的显示必需转换为屏幕上的坐标，完成这一工作的底层就是设计好的transform对象，\
+可以通过对象属性获取不同坐标系到屏幕坐标的变换对象： 
+
+获取对象的变换
+^^^^^^^^^^^^^^^^^^
+
+**数据坐标系** 
+
+Axes中数据的坐标系统: ``ax.transData`` 
+
+**axes坐标系**
+
+axes坐标系是一个单位矩形，左下角为 (0,0),右上角为 (1,1) : ``ax.transAxes`` 
+
+**subfigure** 
+
+子图的坐标系，和axes类似的单位矩形 : ``subfigure.transSubfigure`` 
+
+**figure** 
+
+figure坐标系，和axes类似的单位矩形 : ``fig.transFigure`` 
+
+**figure-inches** 
+
+用英寸表达的Figure坐标系，矩形， 左下角为 (0,0) 右上角为 (width,height) 。 : ``fig.dpi_scale_trans``
+
+**xaxis和yaxis** 
+
+混杂的坐标系统，使用数据坐标系在一个方向，另一个方向采用axes坐标系。 : ``ax.get_xaxis_transform(),ax.get_yaxis_tansform``
+
+**display** 
+
+输出的自然坐标系，(0,0)是窗口的左下角，(width,height)在右上角，使用屏幕单位。 : ``None`` 或者 ``IdentityTransform()`` 。
+
+使用实例
+^^^^^^^^^^^^
+
+**轴坐标系数据填入**
+
+使用轴坐标系数据设置一些绘图元素的好处是不会随着数据的变化而变换，因此适合用来天街一些和轴相关的样式
+
+例如： 添加轴字符 
+
+.. code:: python
+
+  for i, label in enumerate(('A', 'B', 'C', 'D')):
+    ax = fig.add_subplot(2, 2, i+1)
+    ax.text(0.05, 0.95, label, transform=ax.transAxes,
+            fontsize=16, fontweight='bold', va='top')
+
+.. image:: https://matplotlib.org/stable/_images/sphx_glr_transforms_tutorial_003_2_00x.png
+
+例如： 添加一个占图幅的固定的圆 
+
+.. image:: https://matplotlib.org/stable/_images/sphx_glr_transforms_tutorial_004_2_00x.png
+
+**混合变换** 
+
+使用混合变换可以设计一个方向由数据决定的元素，如
+
+一个x区间: 
+
+.. code:: python 
+
+  x = np.random.randn(1000)
+
+  ax.hist(x, 30)
+  ax.set_title(r'$\sigma=1 \/ \dots \/ \sigma=2$', fontsize=16)
+
+  # the x coords of this transformation are data, and the y coord are axes
+  trans = transforms.blended_transform_factory(
+      ax.transData, ax.transAxes)
+  # highlight the 1..2 stddev region with a span.
+  # We want x to be in data coordinates and y to span from 0..1 in axes coords.
+  rect = mpatches.Rectangle((1, 0), width=1, height=1, transform=trans,
+                            color='yellow', alpha=0.5)
+  ax.add_patch(rect)
+
+.. image:: https://matplotlib.org/stable/_images/sphx_glr_transforms_tutorial_005_2_00x.png
+
+**物理坐标系** 
+
+有时候需要按照屏幕坐标系绘制一些图案，例如logo图形，这样的图形不会随着figure的变换而变换。需要注意坐标要显示需要在
+figure-inches坐标系统中。
+
+.. code:: python 
+
+  x, y = 10*np.random.rand(2, 1000)
+  ax.plot(x, y*10., 'go', alpha=0.2)  # plot some data in data coordinates
+  # add a circle in fixed-coordinates
+  circ = mpatches.Circle((2.5, 2), 1.0, transform=fig.dpi_scale_trans,
+                        facecolor='blue', alpha=0.75)
+  ax.add_patch(circ)
+
+另一个用法是在坐标轴上的数据点周围反之一个具有固定物理尺寸的图案。这需要用到两个变换的组合，一个是
+确定其形状的屏幕坐标系上的数据，另一个是将其移动到数据点的平移变换。
+
+.. code:: python 
+
+  xdata, ydata = (0.2, 0.7), (0.5, 0.5)
+  ax.plot(xdata, ydata, "o")
+  ax.set_xlim((0, 1))
+
+  trans = (fig.dpi_scale_trans +
+          transforms.ScaledTranslation(xdata[0], ydata[0], ax.transData))
+
+  # plot an ellipse around the point that is 150 x 130 points in diameter...
+  circle = mpatches.Ellipse((0, 0), 150/72, 130/72, angle=40,
+                            fill=None, transform=trans)
+  ax.add_patch(circle)
+
+.. image:: https://matplotlib.org/stable/_images/sphx_glr_transforms_tutorial_008_2_00x.png
+
+**使用一个平移变换创建阴影效果** 
+
+.. code:: python 
+
+  # make a simple sine wave
+  x = np.arange(0., 2., 0.01)
+  y = np.sin(2*np.pi*x)
+  line, = ax.plot(x, y, lw=3, color='blue')
+
+  # shift the object over 2 points, and down 2 points
+  dx, dy = 2/72., -2/72.
+  offset = transforms.ScaledTranslation(dx, dy, fig.dpi_scale_trans)
+  shadow_transform = ax.transData + offset
+
+  # now plot the same data with our offset transform;
+  # use the zorder to make sure we are below the line
+  ax.plot(x, y, lw=3, color='gray',
+          transform=shadow_transform,
+          zorder=0.5*line.get_zorder())
+
+  ax.set_title('creating a shadow effect with an offset transform')
+
+.. image:: https://matplotlib.org/stable/_images/sphx_glr_transforms_tutorial_009_2_00x.png
+
+**变换管道** 
+
+简单而言就是所有变换支持 + - 法，+法即管道符，而-法则是取逆变换后加管道符，使用加减法的底层是
+``CompositeGenericTransform(a,b,**kwargs)`` 。 
+
