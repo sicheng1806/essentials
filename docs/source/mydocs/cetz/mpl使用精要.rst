@@ -811,7 +811,7 @@ TransformedPath 按其文档说是，用于缓存Path的非仿射变换拷贝，
 
 通过运用两个变换的组合形成的符合变换，这个符合版本变换可以掌控两个任意的变换。你可以通过变换a，b的组合构建一个复合变换： :math:`a + b` 。
 
-坐标系统间的转换
+坐标系统间的变换
 ------------------
 
 所有坐标系统的数据要想正确的显示必需转换为屏幕上的坐标，完成这一工作的底层就是设计好的transform对象，\
@@ -954,5 +954,48 @@ figure-inches坐标系统中。
 **变换管道** 
 
 简单而言就是所有变换支持 + - 法，+法即管道符，而-法则是取逆变换后加管道符，使用加减法的底层是
-``CompositeGenericTransform(a,b,**kwargs)`` 。 
+``CompositeGenericTransform(a,b,**kwargs)`` 。
+
+绘图时的变换
+---------------
+
+绘图设置变换矩阵可以绘制变换后的图形，这里主要使用仿射变换，其他的变换也是一样的。
+
+放缩
+^^^^^^^
+
+见仿射变换
+
+平移
+^^^^^^
+
+``transforms.ScaledTranslation(xt,yt,scale_trans)`` 类返回一个按scale_trans坐标系平移xt，yt的变换。
+
+旋转
+^^^^^^
+
+见仿射变换
+
+使用仿射矩阵变换
+^^^^^^^^^^^^^^^^^^^^^
+
+``class Affine2D(matrix=None,**kwargs)``
+
+设置 3x3仿射变换矩阵用于变换。
+
+除了设置矩阵的形式还可以使用其方法快速创建: 
+
+* rotate(theta) 弧度制
+* rotate_around(x,y,theta)
+* rotate_deg(degrees) 
+* rotate_deg_around(x,y,degrees)
+* scale(sx,sy=None)
+* set_matrix(mtx)  直接设置仿射矩阵
+
+混合变换
+^^^^^^^^^^
+
+``BlendeAffine2D(x_transform,y_transform,**kwargs)`` 返回将x和y分别按照两种变换的变换
+
+
 

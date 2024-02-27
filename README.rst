@@ -9,6 +9,10 @@
 `sicheng_essentials` 记录了本人学习地质工程及相关知识的精要，仅作为自身课程的检验
 和回顾要点的工具。
 
+由于typst提供更全面的pdf掌握技术，因而部分文档至下面部分阅读：
+
+.. seealso:: https://github.com/sicheng1806/typst-book-for-sicheng 
+
 Contents 
 ========
 
@@ -17,6 +21,7 @@ Contents
    :maxdepth: 1
    
    ./mydocs/数学符号一览
+   ./mydocs/Linux配置
    ./mydocs/Rust摘要
    ./mydocs/Typst摘要
    ./mydocs/translation/翻译或提取的文章
@@ -33,6 +38,7 @@ Contents
    ./mydocs/构造地质学/gzjh
    ./mydocs/土力学/tlx
    ./mydocs/岩体力学/ytlx
+   ./mydocs/kali/kali
    
 .. toctree:: 
    :caption: 专业课程集II

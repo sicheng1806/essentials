@@ -11,11 +11,10 @@
     import matplotlib.pyplot as plt 
     import pytez 
 
-    fig = plt.figure()
-    canvas = fig.subplots(projection="canvas")
-    with canvas : 
-        from pytez.draw import * 
-        ...# Your draw
+    c = pytez.Canvas()
+    c.line(...)
+    ... # Your draw 
+    
 
     # 或者
 
@@ -49,3 +48,11 @@ date(2024/1/23),1
 
 目前可以直接继承axes类，更改一些初始配置就行。
 
+data(1/25),2
+-----------------
+
+通过之前的开发确定了一下基本方向：
+
+1. Canvas类的设计，通过包装axes类的方式设计，由其来承担主要绘图接口，具有ax和fig属性获取figure对象和axes对象。这样可以解决与mpl的接口有较大差异的问题
+2. 基本绘图类的设计，基于Patch类
+3. 主要
